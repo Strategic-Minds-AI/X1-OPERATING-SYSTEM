@@ -1,5 +1,16 @@
 # X1 Operating System | Agent Operating Instructions
 
+## P0 priority locked by operator (2026-10-11)
+
+Build ONE X1 autonomous coding system with Manus-grade durable task lifecycle and chat-first v0-style visual editing. Prioritize:
+1. Reconcile existing X1 worker/single heartbeat and authenticated execution authority.
+2. Working real source-writing coding sandbox, install/build/test/repair receipts, independent validation.
+3. Chat + selectable element Design Mode + full-page preview + source inspection + version history in the existing X1 Studio.
+4. Only afterward scale the Digital Dominance approval-first website factory.
+
+v0 API and Manus are documented competitive capability references; do not copy proprietary code or claim equivalent parity without direct benchmark evidence. The current Studio local chat commands make bounded copy edits; general app requests remain undispatched until the real executor is connected. Preserve base site visual lock and all protected release approvals.
+
+
 **Canonical source destination:** `Strategic-Minds-AI/X1-OPERATING-SYSTEM` (private).
 **Flagship division:** Digital Dominance website factory. Preserve original private donor repositories as read-only lineage.
 
