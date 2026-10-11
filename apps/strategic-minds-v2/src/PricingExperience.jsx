@@ -44,7 +44,7 @@ export default function PricingExperience(){
  return <div className="cp-site cp-pricing">
   <a className="cp-skip" href="#pricing-content">Skip to content</a>
   <header className="cp-public-nav">
-   <Link className="cp-brand" to="/v2/a"><span className="cp-brand-mark">S</span><span>STRATEGIC MINDS <b>AI</b><small>INTELLIGENCE IN MOTION</small></span></Link>
+   <Link className="cp-brand" to="/v2/a"><span className="cp-brand-mark"><img src="/v2-assets/silver-emblem.png" alt="Metallic S emblem"/></span><span>STRATEGIC MINDS <b>AI</b><small>INTELLIGENCE IN MOTION</small></span></Link>
    <nav aria-label="Pricing navigation"><Link to="/v2/a">HOME</Link><Link to="/v2/b#services">SERVICES</Link><Link to="/pricing" aria-current="page">PRICING</Link><Link to="/portal">CLIENT PORTAL</Link></nav>
    <a className="cp-header-call" href="tel:+18665711174"><Sparkles size={15}/> CALL EDEN</a>
   </header>

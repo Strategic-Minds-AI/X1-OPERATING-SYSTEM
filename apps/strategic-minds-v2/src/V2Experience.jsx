@@ -56,6 +56,7 @@ function Navigation({variant}) {
  ['PORTAL','/portal'],['CONTACT','/v2/c#onboarding']
  ];
  return <header className="v2-header"><div className="v2-header-grid">
+  <Link className="v2-header-s" to="/v2/a" aria-label="Strategic Minds AI home"><img src="/v2-assets/silver-emblem.png" alt="Metallic Strategic Minds S"/></Link>
   <Call eden variant={variant}/>
   <div className="v2-nav-shell">
    <button type="button" className="v2-menu" aria-label={open?'Close navigation':'Open navigation'}
