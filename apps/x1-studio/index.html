@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>X1 Studio | Chat, Edit, Preview</title>
+<style>
+:root{--ink:#182127;--paper:#fff;--line:#dededb;--mute:#5e6870;--bg:#efefec;--accent:#dbad67;--nav:#131a1e}
+*{box-sizing:border-box}body{margin:0;font:16px/1.55 "Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--bg)}button,textarea,input,select{font:inherit}button{cursor:pointer}
+button:focus-visible,textarea:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #b47b29;outline-offset:3px}
+button:disabled{cursor:not-allowed;opacity:.46}a{color:inherit}
+.shell{height:100vh;height:100dvh;min-height:620px;display:grid;grid-template-columns:215px minmax(335px,425px) minmax(0,1fr)}
+.side{background:var(--nav);color:#f5f4f2;padding:24px 15px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.logo{padding:8px 12px 30px;font-weight:900;font-size:23px;letter-spacing:.13em}.logo span{color:var(--accent)}
+.side a{padding:13px 15px;text-decoration:none;border-radius:8px;font-size:17px;font-weight:700;color:#bfc8cb;display:flex;align-items:center;gap:11px}
+.side a.selected{color:white;background:#2b353a;border:1px solid #4f5a5d}.side a:hover{background:#253035;color:white}
+.sidefooter{margin-top:auto;padding:15px 10px 5px;font-size:13px;line-height:1.7;color:#a5b1b5}.sidefooter strong{color:#f2ddba}
+.chat{background:var(--paper);display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line)}
+.chathead{border-bottom:1px solid var(--line);padding:25px 24px 17px}.eyebrow{text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:.16em;color:#99611b}.chathead h1{font-size:28px;letter-spacing:-.04em;margin:7px 0}.chathead p{color:var(--mute);font-size:15px;margin:0}
+.messages{flex:1;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px}
+.bubble{border-radius:15px;padding:14px 17px;font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:96%}
+.bubble.assistant{background:#f3f1eb;border:1px solid #e8e4db;align-self:flex-start}.bubble.user{background:#1b282d;color:#f6f8f8;align-self:flex-end}
+.chatname{font-size:12px;letter-spacing:.12em;font-weight:900;display:block;margin-bottom:5px;color:#9b6e31}.bubble.user .chatname{color:#e2bd84}
+.chatcomposer{border-top:1px solid var(--line);padding:16px;display:grid;gap:10px}
+.quick{display:flex;gap:7px;flex-wrap:wrap}.quick button{border:1px solid #dfdad1;background:#f8f6f2;border-radius:18px;padding:7px 10px;font-size:12px;color:#644f32;font-weight:700}
+textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;padding:14px;min-height:100px;background:#fff;color:var(--ink);font-size:16px}
+.chatbuttons{display:flex;align-items:center;justify-content:space-between;gap:9px}.smnote{font-size:12px;color:var(--mute)}.action{background:#182328;color:white;border:0;padding:12px 20px;border-radius:8px;font-weight:800;min-height:44px}
+.action.gold{background:var(--accent);color:#1f190e}.action.light{background:#fff;color:var(--ink);border:1px solid #bfc4c2}
+.workspace{min-width:0;display:flex;flex-direction:column;min-height:0}
+.workhead{background:#fff;padding:20px 26px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap}
+.workhead strong{font-size:21px;letter-spacing:-.02em}.micro{font-size:13px;color:var(--mute)}
+.switch{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:9px;background:#f5f5f2;padding:3px}.switch button{background:none;border:0;border-radius:6px;padding:9px 14px;font-size:14px;font-weight:800;color:#667072}
+.switch button.active{background:#202c31;color:white}.worktoolbar{background:white;border-bottom:1px solid var(--line);padding:12px 25px;display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.worktoolbar label{font-size:14px;font-weight:800}.worktoolbar select{padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:white;min-height:40px;font-size:14px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:900;border-radius:40px;padding:6px 12px;background:#fff6de;color:#7d5513}
+.dot{background:#cf9e37;border-radius:50%;width:7px;height:7px}
+.stage{flex:1;min-height:0;display:flex;overflow:hidden}
+.canvas{min-width:0;flex:1;overflow:auto;background:repeating-linear-gradient(45deg,#ebebea,#ebebea 15px,#efefee 15px,#efefee 30px);padding:20px;display:flex;justify-content:center;align-items:stretch}
+.frame{background:white;box-shadow:0 8px 35px #1420272b;width:100%;max-width:100%;overflow:hidden;border-radius:9px;display:flex;flex-direction:column}
+.frameheader{height:33px;flex:none;padding:9px 13px;background:#252e32;color:#e0e5e5;font-size:12px;display:flex;align-items:center;gap:10px}
+.lights{display:flex;gap:5px}.lights i{display:block;width:7px;height:7px;background:#cc9f5e;border-radius:50%}
+.frame iframe{flex:1;min-height:0;border:0;background:white;width:100%;height:100%}
+.canvas.mobile .frame{width:390px;min-width:0}.canvas.tablet .frame{width:834px;min-width:0}
+.inspector{width:295px;flex:none;background:white;border-left:1px solid var(--line);padding:22px 17px;overflow:auto}
+.inspector h2{font-size:21px;margin:0 0 6px}.inspector p{font-size:14px;color:var(--mute);margin:0 0 20px}
+.inspector label{display:block;font-size:13px;font-weight:800;margin:15px 0 5px}
+.inspector input,.inspector textarea,.inspector select{width:100%;border:1px solid #d1d4d2;background:#fff;border-radius:7px;padding:11px;font-size:15px}
+.inspector textarea{min-height:115px}.inspector button{width:100%;margin-top:16px}
+.source{display:none;flex:1;min-height:0;padding:20px;background:#161d21}.source textarea{height:100%;resize:none;background:#1f282d;color:#ecf2f2;border:1px solid #465054;font-family:Consolas,monospace;font-size:13px}
+.foot{background:#fff;border-top:1px solid var(--line);padding:12px 24px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#647073;font-size:13px}
+.foot strong{color:#3b4649}
+#fault:not(:empty){background:#fce9df;color:#972f16;border-left:4px solid #bd522c;padding:10px 15px;font-size:14px}
+@media(max-width:1250px){.shell{grid-template-columns:67px minmax(305px,370px) minmax(0,1fr)}.side a .txt{display:none}.side a{justify-content:center;padding:11px}.logo{font-size:17px;padding:10px 0 15px;text-align:center}.sidefooter{display:none}.inspector{width:245px}}
+@media(max-width:910px){.shell{display:flex;flex-direction:column;height:auto;min-height:100vh}.side{flex-direction:row;align-items:center;padding:8px 15px;gap:5px}.logo{padding:4px 12px;font-size:19px}.side a{padding:8px 12px}.chat{min-height:530px;height:56vh;border-right:0}.workspace{min-height:650px;height:75vh}.inspector{width:255px}.canvas{padding:12px}}
+@media(max-width:560px){.chat{height:auto;min-height:470px}.messages{min-height:220px}.inspector{width:100%;max-height:300px;border-left:0;border-top:1px solid var(--line)}.stage{flex-direction:column}.workspace{height:940px}.canvas{min-height:425px}.workhead{padding:12px}.worktoolbar{padding:10px}.switch button{padding:7px}}
+</style></head><body>
+<div class="shell">
+<aside class="side">
+ <div class="logo">X<span>1</span></div>
+ <a href="/studio" class="selected" aria-current="page"><span>✦</span><span class="txt">AI Studio</span></a>
+ <a href="/"><span>▦</span><span class="txt">Batch Factory</span></a>
+ <div class="sidefooter"><strong>PRIVATE LOCAL STUDIO</strong><div>Autonomous code worker: not connected</div><div>Release: approval required</div></div>
+</aside>
+<section class="chat" aria-label="Builder chat">
+ <div class="chathead"><div class="eyebrow">X1 · Design and engineering</div><h1>Build with a conversation.</h1>
+ <p>Describe what to change. Edit visually. See the result instantly.</p></div>
+ <div class="messages" id="messages" aria-live="polite">
+  <div class="bubble assistant"><span class="chatname">X1 LOCAL STUDIO</span>Welcome to the new builder. Try “Set hero headline to Your dream garage starts here”. I can apply bounded content edits now. For a new app, I can draft the autonomous coding mission but cannot run an unconnected code worker.</div>
+ </div>
+ <div class="chatcomposer">
+  <div class="quick"><button data-prompt="Set hero headline to A better garage starts here">Edit hero</button><button data-prompt="Set benefits body to Explore durable finishes and options for your project.">Edit section</button><button data-prompt="Build a client portal with CRM and authentication">Plan an app</button></div>
+  <form id="chat-form"><label class="smnote" for="chat-text">Describe a change or a new application</label><textarea id="chat-text" maxlength="2000" placeholder="Ask X1 to build or change something..." required></textarea>
+   <div class="chatbuttons"><span class="smnote">Enter to send · Shift+Enter for a new line</span><button id="chat-send" class="action" type="submit">Send ↗</button></div></form>
+ </div>
+</section>
+<section class="workspace" aria-label="Visual editor">
+ <header class="workhead"><div><strong>Instant Estimate · Editing workspace</strong><div class="micro">Original factory section model · Local draft only</div></div>
+  <div class="switch" role="group" aria-label="Workspace mode"><button id="tab-preview" class="active" type="button">Preview</button><button id="tab-design" type="button">Design</button><button id="tab-source" type="button">Source</button></div></header>
+ <div class="worktoolbar"><div style="display:flex;align-items:center;gap:9px"><span class="status"><i class="dot"></i> NOINDEX DRAFT</span><label for="device">Viewport</label><select id="device"><option value="desktop">Desktop</option><option value="tablet">Tablet · 834</option><option value="mobile">Mobile · 390</option></select></div>
+ <div style="display:flex;gap:13px;align-items:center"><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro">No public deployment</span></div></div>
+ <div id="fault" role="alert" aria-live="polite"></div>
+ <div class="stage" id="stage">
+ <div class="canvas" id="canvas"><div class="frame"><div class="frameheader"><span class="lights"><i></i><i></i><i></i></span><span id="urltext">127.0.0.1 · noindex studio preview</span></div><iframe id="site-preview" title="Live editable Instant Estimate preview" src="/api/studio/preview"></iframe></div></div>
+ <aside class="inspector" id="inspector" hidden><div class="eyebrow">Design mode</div><h2>Edit selected section</h2><p>Select the section directly in the page, or use this dropdown. Changes update your local draft.</p>
+  <label for="section">Section</label><select id="section"><option value="hero">Hero</option><option value="benefits">Benefits</option><option value="process">Process</option><option value="estimate">Estimate</option><option value="faq">FAQ</option></select>
+  <label for="headline">Headline</label><input id="headline" maxlength="120" autocomplete="off">
+  <label for="body-copy">Description</label><textarea id="body-copy" maxlength="360"></textarea>
+  <button class="action gold" id="apply" type="button">Apply to local draft</button><div class="smnote" id="inspector-status">Editing invalidates any prior preview approvals.</div>
+ </aside>
+ </div>
+ <div id="source" class="source"><textarea id="source-code" readonly aria-label="Current rendered HTML source"></textarea></div>
+ <footer class="foot"><span>Plan: <strong id="plan-hash">loading...</strong> · <span id="mission-state">No coding task dispatched</span></span><span><strong>MANUS-STYLE LOOP:</strong> Plan → Code → Build → Test → Repair → Independent QA</span></footer>
+</section></div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);let state=null,lastMission=null,currentTab="preview";
+function bubble(role,label,body){const el=document.createElement("div");el.className="bubble "+role;const cap=document.createElement("span");cap.className="chatname";cap.textContent=label;el.append(cap,document.createTextNode(body));$("messages").append(el);el.scrollIntoView({block:"end"});}
+async function api(method,path,data){const opts=method==="POST"?{method,headers:{"Content-Type":"application/json"},body:JSON.stringify(data||{})}:{method};const r=await fetch(path,opts);const body=await r.json();if(!r.ok)throw Error(body.error||"Request failed");return body;}
+function setFault(message){$("fault").textContent=message||"";}
+function section(){return state?.plan?.sections?.find(x=>x.section_id===$("section").value);}
+function refreshInspector(){const s=section();$("headline").value=s?.content?.headline||"";$("body-copy").value=s?.content?.body||"";}
+function refreshIframe(){const iframe=$("site-preview");iframe.src="/api/studio/preview?rev="+encodeURIComponent(state?.plan?.planHash||"0");}
+function paint(){
+ $("plan-hash").textContent=(state?.plan?.planHash||"missing").slice(0,14);
+ $("mission-state").textContent=lastMission?"Mission "+lastMission.status:"No coding task dispatched";
+ refreshInspector();refreshIframe();
+}
+function changeTab(mode){
+ currentTab=mode;
+ ["preview","design","source"].forEach(t=>$("tab-"+t).classList.toggle("active",t===mode));
+ $("inspector").hidden=mode!=="design";
+ $("canvas").parentElement.style.display=mode==="source"?"none":"flex";
+ $("source").style.display=mode==="source"?"block":"none";
+ if(mode==="source")fetch("/api/studio/source").then(r=>r.text()).then(c=>$("source-code").value=c).catch(e=>setFault(e.message));
+ if(mode!=="source")refreshIframe();
+}
+async function load(){state=await api("GET","/api/studio/state");paint();}
+async function send(text){
+ if(!text.trim())return;setFault("");bubble("user","YOU",text);
+ $("chat-send").disabled=true;
+ try{
+  const result=await api("POST","/api/studio/message",{message:text});
+  state=result.state;lastMission=result.result.mission||null;paint();
+  bubble("assistant","X1 STUDIO · "+result.result.status,result.result.message);
+ }catch(e){setFault(e.message);bubble("assistant","ERROR",e.message);}finally{$("chat-send").disabled=false;}
+}
+$("chat-form").addEventListener("submit",e=>{e.preventDefault();const text=$("chat-text").value;$("chat-text").value="";send(text);});
+$("chat-text").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();$("chat-form").requestSubmit();}});
+document.querySelectorAll("[data-prompt]").forEach(b=>b.addEventListener("click",()=>{$("chat-text").value=b.dataset.prompt;$("chat-text").focus();}));
+["preview","design","source"].forEach(t=>$("tab-"+t).addEventListener("click",()=>changeTab(t)));
+$("device").addEventListener("change",()=>{$("canvas").classList.remove("mobile","tablet");if($("device").value!=="desktop")$("canvas").classList.add($("device").value);});
+$("section").addEventListener("change",refreshInspector);
+$("apply").addEventListener("click",async()=>{setFault("");try{const s=$("section").value;
+ const first=await api("POST","/api/studio/edit",{sectionId:s,field:"headline",value:$("headline").value});
+ state=first.state;
+ const second=await api("POST","/api/studio/edit",{sectionId:s,field:"body",value:$("body-copy").value});
+ state=second.state;paint();$("inspector-status").textContent="Saved to local draft. Previous approvals invalidated.";
+ }catch(e){setFault(e.message);}
+});
+$("site-preview").addEventListener("load",()=>{
+ if(currentTab!=="design")return;
+ try{const doc=$("site-preview").contentDocument;if(!doc)return;
+ const mapping=[[".hero","hero"],["#benefits","benefits"],["#process","process"],["#estimate","estimate"],["#faq","faq"]];
+ for(const [selector,name] of mapping){const el=doc.querySelector(selector);if(!el)continue;el.style.cursor="crosshair";el.addEventListener("click",ev=>{if(currentTab!=="design")return;ev.preventDefault();ev.stopPropagation();$("section").value=name;refreshInspector();el.style.outline="4px solid #ddac5d";},{capture:true});}
+ }catch(e){setFault("Design selection unavailable: "+e.message);}
+});
+load().catch(e=>setFault(e.message));
+})();
+</script></body></html>
