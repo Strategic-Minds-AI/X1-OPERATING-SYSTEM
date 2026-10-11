@@ -5,6 +5,7 @@ on:
       - feature/smai-v2-approved-frontend-import-20261011
       - feature/x1-v2-pricing-client-portal-20261011
       - feature/x1-visual-studio-multisandbox-20261011
+      - feature/x1-hardening-gates-20261011
     paths:
       - "apps/strategic-minds-v2/**"
       - ".github/workflows/x1-smai-v2-frontend.yml"
