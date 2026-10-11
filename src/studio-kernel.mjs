@@ -36,6 +36,9 @@ export function applyLocalVisualEdit(plan,{sectionId,field,value}={}){
  const sections=plan.sections.map(s=>({
   ...s,content:{...s.content,[field]:s.section_id===sectionId?value.trim():s.content[field]}
  }));
+ const current=plan.sections.find(s=>s.section_id===sectionId)?.content?.[field];
+ if(current===value.trim())return Object.freeze({plan,previousPlanHash:plan.planHash,changed:false,
+   approvalState:"UNCHANGED",operation:"NOOP_LOCAL_DRAFT",domainChanges:0,externalCalls:0});
  const revised=proposeBatch({quantity:10,templateKey:plan.templateKey,markets:plan.markets,sections});
  return Object.freeze({
   plan:revised,previousPlanHash:plan.planHash,
