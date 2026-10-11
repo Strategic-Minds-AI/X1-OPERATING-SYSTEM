@@ -39,6 +39,12 @@ try{
   }
   if(url.includes('/auth/v1/otp'))return request.respond(json({}));
   if(url.includes('/auth/v1/verify'))return request.respond(json({access_token:'synthetic-test-jwt'}));
+  if(url.includes('/api/x1/agent-sessions'))return request.respond(json({
+    status:'SESSION_SYNC_VERIFIED',
+    tenant_id:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',
+    sessions:[{session_id:'11111111-1111-4111-8111-111111111111',
+      preview:'Review staging receipts',updated_at:'2026-10-11T12:00:00Z'}]
+  }));
   if(url.includes('/api/x1/agent-chat')){
    if(request.method()==='GET')return request.respond(json({status:'SYNC_READ_VERIFIED',
     tenant_id:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',
@@ -86,6 +92,8 @@ try{
  await page.waitForSelector('.x1-agent-composer');
  await page.waitForFunction(()=>document.body.textContent.includes('Synthetic QA receipt'));
  check((await page.$eval('.x1-agent-meter b',x=>x.textContent))==='0','verified queue counts displayed');
+ check((await page.$('.x1-agent-session')).length===1,'one recovered chat conversation link');
+ check((await page.$eval('.x1-agent-session strong',x=>x.textContent)).includes('Review staging receipts'),'persisted chat snippet shown');
  await page.click('.x1-agent-suggestions button:first-child');
  check((await page.$eval('#x1-agent-prompt',x=>x.value)).includes('X1 queue'),'suggestion fills live prompt');
  await page.click('.x1-agent-composer button[type="submit"]');
