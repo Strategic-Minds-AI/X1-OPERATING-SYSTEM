@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import V2Experience from './V2Experience.jsx';
+import PricingExperience from './PricingExperience.jsx';
+import ClientPortalExperience from './ClientPortalExperience.jsx';
 import './global.css';
 
 function NavigateToHash() {
@@ -19,6 +21,9 @@ function App(){
    <Route path="/" element={<Navigate to="/v2/a" replace/>}/>
    <Route path="/v2" element={<Navigate to="/v2/a" replace/>}/>
    <Route path="/v2/:variant" element={<V2Experience/>}/>
+   <Route path="/pricing" element={<PricingExperience/>}/>
+   <Route path="/portal" element={<ClientPortalExperience/>}/>
+   <Route path="/portal/demo" element={<ClientPortalExperience demo/>}/>
    <Route path="*" element={<Navigate to="/v2/a" replace/>}/>
  </Routes></BrowserRouter>;
 }

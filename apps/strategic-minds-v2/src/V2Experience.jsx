@@ -52,8 +52,8 @@ function Navigation({variant}) {
  const [open,setOpen]=useState(false);
  const pages=[
  ['HOME','/v2/a'],['SERVICES','/v2/b#services'],['SOLUTIONS','/v2/b#services'],
- ['INDUSTRIES','/v2/b#services'],['SEO / AEO / GEO','/v2/b#visibility'],
- ['ABOUT','/v2/b#process'],['CONTACT','/v2/c#onboarding']
+ ['INDUSTRIES','/v2/b#services'],['PRICING','/pricing'],
+ ['PORTAL','/portal'],['CONTACT','/v2/c#onboarding']
  ];
  return <header className="v2-header"><div className="v2-header-grid">
   <Call eden variant={variant}/>
@@ -203,7 +203,7 @@ export default function V2Experience(){
    <PreviewHead variant={variant}/><a href="#main-content" className="v2-skip">Skip to content</a>
    <Navigation variant={variant}/>
    <main id="main-content">{variant==='a'?<Hero variant="a"/>:variant==='b'?<LongPage variant="b"/>:<EdenPage variant="c"/>}</main>
-   <footer className="v2-footer"><strong>STRATEGIC MINDS AI</strong><span>INTELLIGENCE IN MOTION</span>
+   <footer className="v2-footer"><strong>STRATEGIC MINDS AI</strong><span>INTELLIGENCE IN MOTION</span><Link to="/pricing">PRICING</Link><Link to="/portal">CLIENT PORTAL</Link>
     <p><a href={'mailto:'+EMAIL}>{EMAIL}</a> · <a href={BUSINESS_PHONE}>(772) 209-0266</a></p></footer>
    <nav className="v2-variant-switch" aria-label="Design preview selection">
     <span>NOINDEX · DESIGN PREVIEW</span><div>{VARIANTS.map(x=><Link key={x.id}
