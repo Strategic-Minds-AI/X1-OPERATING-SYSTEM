@@ -73,6 +73,34 @@ async function readTurns(binding,fetchImpl,operator,sessionId){
     order:"created_at.asc",limit:String(MAX_HISTORY*2)
   }));
 }
+export async function listAgentConversations(req,{env=process.env,fetchImpl=fetch}={}){
+  const binding=verifyChatRuntime(env);
+  const operator=await operatorContext(req,binding,fetchImpl);
+  // Session discovery is bounded and scoped to the authenticated operator, not
+  // the whole tenant. No message content leaves the provider from this route.
+  const turns=await rest(binding,fetchImpl,urlFor(binding,CHAT_TABLE,{
+    select:"session_id,role,content,created_at",
+    tenant_id:"eq."+operator.tenant_id,
+    actor_user_id:"eq."+operator.user_id,
+    order:"created_at.desc",limit:"240"
+  }));
+  const sessions=new Map();
+  for(const t of turns){
+    if(!UUID.test(t.session_id??""))continue;
+    const id=t.session_id.toLowerCase();
+    if(!sessions.has(id))sessions.set(id,{
+      session_id:id,updated_at:t.created_at,
+      // User-entered snippets are data, not executable instructions.
+      preview:"X1 conversation"
+    });
+    const current=sessions.get(id);
+    if(t.role==="user" && current.preview==="X1 conversation"){
+      current.preview=String(t.content??"").slice(0,100);
+    }
+  }
+  return {status:"SESSION_SYNC_VERIFIED",tenant_id:operator.tenant_id,
+    sessions:[...sessions.values()].slice(0,24)};
+}
 async function readOutput(binding,fetchImpl,operator){
   const rows=await rest(binding,fetchImpl,urlFor(binding,"apex_output_events",{
     select:"event_id,event_type,summary,status,trust_state,created_at",
