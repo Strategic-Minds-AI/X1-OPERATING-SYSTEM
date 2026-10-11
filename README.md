@@ -14,6 +14,17 @@ This is the **private canonical development repository** for X1. Digital Dominan
 
 **What is not claimed:** Real GPT-to-X1 worker dispatch, real client authentication, actual Vercel previews, Google rankings, verified original visual parity, independent three-pass browser QA or live production websites.
 
+## Current P0: Autonomous AI Studio
+
+The operator's top priority is one X1 autonomous coding agent and Manus-style durable task orchestration with a chat-first **v0-style** visual editing experience. New local Studio source on development branch:
+- `apps/x1-studio/index.html`: split-screen chat, full-page iframe, clickable section selection, property inspector, read-only rendered source and viewport controls.
+- `src/studio-kernel.mjs`: guarded section edits from chat, immutable approval hash changes and general engineering mission drafts.
+- `src/wizard-server.mjs`: loopback-only Studio routes in the existing preview server; no extra scheduler or backend.
+
+`npm run studio` and open **http://127.0.0.1:4391/studio**. This is a locally working editor for the synthetic Instant Estimate site, **not** real autonomous arbitrary code generation. General app requests are DRAFT_NOT_DISPATCHED until X1 queue authentication, isolated coding executor, independent validator and approval gates are genuinely connected. The original Website Launch Engine customer-facing design is untouched.
+
+See `docs/X1_P0_AUTONOMOUS_STUDIO.md` for staged engineering milestones and benchmark acceptance.
+
 ## Start locally (Node.js 22+)
 
 ```bash
