@@ -66,27 +66,35 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s qa-input/manifest.json
-          node src/self-build-validator.mjs qa-input
+          MANIFEST="$(find qa-input -name manifest.json -type f -print -quit)"
+          test -n "$MANIFEST"
+          APP_DIR="$(dirname "$MANIFEST")"
+          test -s "$APP_DIR/manifest.json"
+          echo "X1_APP_DIR=$APP_DIR" >> "$GITHUB_ENV"
+          node src/self-build-validator.mjs "$APP_DIR"
       - name: Render desktop and mobile screenshots in headless Chromium
         shell: bash
         run: |
           set -euo pipefail
           CHROME="$(command -v google-chrome || command -v chromium || true)"
           test -n "$CHROME"
-          URL="file://$GITHUB_WORKSPACE/qa-input/index.html"
-          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=1440,900 --screenshot="$GITHUB_WORKSPACE/qa-input/desktop-1440x900.png" "$URL" >/dev/null 2>&1
-          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=390,844 --screenshot="$GITHUB_WORKSPACE/qa-input/mobile-390x844.png" "$URL" >/dev/null 2>&1
-          test -s qa-input/desktop-1440x900.png
-          test -s qa-input/mobile-390x844.png
+          mkdir -p qa-output
+          cp "$X1_APP_DIR/independent-qa-receipt.json" qa-output/independent-qa-receipt.json
+          URL="file://$GITHUB_WORKSPACE/$X1_APP_DIR/index.html"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=1440,900 --screenshot="$GITHUB_WORKSPACE/qa-output/desktop-1440x900.png" "$URL" >/dev/null 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=390,844 --screenshot="$GITHUB_WORKSPACE/qa-output/mobile-390x844.png" "$URL" >/dev/null 2>&1
+          test -s qa-output/desktop-1440x900.png
+          test -s qa-output/mobile-390x844.png
+          echo '{"browserScreenshots":"CAPTURED_NOT_VISUAL_PARITY_CERTIFIED","desktop":"1440x900","mobile":"390x844","interactionTests":"NOT_RUN","releaseAuthorized":false}' > qa-output/browser-receipt.json
       - name: Upload independent receipts and screenshots
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: x1-canary-independent-qa
           path: |
-            qa-input/independent-qa-receipt.json
-            qa-input/desktop-1440x900.png
-            qa-input/mobile-390x844.png
+            qa-output/independent-qa-receipt.json
+            qa-output/desktop-1440x900.png
+            qa-output/mobile-390x844.png
+            qa-output/browser-receipt.json
           if-no-files-found: warn
           retention-days: 7
