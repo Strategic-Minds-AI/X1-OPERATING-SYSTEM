@@ -57,6 +57,7 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
  <a href="/studio" class="selected" aria-current="page"><span>✦</span><span class="txt">AI Studio</span></a>
  <a href="/"><span>▦</span><span class="txt">Batch Factory</span></a>
  <a href="/templates"><span>◫</span><span class="txt">Templates</span></a>
+ <a href="/checklist"><span>☑</span><span class="txt">Master checklist</span></a>
  <div class="sidefooter"><strong>PRIVATE LOCAL STUDIO</strong><div>Autonomous code worker: not connected</div><div>Release: approval required</div></div>
 </aside>
 <section class="chat" aria-label="Builder chat">
@@ -76,6 +77,10 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
   <div class="switch" role="group" aria-label="Workspace mode"><button id="tab-preview" class="active" type="button">Preview</button><button id="tab-design" type="button">Design</button><button id="tab-source" type="button">Source</button></div></header>
  <div class="worktoolbar"><div style="display:flex;align-items:center;gap:9px"><span class="status"><i class="dot"></i> NOINDEX DRAFT</span><label for="device">Viewport</label><select id="device"><option value="desktop">Desktop</option><option value="tablet">Tablet · 834</option><option value="mobile">Mobile · 390</option></select></div>
  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="action gold" id="build-canary">Build CRM canary ✦</button><button type="button" class="action light" id="return-estimate" hidden>Return to estimate</button><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro" id="canary-status">No public deployment · local preview only</span></div></div>
+ <div style="background:#fffaf0;border-bottom:1px solid #e5d9c2;padding:11px 23px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap" aria-label="Local idle automation" id="idle-ribbon">
+  <div><strong style="font-size:13px;color:#665028">10-MINUTE SAFE IDLE MODE</strong><div class="smnote" id="idle-status" aria-live="polite">Initializing local synthetic-only idle policy...</div></div>
+  <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap"><a href="/checklist" style="font-size:13px;font-weight:800;color:#786035">79-task mission checklist ↗</a><button type="button" class="action light" id="idle-toggle">Pause local auto-build</button></div>
+ </div>
  <div id="fault" role="alert" aria-live="polite"></div>
  <div class="stage" id="stage">
  <div class="canvas" id="canvas"><div class="frame"><div class="frameheader"><span class="lights"><i></i><i></i><i></i></span><span id="urltext">127.0.0.1 · noindex studio preview</span></div><iframe id="site-preview" title="Live editable Instant Estimate preview" src="/api/studio/preview"></iframe></div></div>
@@ -92,6 +97,36 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
 <script>
 (function(){
 const $=id=>document.getElementById(id);let state=null,lastMission=null,currentTab="preview",activeCanary=null;
+const idleThresholdMs=600000;let idleLastActive=Date.now(),idleFired=false,idleBusy=false;
+let idleArmed=true;try{idleArmed=localStorage.getItem("x1-studio-safe-idle-v1")!=="paused";}catch{}
+function idleStatus(){
+ const remaining=Math.max(0,idleThresholdMs-(Date.now()-idleLastActive));
+ const mins=String(Math.floor(remaining/60000)).padStart(2,"0"),secs=String(Math.floor(remaining%60000/1000)).padStart(2,"0");
+ $("idle-toggle").textContent=idleArmed?"Pause local auto-build":"Resume safe auto-build";
+ $("idle-status").textContent=!idleArmed?"PAUSED by operator · No background build":
+ idleBusy?"Building one synthetic CRM in the current local Studio...":
+ idleFired?"Completed one allowlisted synthetic build this idle period · No autonomous worker running":
+ "Armed: "+mins+":"+secs+" until one local CRM canary · browser must stay open · no deploy/spend/contact";
+}
+function markActivity(){idleLastActive=Date.now();idleFired=false;idleStatus();}
+async function checkIdle(){
+ if(!idleArmed||idleFired||idleBusy){idleStatus();return;}
+ const elapsed=Date.now()-idleLastActive;
+ if(elapsed<idleThresholdMs){idleStatus();return;}
+ idleFired=true;idleBusy=true;idleStatus();
+ try{
+  const result=await api("POST","/api/canary/build",{
+   templateId:"app-client-crm",
+   objective:"Build a safe local synthetic CRM demo canary with searchable example leads and status pipeline"
+  });
+  if(result.status!=="REAL_SOURCE_COMPILED_LOCAL_PREFLIGHT_PASS")throw Error("Synthetic canary preflight failed");
+  activeCanary=result.manifest;changeTab("preview");refreshIframe();
+  bubble("assistant","X1 10-MINUTE LOCAL AUTO-BUILD",
+   "Operator idle period reached 600 seconds. X1 generated "+result.manifest.generatedFiles+
+   " real local CRM source files and ran static preflight. No paid AI, background worker, production provisioning or client contact occurred. Independent browser QA remains separate.");
+ }catch(e){setFault("SAFE IDLE CANARY STOPPED: "+e.message);bubble("assistant","SAFE IDLE CANARY BLOCKED",e.message);}
+ finally{idleBusy=false;idleStatus();}
+}
 function bubble(role,label,body){const el=document.createElement("div");el.className="bubble "+role;const cap=document.createElement("span");cap.className="chatname";cap.textContent=label;el.append(cap,document.createTextNode(body));$("messages").append(el);el.scrollIntoView({block:"end"});}
 async function api(method,path,data){const opts=method==="POST"?{method,headers:{"Content-Type":"application/json"},body:JSON.stringify(data||{})}:{method};const r=await fetch(path,opts);const body=await r.json();if(!r.ok)throw Error(body.error||"Request failed");return body;}
 function setFault(message){$("fault").textContent=message||"";}
@@ -171,6 +206,16 @@ $("site-preview").addEventListener("load",()=>{
  for(const [selector,name] of mapping){const el=doc.querySelector(selector);if(!el)continue;el.style.cursor="crosshair";el.addEventListener("click",ev=>{if(currentTab!=="design")return;ev.preventDefault();ev.stopPropagation();$("section").value=name;refreshInspector();el.style.outline="4px solid #ddac5d";},{capture:true});}
  }catch(e){setFault("Design selection unavailable: "+e.message);}
 });
+$("idle-toggle").addEventListener("click",()=>{
+ idleArmed=!idleArmed;idleLastActive=Date.now();idleFired=false;
+ try{localStorage.setItem("x1-studio-safe-idle-v1",idleArmed?"armed":"paused");}catch{}
+ idleStatus();
+});
+for(const eventName of ["pointerdown","keydown","touchstart"]){
+ document.addEventListener(eventName,markActivity,{capture:true,passive:true});
+}
+idleStatus();
+setInterval(()=>{void checkIdle();},10000);
 load().catch(e=>setFault(e.message));
 })();
 </script></body></html>

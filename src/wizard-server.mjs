@@ -8,11 +8,14 @@ import {STUDIO_CAPABILITIES,interpretStudioMessage,applyLocalVisualEdit} from ".
 import {CATALOG,getTemplate,listTemplates,catalogueReport,draftFromTemplate,renderTemplateDocument,matchTemplate} from "./template-registry.mjs";
 import {materializeCanary,CANARY_TEMPLATE_ID} from "./self-build-canary.mjs";
 import {validateGeneratedApp} from "./self-build-validator.mjs";
+import {IDLE_THRESHOLD_MS,LOCAL_IDLE_OPERATIONS} from "./idle-policy.mjs";
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const entry=join(root,"apps/batch-wizard/index.html");
 const studioEntry=join(root,"apps/x1-studio/index.html");
 const templatesEntry=join(root,"apps/x1-templates/index.html");
+const checklistEntry=join(root,"apps/x1-checklist/index.html");
+const checklistJson=join(root,"data/x1-master-checklist.json");
 const host="127.0.0.1";
 const port=Number(process.env.WIZARD_PORT||4391);
 if(!Number.isInteger(port)||port<1024||port>65535) throw new Error("INVALID_PORT");
@@ -21,6 +24,8 @@ let plan=proposeBatch(),batch=null,receipt=null,studioMission=null,localCanary=n
 const html=await readFile(entry,"utf8");
 const studioHtml=await readFile(studioEntry,"utf8");
 const templatesHtml=await readFile(templatesEntry,"utf8");
+const checklistHtml=await readFile(checklistEntry,"utf8");
+const checklistData=JSON.parse(await readFile(checklistJson,"utf8"));
 function studioPreview(){return renderInstantEstimatePreview({city:plan.markets[0],state:"Florida",sections:plan.sections,brand:BASE_PACK.brand_config,planHash:plan.planHash});}
 function studioState(){return {plan,capabilities:STUDIO_CAPABILITIES,mission:studioMission,runtime:"LOCAL_ONLY",releasePermission:false,externalExecutorConnected:false};}
 
@@ -39,6 +44,14 @@ export function createWizardServer(){
     if(req.method==="GET"&&pathname==="/"){return reply(res,200,html,"text/html; charset=utf-8");}
     if(req.method==="GET"&&pathname==="/studio"){return reply(res,200,studioHtml,"text/html; charset=utf-8");}
     if(req.method==="GET"&&pathname==="/templates"){return reply(res,200,templatesHtml,"text/html; charset=utf-8");}
+    if(req.method==="GET"&&pathname==="/checklist"){return reply(res,200,checklistHtml,"text/html; charset=utf-8");}
+    if(req.method==="GET"&&pathname==="/api/checklist"){return reply(res,200,checklistData);}
+    if(req.method==="GET"&&pathname==="/api/idle/policy"){
+      return reply(res,200,{thresholdMs:IDLE_THRESHOLD_MS,localOperations:LOCAL_IDLE_OPERATIONS,
+        browserOpenRequired:true,permittedActions:"LOCAL_SYNTHETIC_ONLY",serverSideAuthenticatedPresence:false,
+        serverSideDurableWorkerActive:false,productionAuthorized:false,contactAuthorized:false,
+        warning:"Browser idle mode is not a 24/7 background service and cannot infer ChatGPT user silence."});
+    }
     if(req.method==="GET"&&pathname==="/api/templates"){
       const u=new URL(req.url,"http://"+host+":"+port);
       let templates;
