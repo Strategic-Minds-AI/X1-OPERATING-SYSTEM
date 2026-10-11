@@ -65,7 +65,7 @@ test("markdown drafts include source proof requirements and HTML is escaped",()=
  assert.ok(doc.includes("&lt;script&gt;evil&lt;/script&gt;"));
  assert.ok(!doc.includes("<script>evil</script>"));
  assert.ok(doc.includes("NOT RUN"));
- assert.ok(doc.includes("visual"));
+ assert.ok(doc.includes("VISUAL_LOCK"));
 });
 test("template browser includes functional search, document and draft controls",()=>{
  const html=readFileSync(new URL("../apps/x1-templates/index.html",import.meta.url),"utf8");
