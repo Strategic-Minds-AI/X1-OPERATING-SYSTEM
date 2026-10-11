@@ -52,3 +52,26 @@ test("SI privileged-function patch has fixed search paths and a recorded rollbac
   assert.match(f,/SET search_path = pg_catalog, public, pg_temp/);
   assert.match(undo,/GRANT EXECUTE ON FUNCTION public\.runtime_user_role\(\) TO anon/);
 });
+
+
+test("staging APEX trigger search path is pinned and rollback is isolated", () => {
+  const f=read("x1_staging_apex_trigger_search_path_20261011.sql");
+  const b=read("x1_staging_apex_trigger_search_path_rollback_20261011.sql");
+  assert.match(f,/uvdkzsbjackpjvpoxtyk/);
+  for(const fn of ["apex_validate_agent_task_pass","apex_validate_todo_done","apex_gate_goal_achievement"]){
+    assert.ok(f.includes("ALTER FUNCTION public."+fn+"()"));
+    assert.ok(b.includes("ALTER FUNCTION public."+fn+"() RESET search_path"));
+  }
+  assert.match(f,/SET search_path = pg_catalog, public, pg_temp/);
+  assert.doesNotMatch(f,/DROP\s+TABLE|TRUNCATE\s+TABLE/i);
+});
+test("production property public read-only SQL remains a draft, with a rollback", () => {
+  const f=read("hpi_distressed_properties_public_readonly_DRAFT_20261011.sql");
+  const b=read("hpi_distressed_properties_public_readonly_ROLLBACK_DRAFT_20261011.sql");
+  assert.match(f,/DRAFT ONLY, NOT APPLIED/);
+  assert.match(f,/fwtchbsebygwifmmqhur/);
+  assert.match(f,/GRANT SELECT ON TABLE public.distressed_properties TO anon, authenticated/);
+  assert.match(f,/FOR SELECT TO anon,authenticated USING \(true\)/);
+  assert.match(b,/DROP POLICY hpi_public_listing_readonly_20261011/);
+  assert.match(b,/DISABLE ROW LEVEL SECURITY/);
+});
