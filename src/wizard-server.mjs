@@ -2,16 +2,22 @@ import {createServer} from "node:http";
 import {readFile,writeFile,mkdir} from "node:fs/promises";
 import {fileURLToPath} from "node:url";
 import {dirname,resolve,join} from "node:path";
-import {proposeBatch,approveMarkets,authorizePreview,buildSyntheticPreviewBatch,verifyGeneratedBatch,BatchError} from "./batch-wizard.mjs";
+import {proposeBatch,approveMarkets,authorizePreview,buildSyntheticPreviewBatch,verifyGeneratedBatch,BatchError,BASE_PACK} from "./batch-wizard.mjs";
+import {renderInstantEstimatePreview} from "./instant-estimate-preview.mjs";
+import {STUDIO_CAPABILITIES,interpretStudioMessage,applyLocalVisualEdit} from "./studio-kernel.mjs";
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const entry=join(root,"apps/batch-wizard/index.html");
+const studioEntry=join(root,"apps/x1-studio/index.html");
 const host="127.0.0.1";
 const port=Number(process.env.WIZARD_PORT||4391);
 if(!Number.isInteger(port)||port<1024||port>65535) throw new Error("INVALID_PORT");
 const maxBytes=24000;
-let plan=proposeBatch(),batch=null,receipt=null;
+let plan=proposeBatch(),batch=null,receipt=null,studioMission=null;
 const html=await readFile(entry,"utf8");
+const studioHtml=await readFile(studioEntry,"utf8");
+function studioPreview(){return renderInstantEstimatePreview({city:plan.markets[0],state:"Florida",sections:plan.sections,brand:BASE_PACK.brand_config,planHash:plan.planHash});}
+function studioState(){return {plan,capabilities:STUDIO_CAPABILITIES,mission:studioMission,runtime:"LOCAL_ONLY",releasePermission:false,externalExecutorConnected:false};}
 
 function reply(res,status,data,contentType="application/json; charset=utf-8"){
   res.writeHead(status,{"Content-Type":contentType,"Cache-Control":"no-store","X-Robots-Tag":"noindex, nofollow",
@@ -26,6 +32,10 @@ export function createWizardServer(){
   try{
     const pathname=new URL(req.url,"http://"+host+":"+port).pathname;
     if(req.method==="GET"&&pathname==="/"){return reply(res,200,html,"text/html; charset=utf-8");}
+    if(req.method==="GET"&&pathname==="/studio"){return reply(res,200,studioHtml,"text/html; charset=utf-8");}
+    if(req.method==="GET"&&pathname==="/api/studio/state"){return reply(res,200,studioState());}
+    if(req.method==="GET"&&pathname==="/api/studio/preview"){return reply(res,200,studioPreview(),"text/html; charset=utf-8");}
+    if(req.method==="GET"&&pathname==="/api/studio/source"){return reply(res,200,studioPreview(),"text/plain; charset=utf-8");}
     if(req.method==="GET"&&pathname==="/api/state"){return reply(res,200,view());}
     if(req.method==="GET"&&pathname.startsWith("/previews/")){
       const site=batch?.sites.find(s=>pathname==="/previews/"+s.id+".html");
@@ -38,6 +48,17 @@ export function createWizardServer(){
     if(origin!==allowedOrigin)return reply(res,403,{error:"LOCAL_ORIGIN_REQUIRED"});
     if(!req.headers["content-type"]?.startsWith("application/json"))return reply(res,415,{error:"JSON_ONLY"});
     const body=await readBody(req);
+    if(pathname==="/api/studio/message"){
+      const result=interpretStudioMessage(plan,body.message,{sourceSha:"X1_DEV_SOURCE_PIN_REQUIRED_FOR_WORKER"});
+      if(result.edit){plan=result.edit.plan;batch=null;receipt=null;}
+      if(result.mission)studioMission=result.mission;
+      return reply(res,200,{result,state:studioState()});
+    }
+    if(pathname==="/api/studio/edit"){
+      const edit=applyLocalVisualEdit(plan,{sectionId:body.sectionId,field:body.field,value:body.value});
+      plan=edit.plan;batch=null;receipt=null;
+      return reply(res,200,{result:edit,state:studioState()});
+    }
     if(pathname==="/api/plan"){
       plan=proposeBatch({quantity:body.quantity,templateKey:body.templateKey,markets:body.markets,sections:body.sections});
       batch=null;receipt=null;
