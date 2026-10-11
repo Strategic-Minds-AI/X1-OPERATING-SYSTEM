@@ -85,6 +85,9 @@ test("health does not claim database access from key presence alone", () => {
   assert.equal(response.body.dispatch, "DISABLED");
   assert.equal(response.body.writes, "DISABLED");
   assert.equal(response.headers["Cache-Control"].includes("no-store"), true);
+  assert.equal(response.headers["X-Frame-Options"], "DENY");
+  assert.equal(response.headers["Referrer-Policy"], "no-referrer");
+  assert.match(response.headers["Content-Security-Policy"], /frame-ancestors/);
   assert.equal(JSON.stringify(response.body).includes(VALID.SUPABASE_SERVICE_ROLE_KEY), false);
 });
 test("health blocks missing bindings and write methods", () => {
