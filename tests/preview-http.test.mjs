@@ -42,6 +42,8 @@ test("ten localhost HTML routes require both approvals",async()=>{
   const unbound=await (await send("/api/studio/message",{message:"Build a complete customer CRM and dashboard"})).json();
   assert.equal(unbound.result.status,"DRAFT_NOT_DISPATCHED");
   assert.equal(unbound.result.mission.jobId,null);
+  assert.ok(unbound.recommendations.some(x=>x.id==="app-client-crm"));
+  assert.ok(unbound.recommendations.every(x=>x.readiness==="DOCUMENTED_NOT_EXECUTED"));
   assert.equal(unbound.state.capabilities.x1LeaseExecution,"BLOCKED_AUTH_AND_SINGLE_SUPERVISOR");
   const before=await send("/api/generate",{});
   assert.equal(before.status,422);
