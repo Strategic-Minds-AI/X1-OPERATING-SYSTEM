@@ -9,7 +9,7 @@ test('pricing and portal URLs are mounted on standalone X1 frontend',()=>{
 test('marketing nav leads to pricing and portal without changing original visual hero',()=>{
  const src=r('../src/V2Experience.jsx');
  assert.ok(src.includes("['PRICING','/pricing']"));
- assert.ok(src.includes("['PORTAL','/portal']"));
+ assert.ok(src.includes("['CLIENT PORTAL','/portal']"));
  assert.ok(src.includes('v2-earth-hero'));
 });
 test('proposed pricing is clearly custom and never misrepresents live checkout',()=>{
