@@ -75,7 +75,7 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
  <header class="workhead"><div><strong>Instant Estimate · Editing workspace</strong><div class="micro">Original factory section model · Local draft only</div></div>
   <div class="switch" role="group" aria-label="Workspace mode"><button id="tab-preview" class="active" type="button">Preview</button><button id="tab-design" type="button">Design</button><button id="tab-source" type="button">Source</button></div></header>
  <div class="worktoolbar"><div style="display:flex;align-items:center;gap:9px"><span class="status"><i class="dot"></i> NOINDEX DRAFT</span><label for="device">Viewport</label><select id="device"><option value="desktop">Desktop</option><option value="tablet">Tablet · 834</option><option value="mobile">Mobile · 390</option></select></div>
- <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="action gold" id="build-canary">Build CRM canary ✦</button><button type="button" class="action light" id="return-estimate" hidden>Return to estimate</button><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro" id="canary-status">Local preview only</span></div></div>
+ <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="action gold" id="build-canary">Build CRM canary ✦</button><button type="button" class="action light" id="return-estimate" hidden>Return to estimate</button><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro" id="canary-status">No public deployment · local preview only</span></div></div>
  <div id="fault" role="alert" aria-live="polite"></div>
  <div class="stage" id="stage">
  <div class="canvas" id="canvas"><div class="frame"><div class="frameheader"><span class="lights"><i></i><i></i><i></i></span><span id="urltext">127.0.0.1 · noindex studio preview</span></div><iframe id="site-preview" title="Live editable Instant Estimate preview" src="/api/studio/preview"></iframe></div></div>
@@ -104,7 +104,7 @@ function refreshIframe(){
  $("open-preview").href=page;
  $("urltext").textContent=activeCanary?"X1 GENERATED APP · "+activeCanary.id:"127.0.0.1 · noindex studio preview";
  $("return-estimate").hidden=!activeCanary;
- $("canary-status").textContent=activeCanary?"Real HTML/CSS/JS · local static QA":"Local preview only";
+ $("canary-status").textContent=activeCanary?"Real HTML/CSS/JS · local static QA":"No public deployment · local preview only";
  $("apply").disabled=Boolean(activeCanary);
  $("inspector-status").textContent=activeCanary?"This generated CRM currently supports source preview. Direct design editing applies to Instant Estimate only. Return to estimate to edit sections.":"Editing invalidates any prior preview approvals.";
 }
