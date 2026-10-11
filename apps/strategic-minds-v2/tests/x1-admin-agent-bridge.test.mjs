@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { STAGING_ORIGIN } from '../server/x1-staging.mjs';
-import { chatConfig,validateChatInput,postAgentTurn,readAgentConversation } from '../server/x1-agent-chat.mjs';
+import { chatConfig,validateChatInput,postAgentTurn,readAgentConversation,listAgentConversations } from '../server/x1-agent-chat.mjs';
 import { runAgentConfig } from '../api/x1/agent-config.js';
 import { runAgentChat } from '../api/x1/agent-chat.js';
+import { runAgentSessions } from '../api/x1/agent-sessions.js';
 
 const USER='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
 const TENANT='bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb';
@@ -178,4 +179,40 @@ test('storage outage returns 503 without leaking tokens or calling GPT',async()=
  assert.equal(res.json.reason,'X1_SYNC_STORAGE_UNAVAILABLE');
  assert.equal(f.gatewayCalls,0);
  assert.equal(JSON.stringify(res.json).includes('synthetic'),false);
+});
+
+test('session recovery only reads caller tenant and authenticated user, and never dispatches',async()=>{
+ const f=stub();
+ const req=request('POST',{session_id:SESSION,request_id:REQ,message:'Review the X1 staging rollout plan'});
+ await postAgentTurn(req,{env:ENV,fetchImpl:f.impl});
+ const data=await listAgentConversations(request(),{env:ENV,fetchImpl:f.impl});
+ assert.equal(data.status,'SESSION_SYNC_VERIFIED');
+ assert.equal(data.tenant_id,TENANT);
+ assert.equal(data.sessions.length,1);
+ assert.equal(data.sessions[0].session_id,SESSION);
+ assert.match(data.sessions[0].preview,/Review the X1 staging/);
+ assert.equal(f.gatewayCalls,0);
+ const query=f.calls.filter(x=>x.url.includes('/rest/v1/x1_admin_chat_turns')&&x.method==='GET').at(-1).url;
+ const url=new URL(query);
+ assert.equal(url.searchParams.get('tenant_id'),'eq.'+TENANT);
+ assert.equal(url.searchParams.get('actor_user_id'),'eq.'+USER);
+ assert.equal(url.searchParams.has('session_id'),false);
+ assert.equal(f.calls.filter(x=>x.url.includes('x1_work_queue')&&x.method!=='GET').length,0);
+});
+test('conversation-index endpoint is GET-only and denies missing credentials',async()=>{
+ const noToken=response();
+ await runAgentSessions({method:'GET',headers:{}},noToken,{env:ENV,fetchImpl:stub().impl});
+ assert.equal(noToken.statusCode,401);
+ const post=response();
+ await runAgentSessions(request('POST'),post,{env:ENV,fetchImpl:stub().impl});
+ assert.equal(post.statusCode,405);
+ const bound=response(),f=stub();
+ await runAgentSessions(request(),bound,{env:ENV,fetchImpl:f.impl});
+ assert.equal(bound.statusCode,200);
+ assert.equal(bound.json.status,'SESSION_SYNC_VERIFIED');
+});
+test('cross-tenant cannot enumerate any prior operator session',async()=>{
+ const f=stub();
+ await assert.rejects(()=>listAgentConversations(request('GET',null,OTHER),{env:ENV,fetchImpl:f.impl}),/TENANT_SCOPE_DENIED/);
+ assert.equal(f.calls.some(x=>x.url.includes('/rest/v1/x1_admin_chat_turns')),false);
 });
