@@ -88,8 +88,8 @@ try{
  await page.click('button[title="Sandboxes"]');
  await page.waitForSelector('.x1-sandbox-card');
  check((await page.$$('.x1-sandbox-card')).length===3,'three mock sandbox cards');
- await page.click('.x1-sandbox-card:nth-child(2)');
- await page.waitForFunction(()=>document.querySelector('.x1-editor-project strong')?.textContent.includes('Digital Dominance'));
+ await page.click('.x1-sandbox-card:nth-of-type(2)');
+ await page.waitForFunction(()=>document.querySelector('.x1-editor-project strong')?.textContent.includes('Digital Dominance'),{timeout:5000});
  check(true,'sandbox context picker changes selected project');
  await page.click('.x1-night');
  check((await page.$eval('.x1-night-banner',node=>node.textContent)).includes('prepared plan only'),'overnight toggle has honest boundary');
