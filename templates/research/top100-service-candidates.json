@@ -1,0 +1,1009 @@
+{
+  "source": "user-provided TOP_100_SERVICE_PORTFOLIO.md",
+  "sourceDate": "2026-10-06",
+  "meaning": "portfolio order is provisional, not live demand evidence and not site template inventory",
+  "publicationAllowed": false,
+  "count": 100,
+  "candidates": [
+    {
+      "id": "SERVICE-001",
+      "rankInOriginalWorkbook": 1,
+      "label": "Storm Damage Restoration",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-002",
+      "rankInOriginalWorkbook": 2,
+      "label": "Emergency Roof Leak Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-003",
+      "rankInOriginalWorkbook": 3,
+      "label": "Roof Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-004",
+      "rankInOriginalWorkbook": 4,
+      "label": "Emergency Plumber",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-005",
+      "rankInOriginalWorkbook": 5,
+      "label": "Emergency HVAC Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-006",
+      "rankInOriginalWorkbook": 6,
+      "label": "Drain & Sewer Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-007",
+      "rankInOriginalWorkbook": 7,
+      "label": "Emergency Electrician",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-008",
+      "rankInOriginalWorkbook": 8,
+      "label": "Main Sewer Line Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-009",
+      "rankInOriginalWorkbook": 9,
+      "label": "Water Heater Repair & Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-010",
+      "rankInOriginalWorkbook": 10,
+      "label": "Emergency Water Damage Restoration",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-011",
+      "rankInOriginalWorkbook": 11,
+      "label": "AC Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-012",
+      "rankInOriginalWorkbook": 12,
+      "label": "Furnace Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-013",
+      "rankInOriginalWorkbook": 13,
+      "label": "Emergency Locksmith",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-014",
+      "rankInOriginalWorkbook": 14,
+      "label": "Fire & Smoke Damage Restoration",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-015",
+      "rankInOriginalWorkbook": 15,
+      "label": "Tree Removal",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-016",
+      "rankInOriginalWorkbook": 16,
+      "label": "Foundation Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-017",
+      "rankInOriginalWorkbook": 17,
+      "label": "Septic Pumping & Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-018",
+      "rankInOriginalWorkbook": 18,
+      "label": "Window Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-019",
+      "rankInOriginalWorkbook": 19,
+      "label": "DUI Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-020",
+      "rankInOriginalWorkbook": 20,
+      "label": "Car Accident Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-021",
+      "rankInOriginalWorkbook": 21,
+      "label": "Garage Door Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-022",
+      "rankInOriginalWorkbook": 22,
+      "label": "Impact Windows & Doors",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-023",
+      "rankInOriginalWorkbook": 23,
+      "label": "Criminal Defense Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-024",
+      "rankInOriginalWorkbook": 24,
+      "label": "Generator Installation",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-025",
+      "rankInOriginalWorkbook": 25,
+      "label": "Personal Injury Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-026",
+      "rankInOriginalWorkbook": 26,
+      "label": "Kitchen Remodeling",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-027",
+      "rankInOriginalWorkbook": 27,
+      "label": "Pest & Termite Control",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-028",
+      "rankInOriginalWorkbook": 28,
+      "label": "Bathroom Remodeling",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-029",
+      "rankInOriginalWorkbook": 29,
+      "label": "Junk Removal",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-030",
+      "rankInOriginalWorkbook": 30,
+      "label": "Emergency Towing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-031",
+      "rankInOriginalWorkbook": 31,
+      "label": "Home Security Installation",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-032",
+      "rankInOriginalWorkbook": 32,
+      "label": "Auto Repair Shop",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-033",
+      "rankInOriginalWorkbook": 33,
+      "label": "Moving Services",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-034",
+      "rankInOriginalWorkbook": 34,
+      "label": "Truck Accident Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-035",
+      "rankInOriginalWorkbook": 35,
+      "label": "Mold Remediation",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-036",
+      "rankInOriginalWorkbook": 36,
+      "label": "Siding Installation & Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-037",
+      "rankInOriginalWorkbook": 37,
+      "label": "Appliance Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-038",
+      "rankInOriginalWorkbook": 38,
+      "label": "Emergency Dentist",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-039",
+      "rankInOriginalWorkbook": 39,
+      "label": "Tire Shop / Mobile Tire Service",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-040",
+      "rankInOriginalWorkbook": 40,
+      "label": "Basement Waterproofing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-041",
+      "rankInOriginalWorkbook": 41,
+      "label": "House Painting",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-042",
+      "rankInOriginalWorkbook": 42,
+      "label": "Lawn Care Service",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-043",
+      "rankInOriginalWorkbook": 43,
+      "label": "House Cleaning / Maid Service",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-044",
+      "rankInOriginalWorkbook": 44,
+      "label": "Collision Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-045",
+      "rankInOriginalWorkbook": 45,
+      "label": "Flooring Installation & Refinishing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-046",
+      "rankInOriginalWorkbook": 46,
+      "label": "Data Center / Generator Service",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-047",
+      "rankInOriginalWorkbook": 47,
+      "label": "Veterinarian / Emergency Vet",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-048",
+      "rankInOriginalWorkbook": 48,
+      "label": "Pool Cleaning & Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-049",
+      "rankInOriginalWorkbook": 49,
+      "label": "Home Insulation",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-050",
+      "rankInOriginalWorkbook": 50,
+      "label": "Fence Installation & Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-051",
+      "rankInOriginalWorkbook": 51,
+      "label": "Commercial HVAC",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-052",
+      "rankInOriginalWorkbook": 52,
+      "label": "Commercial Electrician",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-053",
+      "rankInOriginalWorkbook": 53,
+      "label": "Workers Compensation Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-054",
+      "rankInOriginalWorkbook": 54,
+      "label": "Divorce Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-055",
+      "rankInOriginalWorkbook": 55,
+      "label": "Mobile Mechanic",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-056",
+      "rankInOriginalWorkbook": 56,
+      "label": "Home Care Agency",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-057",
+      "rankInOriginalWorkbook": 57,
+      "label": "Fire Sprinkler Service",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-058",
+      "rankInOriginalWorkbook": 58,
+      "label": "Window Cleaning",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-059",
+      "rankInOriginalWorkbook": 59,
+      "label": "Addiction Treatment",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-060",
+      "rankInOriginalWorkbook": 60,
+      "label": "Commercial Fleet Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-061",
+      "rankInOriginalWorkbook": 61,
+      "label": "Commercial Property Management",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-062",
+      "rankInOriginalWorkbook": 62,
+      "label": "Auto Glass Replacement",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-063",
+      "rankInOriginalWorkbook": 63,
+      "label": "Transmission Repair",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-064",
+      "rankInOriginalWorkbook": 64,
+      "label": "Dental Implants",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-065",
+      "rankInOriginalWorkbook": 65,
+      "label": "Bankruptcy Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-066",
+      "rankInOriginalWorkbook": 66,
+      "label": "Property Management",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-067",
+      "rankInOriginalWorkbook": 67,
+      "label": "Cybersecurity Services",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-068",
+      "rankInOriginalWorkbook": 68,
+      "label": "Commercial Roofing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-069",
+      "rankInOriginalWorkbook": 69,
+      "label": "Cash Home Buyers",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-070",
+      "rankInOriginalWorkbook": 70,
+      "label": "Immigration Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-071",
+      "rankInOriginalWorkbook": 71,
+      "label": "Managed IT Services",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-072",
+      "rankInOriginalWorkbook": 72,
+      "label": "Memory Care",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-073",
+      "rankInOriginalWorkbook": 73,
+      "label": "Assisted Living",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-074",
+      "rankInOriginalWorkbook": 74,
+      "label": "Dumpster Rental",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-075",
+      "rankInOriginalWorkbook": 75,
+      "label": "Access Control Systems",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-076",
+      "rankInOriginalWorkbook": 76,
+      "label": "Staffing Agency",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-077",
+      "rankInOriginalWorkbook": 77,
+      "label": "Estate Planning Attorney",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-078",
+      "rankInOriginalWorkbook": 78,
+      "label": "Payroll Services",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-079",
+      "rankInOriginalWorkbook": 79,
+      "label": "PEO / HR Outsourcing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-080",
+      "rankInOriginalWorkbook": 80,
+      "label": "Pool Resurfacing",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-081",
+      "rankInOriginalWorkbook": 81,
+      "label": "Commercial Epoxy Flooring",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-082",
+      "rankInOriginalWorkbook": 82,
+      "label": "Polished Concrete Contractor",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-083",
+      "rankInOriginalWorkbook": 83,
+      "label": "Merchant Services",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-084",
+      "rankInOriginalWorkbook": 84,
+      "label": "Portable Toilet Rental",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-085",
+      "rankInOriginalWorkbook": 85,
+      "label": "Commercial Insurance Broker",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-086",
+      "rankInOriginalWorkbook": 86,
+      "label": "Home Inspector",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-087",
+      "rankInOriginalWorkbook": 87,
+      "label": "Fertility Clinic",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-088",
+      "rankInOriginalWorkbook": 88,
+      "label": "Orthodontist",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-089",
+      "rankInOriginalWorkbook": 89,
+      "label": "Business Loans",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-090",
+      "rankInOriginalWorkbook": 90,
+      "label": "Cosmetic Dentist",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-091",
+      "rankInOriginalWorkbook": 91,
+      "label": "Invisalign / Clear Aligners",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-092",
+      "rankInOriginalWorkbook": 92,
+      "label": "Business Phone / UCaaS",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-093",
+      "rankInOriginalWorkbook": 93,
+      "label": "Commercial Cleaning",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-094",
+      "rankInOriginalWorkbook": 94,
+      "label": "LASIK Surgery",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-095",
+      "rankInOriginalWorkbook": 95,
+      "label": "Medicare Agent",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-096",
+      "rankInOriginalWorkbook": 96,
+      "label": "Commercial Solar",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": false
+    },
+    {
+      "id": "SERVICE-097",
+      "rankInOriginalWorkbook": 97,
+      "label": "Life Insurance Agent",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-098",
+      "rankInOriginalWorkbook": 98,
+      "label": "Debt Relief",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-099",
+      "rankInOriginalWorkbook": 99,
+      "label": "Bariatric Surgery",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    },
+    {
+      "id": "SERVICE-100",
+      "rankInOriginalWorkbook": 100,
+      "label": "Mortgage Broker",
+      "status": "PROVISIONAL_RESEARCH_CANDIDATE",
+      "webPackBuilt": false,
+      "googleIndexApproved": false,
+      "validatedDemand": false,
+      "regulatedReviewRequired": true
+    }
+  ]
+}

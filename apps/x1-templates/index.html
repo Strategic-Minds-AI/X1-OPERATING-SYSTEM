@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>X1 | Template Library</title>
+<style>
+:root{--nav:#141c20;--paper:#fff;--bg:#f5f3ee;--gold:#cb9952;--text:#1b272d;--line:#deded8;--muted:#596468}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 Arial,Helvetica,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #c78b32;outline-offset:3px}
+.top{background:var(--nav);color:#fff;padding:18px max(4%,calc((100vw - 1480px)/2));display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-size:22px;font-weight:900;letter-spacing:.15em}.brand span{color:#edbb72}.topnav{display:flex;gap:22px;flex-wrap:wrap}.topnav a{font-size:16px;font-weight:800;text-decoration:none}
+.layout{max-width:1480px;margin:auto;padding:45px 4%;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.85fr);gap:28px}h1{font-size:clamp(41px,5.3vw,76px);letter-spacing:-.05em;line-height:1.02;margin:8px 0 18px}h2{font-size:29px;letter-spacing:-.03em;margin:0 0 10px}.eyebrow{font-size:13px;letter-spacing:.19em;color:#92611c;font-weight:900;text-transform:uppercase}.lead{font-size:20px;color:var(--muted);max-width:760px;margin:0 0 24px}
+.filters{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:25px 0}.filters input{flex:1;min-width:180px}.filters input,.filters select{background:white;border:1px solid #d1d3cf;border-radius:8px;padding:14px;min-height:50px}
+.stats{color:#4d5b61;font-size:14px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.item{background:white;border:1px solid var(--line);border-radius:12px;padding:23px;min-height:174px;display:flex;flex-direction:column;gap:10px;text-align:left}.item:hover,.item.active{border-color:#af8043;box-shadow:0 5px 22px #0000000d}.item h3{margin:0;font-size:21px;line-height:1.2}.item .family{font-size:12px;text-transform:uppercase;color:#895919;letter-spacing:.13em;font-weight:900}.item p{font-size:13px;color:#6c7679;margin:auto 0 0}.chip{font-size:12px;font-weight:800;background:#f3ecdf;padding:5px 10px;border-radius:99px;align-self:flex-start}
+.details{position:sticky;top:18px;background:white;border:1px solid var(--line);border-radius:13px;padding:28px;align-self:start;max-height:calc(100vh - 35px);overflow:auto}.details label{font-size:14px;font-weight:800;display:block;margin:17px 0 6px}.details textarea{border:1px solid #c6cdca;border-radius:8px;width:100%;padding:12px;min-height:125px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:47px;background:#202b30;color:white;border:0;border-radius:8px;padding:11px 17px;font-weight:850;text-decoration:none;font-size:15px}.btn.gold{background:#ddb16e;color:#292012}.btn.light{background:white;border:1px solid #ccd2ce;color:#252d32}.buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+dl{margin:20px 0}dt{font-size:13px;text-transform:uppercase;font-weight:800;color:#8c662e;letter-spacing:.1em;margin-top:18px}dd{margin:3px 0 0;overflow-wrap:anywhere;font-size:15px}.checks{padding-left:20px;font-size:14px;color:#535d62}.checks li{margin:7px 0}
+#result:not(:empty){padding:12px;background:#eef7ee;color:#295a31;border:1px solid #c2d6c2;margin-top:15px;border-radius:7px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}
+#error:not(:empty){color:#a83317;padding:13px;border:1px solid #eab6a9;background:#fff0ea;margin:10px 0}
+.foot{font-size:13px;color:var(--muted);margin:35px 0}
+@media(max-width:1010px){.layout{grid-template-columns:1fr}.details{position:static;max-height:none}}@media(max-width:580px){.cards{grid-template-columns:1fr}.layout{padding:24px 4%}.details{padding:20px}.top{padding:19px}}
+</style></head><body>
+<header class="top"><div class="brand">X<span>1</span> TEMPLATE LIBRARY</div><nav class="topnav" aria-label="Workspace"><a href="/studio">AI Studio ↗</a><a href="/">Batch Wizard ↗</a></nav></header>
+<div class="layout"><main>
+<div class="eyebrow">One operating system · one reusable catalog</div><h1>Start with the right blueprint.</h1>
+<p class="lead">Choose what you want to build. X1 assembles the intake and acceptance checklist, while execution, secrets and production release remain separately approved.</p>
+<div class="filters"><input type="search" id="search" aria-label="Search templates" placeholder="Search websites, apps, agents, workflows..."><select id="family" aria-label="Template family"><option value="">Every category</option></select></div>
+<div class="stats" id="stats">Loading versioned catalog...</div><p id="error" role="alert" aria-live="polite"></p>
+<div class="cards" id="cards" aria-live="polite"></div>
+<p class="foot">Every catalog entry is an editable starter contract, not a ready-to-deploy product. Service opportunity research is kept separate from completed website templates.</p>
+</main>
+<aside class="details" aria-label="Template inspector"><div class="eyebrow">Your project starts here</div><h2 id="selected-title">Select a template</h2>
+<div class="stats" id="selected-id">No project provisioned</div>
+<dl><dt>Deliverables</dt><dd id="outputs">Choose an item to see its outputs.</dd><dt>Mandatory QA gates</dt><dd><ul class="checks" id="gates"></ul></dd></dl>
+<form id="create-form"><label for="objective">Describe what you want to build</label>
+<textarea id="objective" minlength="5" maxlength="3000" placeholder="Example: Build a visually premium landscaping quote website for one verified business..." required></textarea>
+<div class="buttons"><button class="btn gold" id="create" type="submit" disabled>Create editable project brief</button>
+<a class="btn light" id="source-doc" href="#" target="_blank" rel="noopener noreferrer" hidden>Read template document ↗</a></div></form>
+<div id="result" role="status" aria-live="polite"></div>
+<div class="foot">This generates a draft you can review. It does not launch an autonomous worker, purchase services or publish a website.</div>
+</aside></div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+let items=[],selected=null;
+function clear(n){n.replaceChildren();}
+function cell(type,text,className){const e=document.createElement(type);e.textContent=text;if(className)e.className=className;return e;}
+function showError(m){$("error").textContent=m||"";}
+function select(t){selected=t;$("selected-title").textContent=t.title;$("selected-id").textContent=t.id+" · DOCUMENTED NOT EXECUTED";
+ $("outputs").textContent=t.deliverables.join(" · ");clear($("gates"));for(const g of t.gates)$("gates").append(cell("li",g.replaceAll("_"," ")));
+ $("source-doc").hidden=false;$("source-doc").href="/api/templates/docs/"+encodeURIComponent(t.id);
+ $("create").disabled=false;$("result").textContent="";render();
+}
+function render(){const family=$("family").value,q=$("search").value.toLowerCase().trim();
+ const list=items.filter(t=>(!family||t.family===family)&&(!q||[t.title,t.id,t.family].some(v=>v.toLowerCase().includes(q))));
+ $("stats").textContent=list.length+" of "+items.length+" document templates · all draft-only";
+ clear($("cards"));for(const t of list){const button=document.createElement("button");button.type="button";button.className="item"+(selected?.id===t.id?" active":"");
+ button.append(cell("span",t.family,"family"),cell("h3",t.title),cell("span","Documented blueprint","chip"),cell("p",t.kind==="industry_blueprint"?"Proposed design composition. Visual parity still required.":"Original donor-informed template with versioned acceptance checklist."));
+ button.addEventListener("click",()=>select(t));$("cards").append(button);}
+ if(!list.length)$("cards").append(cell("p","No matches. Try a broader search."));
+}
+async function start(){
+ const res=await fetch("/api/templates");if(!res.ok)throw Error("Template catalog unavailable");
+ const data=await res.json();items=data.templates;
+ const families=[...new Set(items.map(t=>t.family))].sort();for(const f of families){const o=document.createElement("option");o.value=f;o.textContent=f[0].toUpperCase()+f.slice(1);$("family").append(o);}
+ const params=new URL(location.href).searchParams;
+ if(params.get("family"))$("family").value=params.get("family");
+ if(params.get("q"))$("search").value=params.get("q");
+ render();
+ if(items.length)select(items.find(t=>t.id===params.get("id"))||items[0]);
+}
+$("search").addEventListener("input",render);$("family").addEventListener("change",render);
+$("create-form").addEventListener("submit",async ev=>{ev.preventDefault();if(!selected)return;showError("");const value=$("objective").value.trim();if(!value)return;
+ try{const res=await fetch("/api/templates/draft",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:selected.id,values:{objective:value}})});
+ const d=await res.json();if(!res.ok)throw Error(d.error||"Could not create draft");
+ $("result").textContent="Draft "+d.draft.id+" prepared · "+d.draft.missing.length+" additional fields remain. No agent executed.";
+ const blob=new Blob([d.document],{type:"text/markdown;charset=utf-8"});const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download=selected.id+"-draft.md";a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+ }catch(e){showError(e.message);}
+});
+start().catch(e=>showError(e.message));
+})();
+</script></body></html>
