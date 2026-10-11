@@ -32,14 +32,14 @@ jobs:
       - name: Emit immutable validation evidence
         if: always()
         env:
-          X1_SOURCE_SHA: ${{ github.sha }}
+          X1_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           X1_RUN_ID: ${{ github.run_id }}
           X1_JOB_STATUS: ${{ job.status }}
         run: node scripts/emit-ci-receipt.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: x1-validation-${{ github.sha }}
+          name: x1-validation-${{ github.event.pull_request.head.sha || github.sha }}
           path: artifacts/ci/
           if-no-files-found: warn
           retention-days: 30
