@@ -37,7 +37,7 @@ const APPROVAL_ITEMS=[
  {id:'web-01',type:'WEB PACK',title:'Homepage · Cinematic Direction',detail:'Review the homepage composition, copy hierarchy and Call Eden experience.',date:'Demo milestone'},
  {id:'social-01',type:'SOCIAL PACK',title:'Social visual style · Draft',detail:'Sample social concept follows the approved brand direction.',date:'Future milestone'}
 ];
-function Logo(){return <Link to="/v2/a" className="cp-portal-logo"><span className="cp-brand-mark">S</span><span>STRATEGIC MINDS <b>AI</b><small>YOUR INTELLIGENCE WORKSPACE</small></span></Link>;}
+function Logo(){return <Link to="/v2/a" className="cp-portal-logo"><span className="cp-brand-mark"><img src="/v2-assets/silver-emblem.png" alt="Metallic S emblem"/></span><span>STRATEGIC MINDS <b>AI</b><small>YOUR INTELLIGENCE WORKSPACE</small></span></Link>;}
 function DemoPill(){return <span className="cp-demo-pill"><span/> SANDBOX DEMO · SYNTHETIC DATA</span>}
 function SectionTitle({eyebrow,title,description,children}){return <div className="cp-portal-title"><div><p className="cp-kicker">{eyebrow}</p><h2>{title}</h2>{description&&<p>{description}</p>}</div>{children&&<div className="cp-portal-title-action">{children}</div>}</div>;}
 function Metric({icon:Icon,label,value,foot,accent=false}){return <div className={'cp-metric'+(accent?' cp-metric-accent':'')}><div className="cp-metric-top"><span>{label}</span><Icon size={22}/></div><strong>{value}</strong><small>{foot}</small></div>}

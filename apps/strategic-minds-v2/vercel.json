@@ -17,6 +17,10 @@
   ],
   "rewrites": [
     {
+      "source": "/admin/:path*",
+      "destination": "/index.html"
+    },
+    {
       "source": "/pricing",
       "destination": "/index.html"
     },
