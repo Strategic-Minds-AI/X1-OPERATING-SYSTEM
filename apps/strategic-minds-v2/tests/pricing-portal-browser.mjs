@@ -50,7 +50,7 @@ try{
  check(await page.$eval('.cp-billing-switch button:nth-child(2)',n=>n.classList.contains('active')),'managed toggle interactive');
  await clickText(page,'.cp-plan:nth-child(3) button','EXPLORE');
  check((await page.$eval('.cp-preview-ticket strong',n=>n.textContent)).includes('Enterprise'),'plan builder reflects selected package');
- await page.click('.cp-option:nth-child(2) input');
+ await page.click('.cp-options label:nth-of-type(2) input');
  await page.select('#cp-markets','International');
  const href=await page.$eval('.cp-quote-fields a[href^="mailto:"]',n=>n.getAttribute('href'));
  check(href.includes('International')&&href.includes('Enterprise')&&href.includes('AI%20reception'),'voluntary quote email contains chosen scope');
@@ -81,6 +81,7 @@ try{
  await goto(page,'/portal/demo?section=overview');
  await page.click('.cp-mobile-toggle');
  check(await page.$eval('.cp-sidebar',n=>n.classList.contains('cp-sidebar-open')),'mobile drawer opens');
+ await page.waitForFunction(()=>document.querySelector('.cp-sidebar')?.getBoundingClientRect().left>=-1,{timeout:3000});
  await clickText(page,'.cp-sidebar nav button','Projects');
  check(page.url().includes('section=projects'),'mobile drawer navigation');
  await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);
