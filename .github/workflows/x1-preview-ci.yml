@@ -1,0 +1,42 @@
+name: X1 Operating System | Synthetic Preview Verification
+on:
+  push:
+    branches:
+      - feature/canonical-os-convergence-20261011
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'apps/batch-wizard/**'
+      - 'package.json'
+      - '.github/workflows/x1-preview-ci.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'apps/batch-wizard/**'
+      - 'package.json'
+      - '.github/workflows/x1-preview-ci.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout pinned X1 branch commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Setup Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Syntax and deterministic tests (including 10 synthetic HTML sites)
+        run: npm run check
+      - name: Forbid shadow supervisor and production deployment configuration
+        shell: bash
+        run: |
+          test ! -f src/worker.mjs
+          test ! -f src/heartbeat.mjs
+          test ! -f vercel.json
+          test ! -f railway.json

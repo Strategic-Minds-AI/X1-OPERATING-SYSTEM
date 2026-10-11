@@ -1,0 +1,16 @@
+import test from "node:test";import assert from "node:assert/strict";
+import {draftMission,checkProtectedAction,MissionError} from "../src/mission.mjs";
+const a={principalVerified:true,tenantVerified:true,tenantId:"00000000-0000-0000-0000-000000000001"};
+const input={vision:"Build a beautiful lead-generation website for a local electrician with customer portal.",projectId:"WLE_STAGING",sourceSha:"9918cbfe3a1037b3d8bf0158b1d78ae957ad63f2"};
+const error=(fn,code)=>assert.throws(fn,e=>e instanceof MissionError&&e.code===code);
+test("verified synthetic request produces DRAFT",()=>{let x=draftMission(input,a);assert.equal(x.status,"DRAFT_REQUIRES_SCOPE_AND_APPROVAL");assert.equal(x.suggestedType,"website")});
+test("deterministic idempotency key",()=>assert.equal(draftMission(input,a).idempotencyKey,draftMission(input,a).idempotencyKey));
+test("never deploy directly",()=>{let x=draftMission(input,a);assert.equal(x.dispatched,false);assert.equal(x.approved,false);assert.equal(x.maxCostCents,0);assert.equal(x.clientContactAllowed,false)});
+test("no principal cannot create scoped request",()=>error(()=>draftMission(input,{...a,principalVerified:false}),"VERIFIED_TENANT_REQUIRED"));
+test("no tenant cannot create request",()=>error(()=>draftMission(input,{...a,tenantVerified:false}),"VERIFIED_TENANT_REQUIRED"));
+test("reject unpinned SHA",()=>error(()=>draftMission({...input,sourceSha:"main"},a),"SOURCE_SHA_REQUIRED"));
+test("reject direct production request",()=>error(()=>draftMission({...input,action:"PRODUCTION_DEPLOY"},a),"PROTECTED_ACTION_NOT_AUTHORIZED"));
+test("reject empty user idea",()=>error(()=>draftMission({...input,vision:""},a),"VISION_LENGTH_INVALID"));
+test("unknown category handled as custom",()=>assert.equal(draftMission({...input,vision:"Invent something brand new for my neighborhood."},a).suggestedType,"custom"));
+test("protected external actions require operator",()=>{for(const x of ["PRODUCTION_DEPLOY","DNS","BILLING","SOCIAL_PUBLISH","OUTBOUND","SECRETS","REMOTE_CLIENT_ACCESS"])assert.equal(checkProtectedAction(x),"REQUIRES_OPERATOR_APPROVAL")});
+test("unknown operations fail closed",()=>assert.equal(checkProtectedAction("ENABLE_UNBOUNDED_AUTONOMY"),"BLOCKED_UNKNOWN_ACTION"));

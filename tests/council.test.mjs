@@ -1,0 +1,14 @@
+import test from "node:test";import assert from "node:assert/strict";
+import {reviewCouncil} from "../src/council.mjs";
+const sha="9918cbfe3a1037b3d8bf0158b1d78ae957ad63f2";
+const reviews=["vision","quant","guardian"].map((agentId,i)=>({agentId,independentlyExecuted:true,evidenceId:"proof-"+i,sourceSha:sha,vote:"approve"}));
+const call=(rs=reviews,opts={})=>reviewCouncil({proposalId:"ddos-test-proposal",sourceSha:sha,authorId:"builder",reviews:rs,...opts});
+test("verified independent council recommends but never authorizes release",()=>{let x=call();assert.equal(x.status,"COUNCIL_RECOMMENDS_APPROVAL");assert.equal(x.operatorReleaseAuthorized,false)});
+test("one model cannot fake quorum by repeating agent IDs",()=>assert.equal(call([reviews[0],reviews[0],reviews[2]]).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("three simulated personas without independent execution blocked",()=>assert.equal(call(reviews.map(x=>({...x,independentlyExecuted:false}))).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("builder cannot certify itself",()=>assert.equal(call(reviews.map((x,i)=>i===0?{...x,agentId:"builder"}:x)).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("security blocker stops recommendation",()=>assert.equal(call(reviews.map((x,i)=>i===2?{...x,securityBlocker:true}:x)).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("no evidence cannot pass",()=>assert.equal(call(reviews.map((x,i)=>i===1?{...x,evidenceId:null}:x)).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("mixed source sha cannot pass",()=>assert.equal(call(reviews.map((x,i)=>i===1?{...x,sourceSha:"0".repeat(40)}:x)).status,"BLOCKED_EVIDENCE_OR_SECURITY"));
+test("unanimous rejection remains recorded",()=>{const x=call(reviews.map(x=>({...x,vote:"reject"})));assert.equal(x.status,"COUNCIL_DOES_NOT_RECOMMEND");assert.equal(x.reject,3)});
+test("split result preserves dissent",()=>{const x=call(reviews.map((x,i)=>i===0?{...x,vote:"reject"}:x));assert.equal(x.reject,1);assert.equal(x.approve,2)});

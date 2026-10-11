@@ -1,0 +1,16 @@
+{
+  "name": "digital-dominance-os",
+  "version": "0.1.0-bootstrap",
+  "private": true,
+  "type": "module",
+  "description": "Strategic Minds AI internal integration destination for existing autonomous factory",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/mission.mjs && node --check src/council.mjs && node --check src/providers.mjs && node --check src/batch-wizard.mjs && node --check src/instant-estimate-preview.mjs && node --check src/wizard-server.mjs && npm test",
+    "wizard": "node src/wizard-server.mjs",
+    "qa:synthetic": "node --test tests/batch-wizard.test.mjs"
+  }
+}
