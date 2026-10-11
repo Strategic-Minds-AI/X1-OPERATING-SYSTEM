@@ -52,14 +52,30 @@ function Inspector({selected,design,apply,onClose}){
 }
 export default function VisualStudio(){
  const [sandbox,setSandbox]=useState('sb-01'),[device,setDevice]=useState('desktop'),[tab,setTab]=useState('Preview'),[selected,setSelected]=useState('title');
- const [design,setDesign]=useState(startingDesign),[history,setHistory]=useState([]),[conversation,setConversation]=useState(startingConversation);
- const [draft,setDraft]=useState(''),[night,setNight]=useState(false),[panel,setPanel]=useState('chat'),[inspector,setInspector]=useState(true);
+ const [designStore,setDesignStore]=useState(()=>Object.fromEntries(SANDBOXES.map(s=>[s.id,{...startingDesign}])));
+ const [historyStore,setHistoryStore]=useState(()=>Object.fromEntries(SANDBOXES.map(s=>[s.id,[]])));
+ const [chatStore,setChatStore]=useState(()=>Object.fromEntries(SANDBOXES.map(s=>[s.id,startingConversation.map(m=>({...m}))])));
+ const [draftStore,setDraftStore]=useState(()=>Object.fromEntries(SANDBOXES.map(s=>[s.id,''])));
+ const [night,setNight]=useState(false),[panel,setPanel]=useState('chat'),[inspector,setInspector]=useState(true);
  const [queue,setQueue]=useState([]),[listening,setListening]=useState(false),[notice,setNotice]=useState('');
- const recognition=useRef(null),endRef=useRef(null);
+ const recognition=useRef(null),endRef=useRef(null),lastEditRef=useRef({sandbox:null,key:null,at:0});
  const current=SANDBOXES.find(s=>s.id===sandbox);
+ // Even in this frontend-only demo, each sandbox owns separate design, undo, chat and drafts.
+ const design=designStore[sandbox]||startingDesign,history=historyStore[sandbox]||[];
+ const conversation=chatStore[sandbox]||startingConversation,draft=draftStore[sandbox]||'';
+ const setDesign=updater=>setDesignStore(store=>({...store,[sandbox]:typeof updater==='function'?updater(store[sandbox]||startingDesign):updater}));
+ const setHistory=updater=>setHistoryStore(store=>({...store,[sandbox]:typeof updater==='function'?updater(store[sandbox]||[]):updater}));
+ const setConversation=updater=>setChatStore(store=>({...store,[sandbox]:typeof updater==='function'?updater(store[sandbox]||startingConversation):updater}));
+ const setDraft=updater=>setDraftStore(store=>({...store,[sandbox]:typeof updater==='function'?updater(store[sandbox]||''):updater}));
  const changes=Object.entries(design).filter(([key,value])=>startingDesign[key]!==value);
- const update=(key,value)=>{setHistory(h=>[design,...h].slice(0,40));setDesign(s=>({...s,[key]:value}));};
- const restore=()=>{if(history.length){setDesign(history[0]);setHistory(h=>h.slice(1));}};
+ const update=(key,value)=>{
+  const at=Date.now();
+  const grouped=lastEditRef.current.sandbox===sandbox&&lastEditRef.current.key===key&&at-lastEditRef.current.at<1350;
+  if(!grouped)setHistory(h=>[design,...h].slice(0,40));
+  lastEditRef.current={sandbox,key,at};
+  setDesign(previous=>({...previous,[key]:value}));
+ };
+ const restore=()=>{if(history.length){setDesign(history[0]);setHistory(h=>h.slice(1));lastEditRef.current={sandbox,key:null,at:0};}};
  const enqueue=(text)=>{
   const clean=text.trim();if(!clean)return;
   const entry={id:Date.now().toString(),text:clean,sandbox,status:'LOCAL DRAFT',at:now()};
