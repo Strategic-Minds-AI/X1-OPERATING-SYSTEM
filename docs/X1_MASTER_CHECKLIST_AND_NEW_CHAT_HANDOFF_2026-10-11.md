@@ -183,3 +183,18 @@ Continue the X1 Operating System mission using docs/X1_MASTER_CHECKLIST_AND_NEW_
 ## 9. COMPLETION STANDARD
 
 Do not announce X1 is "fully autonomous" until a genuine GPT request travels through authenticated X1 queue, gets leased by one observed isolated coding worker, writes actual application code, builds it, enters bounded repair if needed, and passes independent browser/tenant QA on the same immutable source version, producing a user-accessible preview and receipt. A deterministic template compiler is an impressive first step, **not general autonomous coding**.
+
+## 10. IMPORTANT LATE DISCOVERY: COMPETING VERCEL PRODUCTION DEPLOYMENT
+
+On fresh read-back after this handoff, the X1 Vercel project had an additional PRODUCTION deployment **READY**, id dpl_ExHEYFyD6tReVcShrBKCQFrLKDHv, from a DIFFERENT branch:
+- Branch: feature/x1-visual-studio-multisandbox-20261011
+- Source SHA: d000d2bb9e6e5f383879559f6e2aa280dd138dc2
+- Vercel stable project domain: https://x1-operating-system.vercel.app/
+- Connected Cloud Browser navigation to that stable domain redirected to **/v2/a**, title **Strategic Minds AI | V2 Design Preview A**.
+
+Thus the stable production domain no longer unambiguously represents the X1 self-build preview or the README-only 404. Project framework also appeared set to vite and a separate attempt failed because project Root Directory apps/strategic-minds-v2 was absent on the X1 self-build branch. GitHub main SHA remained 3c2bf4b275bd50b70bf29f248f10ccd5762c229f on last inspection. **DO NOT attempt to reconcile competing production branches by overwriting production without exact scoped owner approval.** Read which agent/team controls this other branch and agree a single Vercel project owner/root/production branch.
+
+Verified safe X1 noindex preview remains:
+https://x1-operating-system-alcewydn0-strategic-minds-advisory.vercel.app/
+
+This late discovery supersedes any earlier statement that the stable domain still serves only the README-based 404. The existing preview remains the reliable X1 self-build demo until routing and production ownership are reconciled.
