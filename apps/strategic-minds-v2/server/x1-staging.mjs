@@ -143,6 +143,7 @@ export async function readStagingOperatorStatus(req, binding, fetchImpl) {
     status: "STAGING_READ_VERIFIED",
     tenant_id: membership.tenant_id,
     role: membership.role,
+    user_id: user.id,
     sample: { limit: 200, truncated: rows.length > 200, counts },
     dispatch: "DISABLED",
     writes: "DISABLED"

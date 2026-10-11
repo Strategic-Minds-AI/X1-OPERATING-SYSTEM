@@ -7,6 +7,7 @@ import PricingExperience from './PricingExperience.jsx';
 import ClientPortalExperience from './ClientPortalExperience.jsx';
 import './global.css';
 import VisualStudio from './VisualStudio.jsx';
+import X1AgentConsole from './X1AgentConsole.jsx';
 
 function NavigateToHash() {
  const location=useLocation();
@@ -27,6 +28,7 @@ function App(){
    <Route path="/portal" element={<ClientPortalExperience/>}/>
    <Route path="/portal/demo" element={<ClientPortalExperience demo/>}/>
    <Route path="/admin/studio" element={<VisualStudio/>}/>
+   <Route path="/admin/agent" element={<X1AgentConsole/>}/>
    <Route path="*" element={<Navigate to="/v2/a" replace/>}/>
  </Routes></BrowserRouter>;
 }
