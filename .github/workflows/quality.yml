@@ -1,17 +1,42 @@
 name: X1 foundation checks
 on:
   pull_request:
-    paths: ["src/**", "tests/**", "package.json", "tsconfig.json", ".github/workflows/quality.yml"]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "scripts/**"
+      - "config/**"
+      - "package.json"
+      - "tsconfig.json"
+      - ".github/workflows/quality.yml"
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   checks:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: "24" }
-      - run: npm install --no-audit --no-fund
-      - run: npm run test
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Typecheck and unit/mission validation
+        run: npm run test
+      - name: Next.js build
+        run: npm run build
+      - name: Emit immutable validation evidence
+        if: always()
+        env:
+          X1_SOURCE_SHA: ${{ github.sha }}
+          X1_RUN_ID: ${{ github.run_id }}
+          X1_JOB_STATUS: ${{ job.status }}
+        run: node scripts/emit-ci-receipt.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: x1-validation-${{ github.sha }}
+          path: artifacts/ci/validation-receipt.json
+          if-no-files-found: warn
+          retention-days: 30
