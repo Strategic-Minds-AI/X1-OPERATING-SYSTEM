@@ -1,0 +1,3157 @@
+{
+  "schema": "x1-template-catalog/1",
+  "version": "2026-10-11.v1",
+  "canonicalRepo": "Strategic-Minds-AI/X1-OPERATING-SYSTEM",
+  "protectedNoProduction": true,
+  "originSha": "140459ff174c47b526fdb82f0f184badc6329e33",
+  "families": [
+    "agent",
+    "app",
+    "automation",
+    "brand",
+    "documents",
+    "growth",
+    "integration",
+    "operations",
+    "validation",
+    "website"
+  ],
+  "templates": [
+    {
+      "id": "agent-code-architect",
+      "family": "agent",
+      "title": "Isolated coding agent",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-independent-validator",
+      "family": "agent",
+      "title": "Independent QA reviewer",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-orchestrator",
+      "family": "agent",
+      "title": "Mission orchestrator",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-researcher",
+      "family": "agent",
+      "title": "Source-backed research analyst",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-security-reviewer",
+      "family": "agent",
+      "title": "Permission security reviewer",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-seo-researcher",
+      "family": "agent",
+      "title": "SEO evidence reviewer",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-social-drafter",
+      "family": "agent",
+      "title": "Social creative drafter",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-support-assistant",
+      "family": "agent",
+      "title": "Client support assistant",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "agent-visual-designer",
+      "family": "agent",
+      "title": "Visual designer",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "role",
+        "tool_allowlist",
+        "permissions",
+        "budget_cents"
+      ],
+      "deliverables": [
+        "AGENT_CARD.md",
+        "TOOL_POLICY.json",
+        "EVAL_PLAN.md"
+      ],
+      "gates": [
+        "LEAST_PRIVILEGE",
+        "TENANT_ISOLATION",
+        "SIGNED_JOB_LEASE"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-admin-portal",
+      "family": "app",
+      "title": "Internal operator admin",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-analytics-dashboard",
+      "family": "app",
+      "title": "Analytics and attribution dashboard",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-chat-app",
+      "family": "app",
+      "title": "ChatGPT-style application",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-client-crm",
+      "family": "app",
+      "title": "Client CRM and lead inbox",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-client-onboarding",
+      "family": "app",
+      "title": "Eden-style conversational onboarding",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-client-portal",
+      "family": "app",
+      "title": "Tenant-scoped client portal",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-client-support",
+      "family": "app",
+      "title": "Client help and support portal",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-ecommerce",
+      "family": "app",
+      "title": "Ecommerce product catalog",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-estimate-calculator",
+      "family": "app",
+      "title": "Instant Estimate calculator",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-marketplace",
+      "family": "app",
+      "title": "Marketplace application",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-mobile-pwa",
+      "family": "app",
+      "title": "Mobile-first PWA",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "app-saas-platform",
+      "family": "app",
+      "title": "Multi-tenant SaaS application",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "features",
+        "roles",
+        "data_model",
+        "user_journeys"
+      ],
+      "deliverables": [
+        "PRD.md",
+        "APP_SPEC.json",
+        "SCREEN_MAP.md",
+        "TEST_PLAN.md"
+      ],
+      "gates": [
+        "AUTH_AND_RLS",
+        "REAL_BUILD",
+        "INDEPENDENT_QA"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-client-onboard",
+      "family": "automation",
+      "title": "Client intake and consent",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-code-factory",
+      "family": "automation",
+      "title": "Autonomous code-build-test-repair",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-failure-recovery",
+      "family": "automation",
+      "title": "Bounded failure recovery",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-independent-qa",
+      "family": "automation",
+      "title": "Independent validation workflow",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-lead-qualify",
+      "family": "automation",
+      "title": "Synthetic lead qualification",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-preview-batch",
+      "family": "automation",
+      "title": "Approval-first website preview batch",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-project-handoff",
+      "family": "automation",
+      "title": "Persistent mission handoff",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-research-tournament",
+      "family": "automation",
+      "title": "Ten-strategy market research",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-seo-maintenance",
+      "family": "automation",
+      "title": "Evidence-based SEO maintenance",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "automation-social-calendar",
+      "family": "automation",
+      "title": "Social draft content calendar",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "trigger",
+        "step_sequence",
+        "retry_policy",
+        "approval_points"
+      ],
+      "deliverables": [
+        "WORKFLOW_SPEC.md",
+        "STATE_MACHINE.json",
+        "RETRY_AND_RECOVERY.md"
+      ],
+      "gates": [
+        "IDEMPOTENCY",
+        "NO_DUPLICATE_WORKERS",
+        "APPROVAL_CHECK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "brand-brand-pack",
+      "family": "brand",
+      "title": "Full brand design system",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "brand_name",
+        "visual_constraints",
+        "industry"
+      ],
+      "deliverables": [
+        "BRAND_PACK.md",
+        "ASSET_MANIFEST.json",
+        "LICENSE_CHECK.md"
+      ],
+      "gates": [
+        "ORIGINAL_ASSETS",
+        "HUMAN_VISUAL_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "brand-logo-pack",
+      "family": "brand",
+      "title": "Ten-variant original logo brief",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "brand_name",
+        "visual_constraints",
+        "industry"
+      ],
+      "deliverables": [
+        "BRAND_PACK.md",
+        "ASSET_MANIFEST.json",
+        "LICENSE_CHECK.md"
+      ],
+      "gates": [
+        "ORIGINAL_ASSETS",
+        "HUMAN_VISUAL_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "brand-media-pack",
+      "family": "brand",
+      "title": "Social image and video concepts",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "brand_name",
+        "visual_constraints",
+        "industry"
+      ],
+      "deliverables": [
+        "BRAND_PACK.md",
+        "ASSET_MANIFEST.json",
+        "LICENSE_CHECK.md"
+      ],
+      "gates": [
+        "ORIGINAL_ASSETS",
+        "HUMAN_VISUAL_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "brand-web-pack",
+      "family": "brand",
+      "title": "Web pack and design tokens",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "brand_name",
+        "visual_constraints",
+        "industry"
+      ],
+      "deliverables": [
+        "BRAND_PACK.md",
+        "ASSET_MANIFEST.json",
+        "LICENSE_CHECK.md"
+      ],
+      "gates": [
+        "ORIGINAL_ASSETS",
+        "HUMAN_VISUAL_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-agent-work-packet",
+      "family": "documents",
+      "title": "Agent work packet",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-api-contract",
+      "family": "documents",
+      "title": "API integration contract",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-architecture",
+      "family": "documents",
+      "title": "System architecture spec",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-brand-brief",
+      "family": "documents",
+      "title": "Brand identity brief",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-client-intake",
+      "family": "documents",
+      "title": "Client onboarding questionnaire",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-handoff",
+      "family": "documents",
+      "title": "Project handoff packet",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-incident-runbook",
+      "family": "documents",
+      "title": "Incident response runbook",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-prd",
+      "family": "documents",
+      "title": "Product requirements document",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-release-approval",
+      "family": "documents",
+      "title": "Release approval receipt",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-research-dossier",
+      "family": "documents",
+      "title": "Research dossier",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-rollback",
+      "family": "documents",
+      "title": "Rollback plan",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-scope-of-work",
+      "family": "documents",
+      "title": "Statement of work draft",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-security-threat",
+      "family": "documents",
+      "title": "Threat model",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-seo-content-brief",
+      "family": "documents",
+      "title": "Helpful-content brief",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-source-truth",
+      "family": "documents",
+      "title": "Canonical source truth dossier",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "documents-test-plan",
+      "family": "documents",
+      "title": "Independent QA test plan",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "decision_owner",
+        "stakeholders",
+        "evidence_links"
+      ],
+      "deliverables": [
+        "DOCUMENT_DRAFT.md",
+        "ACCEPTANCE_CHECKLIST.md"
+      ],
+      "gates": [
+        "SOURCE_PROVENANCE",
+        "HUMAN_REVIEW"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "growth-content-plan",
+      "family": "growth",
+      "title": "Editorial content strategy",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "offer",
+        "channels",
+        "attribution_events"
+      ],
+      "deliverables": [
+        "GROWTH_STRATEGY.md",
+        "MEASUREMENT_PLAN.md",
+        "CLAIMS_REVIEW.md"
+      ],
+      "gates": [
+        "TRUTHFUL_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "OUTBOUND_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "growth-lead-funnel",
+      "family": "growth",
+      "title": "Attributable lead funnel",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "offer",
+        "channels",
+        "attribution_events"
+      ],
+      "deliverables": [
+        "GROWTH_STRATEGY.md",
+        "MEASUREMENT_PLAN.md",
+        "CLAIMS_REVIEW.md"
+      ],
+      "gates": [
+        "TRUTHFUL_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "OUTBOUND_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "growth-market-evidence",
+      "family": "growth",
+      "title": "Market opportunity scoring",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "offer",
+        "channels",
+        "attribution_events"
+      ],
+      "deliverables": [
+        "GROWTH_STRATEGY.md",
+        "MEASUREMENT_PLAN.md",
+        "CLAIMS_REVIEW.md"
+      ],
+      "gates": [
+        "TRUTHFUL_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "OUTBOUND_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "growth-portfolio-model",
+      "family": "growth",
+      "title": "Risk-adjusted location portfolio",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "offer",
+        "channels",
+        "attribution_events"
+      ],
+      "deliverables": [
+        "GROWTH_STRATEGY.md",
+        "MEASUREMENT_PLAN.md",
+        "CLAIMS_REVIEW.md"
+      ],
+      "gates": [
+        "TRUTHFUL_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "OUTBOUND_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "growth-social-campaign",
+      "family": "growth",
+      "title": "Social campaign draft",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "offer",
+        "channels",
+        "attribution_events"
+      ],
+      "deliverables": [
+        "GROWTH_STRATEGY.md",
+        "MEASUREMENT_PLAN.md",
+        "CLAIMS_REVIEW.md"
+      ],
+      "gates": [
+        "TRUTHFUL_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "OUTBOUND_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-communications",
+      "family": "integration",
+      "title": "Client messaging approval gate",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-github",
+      "family": "integration",
+      "title": "Source control import and commit",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-godaddy",
+      "family": "integration",
+      "title": "GoDaddy domain request",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-google",
+      "family": "integration",
+      "title": "Google Search Console and analytics",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-gpt-sync",
+      "family": "integration",
+      "title": "Authenticated GPT-to-X1 gateway",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-railway",
+      "family": "integration",
+      "title": "Railway isolated worker",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-supabase",
+      "family": "integration",
+      "title": "Supabase scoped adapter",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "integration-vercel",
+      "family": "integration",
+      "title": "Vercel preview deployment",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "source_system",
+        "destination_system",
+        "tenant_scope",
+        "auth_method"
+      ],
+      "deliverables": [
+        "API_CONTRACT.md",
+        "PERMISSION_MATRIX.md",
+        "FAILURE_RECOVERY.md"
+      ],
+      "gates": [
+        "AUTHORIZATION",
+        "IDEMPOTENCY",
+        "NO_SECRET_LEAKS"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-approval-flow",
+      "family": "operations",
+      "title": "Immutable approval workflow",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-preview-rollback",
+      "family": "operations",
+      "title": "Preview rollback and repair",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-receipt-ledger",
+      "family": "operations",
+      "title": "Execution audit receipt",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-role-matrix",
+      "family": "operations",
+      "title": "Platform and tenant role matrix",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-single-heartbeat",
+      "family": "operations",
+      "title": "Singleton reconciler and lease",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "operations-system-health",
+      "family": "operations",
+      "title": "Daily system health report",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "owner_role",
+        "monitor_signal",
+        "escalation_path"
+      ],
+      "deliverables": [
+        "RUNBOOK.md",
+        "AUDIT_LOG_SPEC.md",
+        "ROLLBACK.md"
+      ],
+      "gates": [
+        "SINGLE_SUPERVISOR",
+        "OWNER_ESCALATION"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-build-checks",
+      "family": "validation",
+      "title": "Compile/lint/unit/e2e QA",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-google-spam",
+      "family": "validation",
+      "title": "Google scaled-content and doorway policy",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-sandbox-safety",
+      "family": "validation",
+      "title": "Isolated job execution boundary",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-security-scan",
+      "family": "validation",
+      "title": "Static security and secrets",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-tenant-rls",
+      "family": "validation",
+      "title": "Negative cross-tenant access QA",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-visual-parity",
+      "family": "validation",
+      "title": "Desktop/mobile screenshot visual lock",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "validation-web-e2e",
+      "family": "validation",
+      "title": "Browser routes and controls QA",
+      "kind": "blueprint",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "tested_sha",
+        "test_matrix",
+        "validator_identity"
+      ],
+      "deliverables": [
+        "QA_RECEIPT.json",
+        "FAILURES.md",
+        "RETEST_PLAN.md"
+      ],
+      "gates": [
+        "INDEPENDENT_VALIDATOR",
+        "EVIDENCE_HASH",
+        "RELEASE_LOCK"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "XTREME-SYSTEMS/digital-dominance base44/shared libraries, contract reuse only",
+      "implementation": "SCHEMA_ONLY"
+    },
+    {
+      "id": "website-automotive",
+      "family": "website",
+      "title": "Automotive Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "appointment",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-commercial-services",
+      "family": "website",
+      "title": "Commercial Services Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "proposal",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-construction",
+      "family": "website",
+      "title": "Construction Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "portfolio-quote",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-dentistry",
+      "family": "website",
+      "title": "Dentistry Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "appointment",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-ecommerce",
+      "family": "website",
+      "title": "Ecommerce Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "product-catalog",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-electrical",
+      "family": "website",
+      "title": "Electrical Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-epoxy-flooring",
+      "family": "website",
+      "title": "Epoxy Flooring Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "instant-estimate",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "APPROVED_REFERENCE_NO_VISUAL_PARITY_CERTIFICATE"
+    },
+    {
+      "id": "website-flooring",
+      "family": "website",
+      "title": "Flooring Contractors Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "instant-estimate",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-garage-door",
+      "family": "website",
+      "title": "Garage Door Repair Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-home-services",
+      "family": "website",
+      "title": "Home Services Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "estimate",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-hvac",
+      "family": "website",
+      "title": "HVAC Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-insurance",
+      "family": "website",
+      "title": "Insurance Services Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "consultation",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-landscaping",
+      "family": "website",
+      "title": "Landscaping Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "estimate",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-law-firm",
+      "family": "website",
+      "title": "Law Firm Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "consultation",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-med-spa",
+      "family": "website",
+      "title": "Med Spa Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "appointment",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-pest-control",
+      "family": "website",
+      "title": "Pest Control Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "estimate",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-plumbing",
+      "family": "website",
+      "title": "Plumbing Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-real-estate",
+      "family": "website",
+      "title": "Real Estate Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "property-showcase",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-restoration",
+      "family": "website",
+      "title": "Restoration Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    },
+    {
+      "id": "website-roofing",
+      "family": "website",
+      "title": "Roofing Website Blueprint",
+      "kind": "industry_blueprint",
+      "composition": "emergency-response",
+      "readiness": "DOCUMENTED_NOT_EXECUTED",
+      "version": "1.0.0",
+      "intake": [
+        "objective",
+        "audience",
+        "verified_facts",
+        "constraints",
+        "source_sha",
+        "business_identity",
+        "service_area",
+        "conversion_goal",
+        "image_rights",
+        "page_map"
+      ],
+      "deliverables": [
+        "WEB_PACK.json",
+        "CONTENT_EVIDENCE.md",
+        "SEO_POLICY.md",
+        "VISUAL_QA.md"
+      ],
+      "gates": [
+        "FACTUAL_BUSINESS_CLAIMS",
+        "GOOGLE_SPAM_POLICY",
+        "VISUAL_LOCK",
+        "OWNER_RELEASE_APPROVAL"
+      ],
+      "release": "OPERATOR_APPROVAL_REQUIRED",
+      "donor": "original factory website packs; proposed composition, no verified full-page UI",
+      "implementation": "SPEC_ONLY",
+      "designLock": "NONE"
+    }
+  ]
+}
