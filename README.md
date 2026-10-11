@@ -2,24 +2,29 @@
 
 **Strategic Minds AI | Intelligence in Motion**
 
-**Canonical product identity:** X1 Operating System.
+This is the **private canonical development repository** for X1. Digital Dominance is the website-generation division; it is not another independently deployed operating system.
 
-**Digital Dominance:** The website and software generation division of X1, not a separately governed operating platform.
+## Current branch features
+- Governed mission drafts and evidence-based Council contract.
+- Eight OMNISWARM specialist work-packet definitions (not dispatched agents).
+- Approval-first ten-market **synthetic Instant Estimate** batch wizard.
+- Editable donor-derived five-section website pack, approved-market and preview-only authorizations.
+- Ten generated noindex HTML preview sites with local interactive estimate demo.
+- Local proof dashboard and static SHA-256 receipt checks.
 
-## Source consolidation checkpoint
+**What is not claimed:** Real GPT-to-X1 worker dispatch, real client authentication, actual Vercel previews, Google rankings, verified original visual parity, independent three-pass browser QA or live production websites.
 
-> **MIGRATION BLOCKED UNTIL REPOSITORY IS PRIVATE.** At the last read-back on 2026-10-11 this GitHub repository was public. It currently contains a project README only and **does not contain** the functioning Digital Dominance generator, the new approval-first batch wizard, or the operating X1 worker. Do not treat this document as evidence of a running factory.
+## Start locally (Node.js 22+)
 
-The working code and staging work stay in their existing restricted repositories and development branches until X1 is privately accessible and a source-transfer review is complete. No original source is deleted, transferred, or publicly exposed by this change.
+```bash
+npm run check
+npm run wizard
+```
 
-**Ownership principle:** One X1 command and execution plane. Digital Dominance is a product division that uses that plane. Do not create a second job queue, worker, cron, or competing repository. No default-branch merge, production deployment, live customer contact, DNS, paid provisioning, secret/permission change or production DB change without scoped owner approval.
+Open `http://127.0.0.1:4391` on the authorized development machine. The server binds `127.0.0.1` only. Do not expose the port publicly. Generated artifacts appear under ignored `out/` and require two local approvals.
 
-## After private visibility is verified
+## Development ownership
 
-1. Pin current source commits and inspect active branches before transferring any files.
-2. Import the existing tested foundation and the 10-site approval-first Instant Estimate wizard on an X1 development branch, preserving source attribution and exact donor file hashes.
-3. Reuse the original Digital Dominance site generator and visual editor through independently tested provider-neutral adapters. Preserve the approved Website Launch Engine customer design.
-4. Complete isolated synthetic website preview QA and real authenticated X1 staging queue integration without duplicating runtime services.
-5. Require independent preview validation, explicit release approval, and actual deployment receipts before describing any site as live.
+The original protected donor `XTREME-SYSTEMS/digital-dominance` and previous `Strategic-Minds-AI/digital-dominance-os` stay intact for audit and rollback. X1 `main` has not been merged. Never imply the approved public visual reference was modified.
 
-**Current release state:** Source-transfer planning only. No active site provisioning or production actions have occurred from this X1 repository.
+Read [AGENTS.md](AGENTS.md), [X1 source transfer](docs/X1_SOURCE_TRANSFER.md), and [archived donor bootstrap docs](docs/archived-bootstrap/).
