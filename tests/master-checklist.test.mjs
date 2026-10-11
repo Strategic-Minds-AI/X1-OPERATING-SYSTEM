@@ -29,7 +29,7 @@ test("interactive board has actual accessible local checkboxes and never edits e
  assert.match(html,/Checking a task means/);
  const match=html.match(/<script>([\s\S]*?)<\/script>/);assert.ok(match);
  assert.doesNotThrow(()=>new Script(match[1]));
- assert.match(html,/task\.status\.startsWith/);
+ assert.match(html,/t\.status\.startsWith/);
 });
 test("Studio auto-idle is clearly local one-shot, 600-second and cancellable",()=>{
  assert.ok(studio.includes('id="idle-toggle"'));
