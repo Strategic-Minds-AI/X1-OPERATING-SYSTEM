@@ -3,22 +3,24 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Bot, BrainCircuit, ChartNoAxesCombined, CheckCircle2, DatabaseZap, Globe2, Headphones, Menu, Phone, Search, ShieldCheck, Sparkles, Workflow, X } from 'lucide-react';
 import './V2Experience.css';
 import './V2Motion.css';
+import './X1Brand.css';
 
 const ASSETS='/v2-assets/';
 const EDEN_PHONE='tel:+18665711174';
 const BUSINESS_PHONE='tel:+17722090266';
 const EMAIL='jeremy@strategicmindsai.com';
+const X1_STUDIO='https://x1-avatar-studio-preview-o0e8zgksl-strategic-minds-advisory.vercel.app/';
 // A/B/C are operator preview variants, not a verified live experiment.
 const VARIANTS=[{id:'a',label:'MYSTERY'},{id:'b',label:'EXPLORE'},{id:'c',label:'EDEN'}];
 const SERVICES=[
- {icon:BrainCircuit,title:'AI Strategy & Consulting',copy:'Practical AI opportunities, systems architecture and implementation plans.'},
- {icon:Workflow,title:'Custom AI Systems & Automation',copy:'Connect people, processes and tools in intelligent workflows.'},
- {icon:Bot,title:'AI Agents & Assistants',copy:'Supervised agents and assistants for repeatable business tasks.'},
- {icon:Headphones,title:'AI Reception & Lead Systems',copy:'Improve inquiry capture, call routing, qualification and follow-up.'},
- {icon:Globe2,title:'AI-Powered Websites',copy:'Original, compelling websites and measurable customer experiences.'},
- {icon:DatabaseZap,title:'Data & Intelligence',copy:'Make operational data useful for confident business decisions.'},
- {icon:Search,title:'SEO · AEO · GEO',copy:'Build genuinely useful content for search and AI-assisted discovery.'},
- {icon:ChartNoAxesCombined,title:'Digital Growth',copy:'Research, experimentation and attribution for stronger outcomes.'}
+ {icon:BrainCircuit,title:'X1 Intelligence',copy:'A unified operating vision for decision support, business AI and actionable insight.'},
+ {icon:Workflow,title:'Autonomous Build Engine',copy:'Governed engineering workflows with human approvals and independently verified changes.'},
+ {icon:Bot,title:'AI Agent Workspace',copy:'Purpose-built agent experiences with controlled tools, memory and clear operating boundaries.'},
+ {icon:Headphones,title:'Eden Skye & Digital Humans',copy:'Explore human-centered AI onboarding, voice experiences and emerging avatar capabilities.'},
+ {icon:Globe2,title:'Website & Funnel Factory',copy:'Premium original digital experiences with repeatable, quality-controlled production.'},
+ {icon:DatabaseZap,title:'Client OS & CRM',copy:'Bring customer relationships, lead intelligence, and operations together in one place.'},
+ {icon:Search,title:'X1 Growth Intelligence',copy:'Evidence-led SEO, AEO, GEO and local discovery with strict content quality standards.'},
+ {icon:ChartNoAxesCombined,title:'Measurement & Validation',copy:'Test outcomes, review receipts and continuously improve real business performance.'}
 ];
 const STEPS=[
  {field:'business',label:'Business or industry',title:'Tell Eden about your business.',placeholder:'For example: Residential construction'},
@@ -31,7 +33,7 @@ function eventV2(action,variant,extra={}) {
 }
 function PreviewHead({variant}) {
  useEffect(()=>{
-  const title=document.title; document.title='Strategic Minds AI | V2 Design Preview '+variant.toUpperCase();
+  const title=document.title; document.title='X1 Operating System | Strategic Minds AI | Design Preview '+variant.toUpperCase();
   const prior=document.querySelector('meta[name="robots"]');
   const meta=prior||document.createElement('meta'); const old=prior?.content;
   if(!prior){meta.name='robots';document.head.appendChild(meta);}
@@ -51,9 +53,9 @@ function Call({eden=false,variant,small=false}) {
 function Navigation({variant}) {
  const [open,setOpen]=useState(false);
  const pages=[
- ['HOME','/v2/a'],['SERVICES','/v2/b#services'],['SOLUTIONS','/v2/b#services'],
- ['INDUSTRIES','/v2/b#services'],['PRICING','/pricing'],
- ['PORTAL','/portal'],['CONTACT','/v2/c#onboarding']
+ ['HOME','/v2/a'],['X1 PLATFORM','/v2/b#services'],['AVATAR STUDIO',X1_STUDIO],
+ ['AUTOMATION','/v2/b#process'],['PRICING','/pricing'],
+ ['CLIENT PORTAL','/portal'],['CONTACT','/v2/c#onboarding']
  ];
  return <header className="v2-header"><div className="v2-header-grid">
   <Call eden variant={variant}/>
@@ -63,6 +65,7 @@ function Navigation({variant}) {
     <span>EXPLORE</span>{open?<X size={20}/>:<Menu size={20}/>}</button>
    <nav id="v2-links" className={'v2-nav-links'+(open?' v2-nav-open':'')} aria-label="Main navigation">
    {pages.map(([name,href],i)=><a key={name} href={href} aria-current={i===0?'page':undefined}
+    {...(name==='AVATAR STUDIO'?{target:'_blank',rel:'noopener noreferrer',title:'X1 Avatar Studio development preview opens in a new tab'}:{})}
     onClick={()=>{setOpen(false);eventV2('navigation',variant,{target:name});}}>{name}</a>)}
    </nav>
   </div>
@@ -74,6 +77,15 @@ function Brand({small=false}) {
   <div className="v2-emblem-stage"><img src={ASSETS+'silver-emblem.png'} alt="Metallic Strategic Minds AI S emblem" width="370" height="360" className="v2-emblem"/><span className="v2-emblem-glint" aria-hidden="true"/></div>
   <img src={ASSETS+'chrome-wordmark.png'} alt="Strategic Minds AI" width="1065" height="78" className="v2-wordmark"/>
   <span className="v2-tagline"><i aria-hidden="true"/>INTELLIGENCE IN MOTION<i aria-hidden="true"/></span>
+ </div>;
+}
+function X1Signature({compact=false}) {
+ return <div className={'v2-x1-signature'+(compact?' v2-x1-signature-compact':'')}
+  aria-label="X1 Operating System by Strategic Minds AI">
+  <span className="v2-x1-monogram" aria-hidden="true">X<span>1</span></span>
+  <span className="v2-x1-signature-copy"><strong>X1 OPERATING SYSTEM</strong>
+   <small>UNIFIED INTELLIGENCE · STRATEGIC MINDS AI</small></span>
+  <span className="v2-x1-spark" aria-hidden="true"><Sparkles size={17}/></span>
  </div>;
 }
 function Earth() {return <div className="v2-earth" aria-hidden="true">
@@ -103,19 +115,26 @@ function Hero({variant,expanded=false}) {
   <div className="v2-nebula" aria-hidden="true"/>
   <Earth/>
   <div className="v2-hero-center">
+   <X1Signature/>
    <Brand/>
    {expanded?<div className="v2-hero-statement"><h1>Build Smarter.<span>Grow Faster.</span></h1><Cta variant={variant}/></div>
    :<div className="v2-hero-statement v2-hero-statement-short">
-    <h1 className="v2-visually-hidden">Strategic Minds AI. Intelligence in Motion. Build Smarter. Grow Faster.</h1>
+    <h1 className="v2-visually-hidden">X1 Operating System by Strategic Minds AI. Intelligence in Motion. Build Smarter. Grow Faster.</h1>
     <Cta variant={variant} label="BUILD SMARTER.  GROW FASTER."/></div>}
+   <div className="v2-x1-pathways" aria-label="Explore X1 Operating System">
+    <Link to="/v2/b#services" onClick={()=>eventV2('x1_platform_explore',variant)}>EXPLORE THE PLATFORM <ArrowUpRight size={15}/></Link>
+    <span aria-hidden="true" className="v2-x1-pathway-divider"/>
+    <a href={X1_STUDIO} target="_blank" rel="noopener noreferrer" title="X1 Avatar Studio development preview opens in a new tab"
+     onClick={()=>eventV2('x1_avatar_preview',variant)}>AVATAR STUDIO PREVIEW <ArrowUpRight size={15}/></a>
+   </div>
   </div>
   {expanded&&<a href="#services" className="v2-down-link">EXPLORE OUR SOLUTIONS <ArrowRight size={16}/></a>}
  </section>;
 }
 function ServiceCards({variant}) {
  return <section className="v2-section v2-services" id="services"><div className="v2-wrap">
-  <div className="v2-heading"><p className="v2-eyebrow">WHAT WE BUILD</p><h2>AI systems for <em>real business growth.</em></h2>
-  <p>Build a better customer experience, simplify operations and discover what's possible with practical AI.</p></div>
+  <div className="v2-heading"><p className="v2-eyebrow">THE X1 PLATFORM</p><h2>One intelligent operating system.<em>Built around your business.</em></h2>
+  <p>From premium websites and human-centered AI to client operations and governed engineering, X1 brings the pieces of a modern digital business into one coherent vision.</p></div>
   <div className="v2-card-grid">{SERVICES.map(({icon:Icon,title,copy},i)=>
    <a className="v2-service-card" id={i===6?'visibility':undefined} key={title} href="/v2/c#onboarding"
      onClick={()=>eventV2('service_selected',variant,{service:title})}>
@@ -128,14 +147,14 @@ function ServiceCards({variant}) {
 function LongPage({variant}) {
  return <><Hero variant={variant} expanded/><ServiceCards variant={variant}/>
   <section className="v2-section v2-reach"><div className="v2-wrap v2-reach-grid">
-   <div><p className="v2-eyebrow">INTELLIGENCE WITHOUT BORDERS</p>
-    <h2>Designed for today.<em>Built for what's next.</em></h2>
-    <p>From intelligent workflows and discovery to scalable systems, explore solutions designed around your business, not a generic template.</p>
+   <div><p className="v2-eyebrow">THE X1 ECOSYSTEM</p>
+    <h2>One platform.<em>Every moving part connected.</em></h2>
+    <p>Discover an integrated direction for AI experiences, customer engagement, automation and measurable digital growth. Every capability advances through deliberate validation.</p>
     <a className="v2-alt-cta" href="/v2/c#onboarding" onClick={()=>eventV2('growth_cta',variant)}>EXPLORE YOUR OPPORTUNITY <ArrowRight size={18}/></a>
    </div><img src={ASSETS+'connected-earth.jpg'} alt="Glowing global connectivity across Earth" width="1254" height="306" loading="lazy"/>
   </div></section>
   <section className="v2-section v2-process" id="process"><div className="v2-wrap">
-   <div className="v2-heading"><p className="v2-eyebrow">OUR APPROACH</p>
+   <div className="v2-heading"><p className="v2-eyebrow">THE X1 METHOD</p>
     <h2>Discover. Design. <em>Build. Improve.</em></h2></div>
    <div className="v2-process-grid">{[['01','Discover','Find your highest-value opportunity.'],['02','Architect','Select a practical system and milestones.'],['03','Validate','Build a real preview and verify outcomes.'],['04','Improve','Measure performance and refine.']].map(([n,t,copy])=><div key={n}><span>{n}</span><h3>{t}</h3><p>{copy}</p></div>)}</div>
   </div></section>
@@ -179,10 +198,10 @@ function EdenPage({variant}) {
  return <><section className="v2-hero v2-eden-hero">
   <div className="v2-nebula" aria-hidden="true"/>
   <div className="v2-wrap v2-eden-grid">
-   <div className="v2-eden-copy"><Brand small/>
+   <div className="v2-eden-copy"><Brand small/><X1Signature compact/>
     <p className="v2-eyebrow"><span className="v2-green-dot"/> MEET YOUR AI WELCOME HOST</p>
-    <h1>Meet Eden Skye.<em>Let's talk about what's possible.</em></h1>
-    <p>Eden is the AI onboarding guide for Strategic Minds AI. A few thoughtful questions can be the start of something extraordinary.</p>
+    <h1>Meet Eden Skye.<em>Your guide to X1.</em></h1>
+    <p>Meet the welcome host for the X1 Operating System, created by Strategic Minds AI. Eden helps you clarify your goals and explore what intelligent business systems can do for you.</p>
     <div className="v2-eden-actions"><a href="#onboarding" className="v2-main-cta"
       onClick={()=>eventV2('eden_onboarding_start',variant)}>START WITH EDEN <span className="v2-cta-arrow"><ArrowRight size={18}/></span></a>
       <Call eden variant={variant}/></div>
@@ -203,7 +222,7 @@ export default function V2Experience(){
    <PreviewHead variant={variant}/><a href="#main-content" className="v2-skip">Skip to content</a>
    <Navigation variant={variant}/>
    <main id="main-content">{variant==='a'?<Hero variant="a"/>:variant==='b'?<LongPage variant="b"/>:<EdenPage variant="c"/>}</main>
-   <footer className="v2-footer"><strong>STRATEGIC MINDS AI</strong><span>INTELLIGENCE IN MOTION</span><Link to="/pricing">PRICING</Link><Link to="/portal">CLIENT PORTAL</Link>
+   <footer className="v2-footer"><strong><span className="v2-x1-footer-mark">X1</span> OPERATING SYSTEM</strong><span>BY STRATEGIC MINDS AI · INTELLIGENCE IN MOTION</span><Link to="/pricing">PRICING</Link><Link to="/portal">CLIENT PORTAL</Link>
     <p><a href={'mailto:'+EMAIL}>{EMAIL}</a> · <a href={BUSINESS_PHONE}>(772) 209-0266</a></p></footer>
    <nav className="v2-variant-switch" aria-label="Design preview selection">
     <span>NOINDEX · DESIGN PREVIEW</span><div>{VARIANTS.map(x=><Link key={x.id}
