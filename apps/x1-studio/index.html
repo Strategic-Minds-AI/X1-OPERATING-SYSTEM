@@ -75,7 +75,7 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
  <header class="workhead"><div><strong>Instant Estimate · Editing workspace</strong><div class="micro">Original factory section model · Local draft only</div></div>
   <div class="switch" role="group" aria-label="Workspace mode"><button id="tab-preview" class="active" type="button">Preview</button><button id="tab-design" type="button">Design</button><button id="tab-source" type="button">Source</button></div></header>
  <div class="worktoolbar"><div style="display:flex;align-items:center;gap:9px"><span class="status"><i class="dot"></i> NOINDEX DRAFT</span><label for="device">Viewport</label><select id="device"><option value="desktop">Desktop</option><option value="tablet">Tablet · 834</option><option value="mobile">Mobile · 390</option></select></div>
- <div style="display:flex;gap:13px;align-items:center"><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro">No public deployment</span></div></div>
+ <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button type="button" class="action gold" id="build-canary">Build CRM canary ✦</button><button type="button" class="action light" id="return-estimate" hidden>Return to estimate</button><a id="open-preview" href="/api/studio/preview" target="_blank" rel="noopener noreferrer">Open full page ↗</a><span class="micro" id="canary-status">Local preview only</span></div></div>
  <div id="fault" role="alert" aria-live="polite"></div>
  <div class="stage" id="stage">
  <div class="canvas" id="canvas"><div class="frame"><div class="frameheader"><span class="lights"><i></i><i></i><i></i></span><span id="urltext">127.0.0.1 · noindex studio preview</span></div><iframe id="site-preview" title="Live editable Instant Estimate preview" src="/api/studio/preview"></iframe></div></div>
@@ -91,13 +91,23 @@ textarea{width:100%;resize:vertical;border:1px solid #cbd0cd;border-radius:11px;
 </section></div>
 <script>
 (function(){
-const $=id=>document.getElementById(id);let state=null,lastMission=null,currentTab="preview";
+const $=id=>document.getElementById(id);let state=null,lastMission=null,currentTab="preview",activeCanary=null;
 function bubble(role,label,body){const el=document.createElement("div");el.className="bubble "+role;const cap=document.createElement("span");cap.className="chatname";cap.textContent=label;el.append(cap,document.createTextNode(body));$("messages").append(el);el.scrollIntoView({block:"end"});}
 async function api(method,path,data){const opts=method==="POST"?{method,headers:{"Content-Type":"application/json"},body:JSON.stringify(data||{})}:{method};const r=await fetch(path,opts);const body=await r.json();if(!r.ok)throw Error(body.error||"Request failed");return body;}
 function setFault(message){$("fault").textContent=message||"";}
 function section(){return state?.plan?.sections?.find(x=>x.section_id===$("section").value);}
 function refreshInspector(){const s=section();$("headline").value=s?.content?.headline||"";$("body-copy").value=s?.content?.body||"";}
-function refreshIframe(){const iframe=$("site-preview");iframe.src="/api/studio/preview?rev="+encodeURIComponent(state?.plan?.planHash||"0");}
+function refreshIframe(){
+ const iframe=$("site-preview");
+ const page=activeCanary?"/api/canary/preview/"+encodeURIComponent(activeCanary.id)+"/index.html":"/api/studio/preview?rev="+encodeURIComponent(state?.plan?.planHash||"0");
+ if(iframe.getAttribute("src")!==page)iframe.setAttribute("src",page);
+ $("open-preview").href=page;
+ $("urltext").textContent=activeCanary?"X1 GENERATED APP · "+activeCanary.id:"127.0.0.1 · noindex studio preview";
+ $("return-estimate").hidden=!activeCanary;
+ $("canary-status").textContent=activeCanary?"Real HTML/CSS/JS · local static QA":"Local preview only";
+ $("apply").disabled=Boolean(activeCanary);
+ $("inspector-status").textContent=activeCanary?"This generated CRM currently supports source preview. Direct design editing applies to Instant Estimate only. Return to estimate to edit sections.":"Editing invalidates any prior preview approvals.";
+}
 function paint(){
  $("plan-hash").textContent=(state?.plan?.planHash||"missing").slice(0,14);
  $("mission-state").textContent=lastMission?"Mission "+lastMission.status:"No coding task dispatched";
@@ -109,10 +119,10 @@ function changeTab(mode){
  $("inspector").hidden=mode!=="design";
  $("canvas").parentElement.style.display=mode==="source"?"none":"flex";
  $("source").style.display=mode==="source"?"block":"none";
- if(mode==="source")fetch("/api/studio/source").then(r=>r.text()).then(c=>$("source-code").value=c).catch(e=>setFault(e.message));
+ if(mode==="source")fetch(activeCanary?"/api/canary/preview/"+encodeURIComponent(activeCanary.id)+"/app.js":"/api/studio/source").then(r=>r.text()).then(c=>$("source-code").value=c).catch(e=>setFault(e.message));
  if(mode!=="source")refreshIframe();
 }
-async function load(){state=await api("GET","/api/studio/state");paint();}
+async function load(){state=await api("GET","/api/studio/state");activeCanary=state.localCanary?.manifest||null;paint();}
 async function send(text){
  if(!text.trim())return;setFault("");bubble("user","YOU",text);
  $("chat-send").disabled=true;
@@ -133,6 +143,20 @@ document.querySelectorAll("[data-prompt]").forEach(b=>b.addEventListener("click"
 ["preview","design","source"].forEach(t=>$("tab-"+t).addEventListener("click",()=>changeTab(t)));
 $("device").addEventListener("change",()=>{$("canvas").classList.remove("mobile","tablet");if($("device").value!=="desktop")$("canvas").classList.add($("device").value);});
 $("section").addEventListener("change",refreshInspector);
+$("build-canary").addEventListener("click",async()=>{
+ setFault("");const b=$("build-canary");b.disabled=true;b.textContent="Compiling source...";
+ try{
+  const objective=lastMission?.goal||"Build a premium client CRM dashboard with searchable demo leads, a real pipeline and analytics";
+  const r=await api("POST","/api/canary/build",{templateId:"app-client-crm",objective});
+  if(r.status!=="REAL_SOURCE_COMPILED_LOCAL_PREFLIGHT_PASS")throw Error("Canary did not pass static checks");
+  activeCanary=r.manifest;changeTab("preview");refreshIframe();
+  bubble("assistant","X1 SELF-BUILD · REAL SOURCE",
+   "Generated "+r.manifest.generatedFiles+" actual source files with SHA-256 receipts. Node syntax: PASS. Local static preflight: "+r.staticPreflight.passed+
+   " ("+r.staticPreflight.checks+" checks). The local CRM app is now in the right preview. GitHub runs the isolated builder and separate QA; this local HTTP response is not independent QA.");
+ }catch(e){setFault(e.message);bubble("assistant","X1 BUILD BLOCKED",e.message)}
+ finally{b.disabled=false;b.textContent="Build CRM canary ✦";}
+});
+$("return-estimate").addEventListener("click",()=>{activeCanary=null;changeTab("preview");refreshIframe();});
 $("apply").addEventListener("click",async()=>{setFault("");try{const s=$("section").value;
  const first=await api("POST","/api/studio/edit",{sectionId:s,field:"headline",value:$("headline").value});
  state=first.state;
