@@ -1,0 +1,17 @@
+name: X1 foundation checks
+on:
+  pull_request:
+    paths: ["src/**", "tests/**", "package.json", "tsconfig.json", ".github/workflows/quality.yml"]
+  workflow_dispatch:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "24" }
+      - run: npm install --no-audit --no-fund
+      - run: npm run test
+      - run: npm run build
