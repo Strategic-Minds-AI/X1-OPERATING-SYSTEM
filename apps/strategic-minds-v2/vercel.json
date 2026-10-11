@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/v2/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ]
+}

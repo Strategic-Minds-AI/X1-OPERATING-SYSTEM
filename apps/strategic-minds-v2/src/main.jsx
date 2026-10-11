@@ -1,0 +1,25 @@
+import React, { useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import V2Experience from './V2Experience.jsx';
+import './global.css';
+
+function NavigateToHash() {
+ const location=useLocation();
+ useEffect(()=>{
+  if(!location.hash)return;
+  const target=decodeURIComponent(location.hash.substring(1));
+  const raf=requestAnimationFrame(()=>document.getElementById(target)?.scrollIntoView({behavior:'auto',block:'start'}));
+  return ()=>cancelAnimationFrame(raf);
+ },[location.pathname,location.hash]);
+ return null;
+}
+function App(){
+ return <BrowserRouter><NavigateToHash/><Routes>
+   <Route path="/" element={<Navigate to="/v2/a" replace/>}/>
+   <Route path="/v2" element={<Navigate to="/v2/a" replace/>}/>
+   <Route path="/v2/:variant" element={<V2Experience/>}/>
+   <Route path="*" element={<Navigate to="/v2/a" replace/>}/>
+ </Routes></BrowserRouter>;
+}
+createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
