@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="dark">
+<title>X1 Operating System | Autonomous Engineering Showcase</title>
+<meta name="description" content="X1 Operating System private preview. Real source generation, validation, and interactive synthetic application demonstration.">
+<style>
+:root{color-scheme:dark;--void:#0b1117;--surface:#101b23;--raise:#14212a;--line:#344651;--silver:#f1f3f1;--soft:#afc2c4;--gold:#d6ba8d;--green:#9fbeb2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--void);color:var(--silver);font:18px/1.56 "Segoe UI",Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:3px solid #f0c48a;outline-offset:4px}
+header{max-width:1600px;margin:0 auto;padding:22px 5%;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap;border-bottom:1px solid #293741}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:20px;letter-spacing:.14em}.brand-logo{display:grid;place-items:center;width:52px;height:52px;border:1px solid #7d8b8d;border-radius:9px;letter-spacing:-.06em;font-size:25px;background:#17252f}.brand-logo b{color:var(--gold)}
+nav{display:flex;gap:30px;align-items:center;flex-wrap:wrap}nav a{font-size:15px;font-weight:850;color:#c5d0d0}nav a:hover{color:#fff}.nav-cta{padding:11px 19px;border:1px solid var(--gold);color:var(--gold);border-radius:5px}
+main{max-width:1600px;margin:auto;padding:0 5%}.hero{min-height:620px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(310px,.88fr);align-items:center;gap:35px;position:relative;padding:72px 0 70px}
+.overline{font-weight:900;letter-spacing:.22em;font-size:13px;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:12px}.overline:before{content:"";width:35px;height:2px;background:var(--gold)}
+h1{font-size:clamp(57px,7.5vw,128px);line-height:.98;letter-spacing:-.07em;margin:25px 0;max-width:900px;font-weight:850}h1 em{display:block;font-style:normal;color:var(--gold)}
+.hero p{font-size:21px;color:var(--soft);max-width:660px;line-height:1.65;margin:0 0 36px}
+.actions{display:flex;gap:13px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;min-height:58px;font-size:16px;font-weight:900;border-radius:5px;transition:transform .12s,border-color .12s}.button:hover{transform:translateY(-2px)}.button.primary{background:var(--gold);color:#12191b}.button.secondary{border:1px solid #789098;color:#e1eced}
+.disclaimer{font-size:12px;color:#9baaad;max-width:560px;letter-spacing:.06em;margin-top:20px}
+.diagram{display:grid;place-items:center;min-height:470px;position:relative}.orbit{width:min(100%,480px);aspect-ratio:1;position:relative;border-radius:50%;border:1px solid #44545c;background:radial-gradient(circle at center,#233644 0,#111d27 50%,#0b1117 76%);display:grid;place-items:center;box-shadow:0 0 0 35px #657b8330,0 0 0 77px #36455040}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #8ba4a84b;border-radius:50%}.orbit:before{inset:12%}.orbit:after{inset:28%}
+.core{position:relative;z-index:2;width:142px;height:142px;border:2px solid #aebec0;border-radius:50%;display:grid;place-items:center;font-size:55px;font-weight:900;letter-spacing:-.07em;background:#172a36;box-shadow:0 0 45px #a4bec020}.core span{color:var(--gold)}
+.node{position:absolute;z-index:3;background:#17252d;border:1px solid #51666a;border-radius:6px;padding:10px 13px;color:#dce7e5;font-size:12px;font-weight:900;letter-spacing:.12em}.node.a{top:8%;left:1%}.node.b{right:-3%;top:25%}.node.c{bottom:10%;left:0}.node.d{right:0;bottom:24%}
+.proof{border-top:1px solid #34454d;border-bottom:1px solid #34454d;padding:25px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}.metric{padding:0 18px;border-right:1px solid #304149}.metric:last-child{border:0}.value{display:block;font-size:43px;font-weight:900;letter-spacing:-.05em;color:var(--gold)}.descriptor{display:block;color:#b3c3c4;font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+section{padding:76px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;flex-wrap:wrap;margin-bottom:25px}h2{font-size:clamp(35px,4vw,62px);line-height:1.1;letter-spacing:-.05em;margin:10px 0}.section-intro{color:#b6c7c9;font-size:18px;max-width:580px}
+.preview{display:grid;grid-template-columns:minmax(0,.66fr) minmax(0,1.34fr);border:1px solid #50616b;background:#111f27;min-height:460px;overflow:hidden;border-radius:9px}
+.preview-aside{padding:35px;display:flex;flex-direction:column;gap:22px}.preview-aside h3{font-size:32px;line-height:1.12;letter-spacing:-.04em;margin:0}.preview-aside p{color:#bbcbcc;margin:0}.pipeline{margin:5px 0;display:grid;gap:18px}.step{display:flex;gap:13px;align-items:start;font-size:15px;color:#ced9d9}.step .count{display:grid;place-items:center;width:29px;height:29px;border:1px solid var(--gold);color:var(--gold);flex:none;border-radius:50%;font-size:12px;font-weight:900}
+.preview-screen{min-width:0;background:#fff;color:#202a2d;align-self:stretch;position:relative;display:flex;flex-direction:column}
+.screen-bar{background:#293b43;color:#dae4e3;font-size:12px;min-height:36px;padding:9px 14px;font-weight:800;display:flex;justify-content:space-between;gap:10px}.screen-bar b{color:#cdaa78}
+.screen-content{min-height:395px;display:grid;grid-template-columns:165px 1fr}.screen-nav{background:#11202a;color:#c3d0d4;padding:27px 13px;font-size:13px;display:grid;align-content:start;gap:15px}.screen-nav strong{color:#f1f2f0;letter-spacing:.08em;font-size:15px;margin-bottom:21px}.screen-nav div{padding:9px;border-radius:3px}.screen-nav .sel{background:#2b444b;color:#fff}
+.screen-main{padding:32px 30px;background:#f6f7f5}.mini-caption{color:#997747;font-size:12px;font-weight:900;letter-spacing:.12em}.screen-main h3{font-size:31px;line-height:1.1;margin:13px 0 12px;letter-spacing:-.045em}.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:25px}.mini-stats div{background:#fff;border:1px solid #dfe2df;border-radius:4px;padding:13px 10px;font-size:11px;color:#607078}.mini-stats b{display:block;font-size:28px;color:#263b43}
+.section-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.feature{background:#111f29;border:1px solid #374b54;padding:29px;border-radius:7px}.feature .num{font-size:13px;color:var(--gold);font-weight:900}.feature h3{font-size:23px;letter-spacing:-.03em;margin:18px 0 13px}.feature p{font-size:15px;color:#afc1c3;line-height:1.65;margin:0}
+.statuslist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:0;list-style:none}.statuslist li{border:1px solid #384d56;background:#13222b;padding:18px 21px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-size:15px;font-weight:800}.statuslist small{color:var(--gold);font-size:12px;letter-spacing:.09em;text-align:right}.statuslist .blocked{color:#e4b1a5}
+footer{max-width:1600px;margin:auto;padding:26px 5% 45px;border-top:1px solid #293b44;color:#899ea2;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.diagram{min-height:440px;margin:30px 30px}.orbit{width:360px}.node.b{right:-5%}.preview{grid-template-columns:1fr}.section-grid{grid-template-columns:1fr 1fr}.screen-content{min-height:350px}}
+@media(max-width:680px){header{padding:15px 5%}.brand{font-size:14px}.brand-logo{width:43px;height:43px;font-size:21px}nav{gap:13px}nav a{font-size:13px}.nav-cta{padding:8px 10px}.hero{padding:45px 0 15px;min-height:0}h1{font-size:clamp(50px,13vw,76px)}.hero p{font-size:17px}.diagram{min-height:350px;margin:15px 10px 40px}.orbit{width:min(75vw,300px);box-shadow:0 0 0 20px #657b8330,0 0 0 42px #36455040}.core{width:100px;height:100px;font-size:38px}.node{font-size:9px;padding:6px}.node.b{right:-10%}.node.c{left:-6%}.proof{grid-template-columns:1fr 1fr;gap:15px}.metric{padding:0 5px;border:none}.value{font-size:34px}.descriptor{font-size:11px}section{padding:43px 0}.section-grid{grid-template-columns:1fr}.preview-aside{padding:25px}.screen-nav{display:none}.screen-content{grid-template-columns:1fr}.screen-main{padding:25px}.statuslist{grid-template-columns:1fr}.button{width:100%}.actions{width:100%}}
+</style>
+</head><body>
+<header>
+  <a class="brand" href="/" aria-label="X1 Operating System home"><span class="brand-logo">X<b>1</b></span>STRATEGIC MINDS AI</a>
+  <nav aria-label="Main navigation"><a href="#proof">Evidence</a><a href="#workflow">Workflow</a><a href="/client-command/" class="nav-cta">OPEN LIVE APP ↗</a></nav>
+</header>
+<main>
+<section class="hero" aria-labelledby="hero-heading">
+ <div><div class="overline">X1 Operating System · Private branch preview</div>
+  <h1 id="hero-heading">Intelligence<br>in <em>motion.</em></h1>
+  <p>One command surface. One source of truth. A real application generated from X1's source-controlled template system, independently checked before release.</p>
+  <div class="actions"><a class="button primary" href="/client-command/">Explore working Client Command ↗</a><a class="button secondary" href="#proof">Inspect build evidence</a></div>
+  <div class="disclaimer">Synthetic demonstration. Source compiler verified. General-purpose autonomous coding, live client data and production publishing are not enabled.</div>
+ </div>
+ <div class="diagram" aria-hidden="true"><div class="orbit"><div class="core">X<span>1</span></div><span class="node a">RESEARCH</span><span class="node b">GENERATE</span><span class="node c">VALIDATE</span><span class="node d">PREVIEW</span></div></div>
+</section>
+<div class="proof" id="proof" aria-label="Verified previous CI evidence">
+ <div class="metric"><span class="value">50/50</span><span class="descriptor">Verified CI unit tests*</span></div>
+ <div class="metric"><span class="value">23/23</span><span class="descriptor">Static checks in separate runner*</span></div>
+ <div class="metric"><span class="value">2</span><span class="descriptor">Captured screenshots*</span></div>
+ <div class="metric"><span class="value">97</span><span class="descriptor">Versioned starter documents</span></div>
+</div>
+<section id="workflow">
+ <div class="section-head"><div><div class="overline">This actually builds files</div><h2>Build. Check. Show.</h2></div><p class="section-intro">X1's demo canary creates HTML, CSS, JavaScript and a hash manifest, then verifies the source on an independent CI runner. This preview serves the generated app itself.</p></div>
+ <div class="preview">
+  <div class="preview-aside"><span class="overline">LIVE INTERACTIVE APPLICATION</span><h3>Client Command Center</h3>
+   <p>Use the real synthetic lead inbox, add sample records, update pipeline stages and export CSV. No client records are connected.</p>
+   <div class="pipeline"><div class="step"><span class="count">1</span><span>Define a project using the versioned CRM starter pack</span></div><div class="step"><span class="count">2</span><span>Compile complete frontend source files</span></div><div class="step"><span class="count">3</span><span>Run independent static QA and browser capture</span></div><div class="step"><span class="count">4</span><span>Serve an isolated preview for review, not production release</span></div></div>
+   <a class="button primary" href="/client-command/">Launch interactive demo ↗</a>
+  </div>
+  <div class="preview-screen" aria-label="Representative application screenshot-style illustration, not a live iframe">
+   <div class="screen-bar"><span>127.0.0.1 / client-command</span><span>CANARY PREVIEW <b>●</b></span></div>
+   <div class="screen-content"><div class="screen-nav"><strong>◈ X1 COMMAND</strong><div class="sel">Overview</div><div>Lead inbox</div><div>Websites</div><div>Automations</div></div><div class="screen-main"><div class="mini-caption">GENERATED APPLICATION</div><h3>Client Command Center<span style="color:#c8a36d">.</span></h3><p style="font-size:14px;color:#647174">Real navigation and synthetic dashboard interactions</p><div class="mini-stats"><div>Lead examples<b>6</b></div><div>Qualified<b>2</b></div><div>Won<b>1</b></div></div><div style="height:72px;background:repeating-linear-gradient(90deg,#e9efea 0,#e9efea 14%,#d7ded9 14%,#d7ded9 28%);margin-top:25px;border-radius:4px"></div></div></div>
+  </div>
+ </div>
+</section>
+<section id="capabilities">
+ <div class="section-head"><div><div class="overline">The X1 build engine</div><h2>Designed to grow.</h2></div></div>
+ <div class="section-grid">
+  <article class="feature"><span class="num">01 / SOURCE-CONTROLLED</span><h3>Universal Template Registry</h3><p>Versioned documents for apps, websites, agents, marketing, QA, integrations and operations. Provenance and gates included.</p></article>
+  <article class="feature"><span class="num">02 / TESTED CANARY</span><h3>Deterministic Source Generation</h3><p>Generated real frontend files and made them available as a working application. The general-purpose AI coding executor remains the next integration.</p></article>
+  <article class="feature"><span class="num">03 / RELEASE GOVERNED</span><h3>Independent Validation</h3><p>Separate runner validates hashes and syntax; screenshot captures are evidence but not equivalent to click-based QA or design sign-off.</p></article>
+ </div>
+</section>
+<section id="status">
+ <div class="overline">Honest readiness</div><h2>What is real. What's next.</h2>
+ <ul class="statuslist">
+  <li>Generated application files <small>VERIFIED</small></li>
+  <li>Read-only GitHub source and checks <small>VERIFIED</small></li>
+  <li>Interactive local-data CRM <small>CODE IMPLEMENTED</small></li>
+  <li>Authenticated persistent X1 worker <small class="blocked">NOT BOUND</small></li>
+  <li>General-purpose AI coding <small class="blocked">NOT COMPLETE</small></li>
+  <li>Approved production deployment <small class="blocked">NOT RELEASED</small></li>
+ </ul>
+ <p class="disclaimer">* Historical independent CI run: <a style="text-decoration:underline;color:#e0c296" href="https://github.com/Strategic-Minds-AI/X1-OPERATING-SYSTEM/actions/runs/38131487528" target="_blank" rel="noopener noreferrer">source and screenshots</a>. This particular Vercel preview needs its own deployment and browser checks. This page is intentionally noindex.</p>
+</section>
+</main>
+<footer><span>X1 OPERATING SYSTEM · A STRATEGIC MINDS AI SYSTEM</span><span>Florida · (772) 209-0266 · PREVIEW ONLY</span></footer>
+</body></html>
