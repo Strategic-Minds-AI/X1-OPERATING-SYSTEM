@@ -1,0 +1,92 @@
+name: X1 Self-Build Canary | Real Source, Isolated Build and QA
+on:
+  push:
+    branches:
+      - feature/x1-self-build-canary-20261011
+    paths:
+      - 'src/**'
+      - 'scaffolds/**'
+      - 'tests/**'
+      - '.github/workflows/x1-self-build-canary.yml'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scaffolds/**'
+      - 'tests/**'
+      - '.github/workflows/x1-self-build-canary.yml'
+      - 'package.json'
+permissions:
+  contents: read
+jobs:
+  build-canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Checkout exact X1 source SHA
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Run entire X1 unit and integration test suite
+        run: npm run check
+      - name: Generate real HTML, CSS, JavaScript, source manifest and build receipt
+        env:
+          X1_SYNTHETIC_ONLY: 'true'
+        run: node src/self-build-canary.mjs "Build a premium client CRM dashboard with a searchable lead inbox and interactive pipeline"
+      - name: Upload source bundle from isolated builder runner
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: x1-canary-source
+          path: out/canary-*/
+          if-no-files-found: error
+          retention-days: 7
+  independent-verifier:
+    needs: build-canary
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Checkout exact source for separately owned validator
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Download builder source artifact in new runner
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: x1-canary-source
+          path: qa-input
+      - name: Check real generated app independently, hash and release policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s qa-input/manifest.json
+          node src/self-build-validator.mjs qa-input
+      - name: Render desktop and mobile screenshots in headless Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || true)"
+          test -n "$CHROME"
+          URL="file://$GITHUB_WORKSPACE/qa-input/index.html"
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=1440,900 --screenshot="$GITHUB_WORKSPACE/qa-input/desktop-1440x900.png" "$URL" >/dev/null 2>&1
+          "$CHROME" --headless --no-sandbox --disable-dev-shm-usage --disable-gpu --no-first-run --window-size=390,844 --screenshot="$GITHUB_WORKSPACE/qa-input/mobile-390x844.png" "$URL" >/dev/null 2>&1
+          test -s qa-input/desktop-1440x900.png
+          test -s qa-input/mobile-390x844.png
+      - name: Upload independent receipts and screenshots
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: x1-canary-independent-qa
+          path: |
+            qa-input/independent-qa-receipt.json
+            qa-input/desktop-1440x900.png
+            qa-input/mobile-390x844.png
+          if-no-files-found: warn
+          retention-days: 7
