@@ -11,7 +11,8 @@
     "test": "node --test tests/*.test.mjs",
     "check": "npm run test && npm run build",
     "test:e2e": "node tests/browser-journey.mjs",
-    "test:commerce": "node tests/pricing-portal-browser.mjs"
+    "test:commerce": "node tests/pricing-portal-browser.mjs",
+    "test:studio": "node tests/visual-studio-brand-browser.mjs"
   },
   "dependencies": {
     "lucide-react": "0.475.0",

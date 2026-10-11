@@ -182,3 +182,15 @@
 .x1-studio .x1-send{background:linear-gradient(100deg,#a5ffce,var(--smai-green));border-color:var(--smai-green)}
 .x1-studio .x1-smark img,.x1-studio .x1-mini-brand img{object-fit:contain}
 .x1-studio :focus-visible{outline-color:var(--smai-focus)}
+
+/* Visual canvas type is deliberately stronger than the global button reset:
+   the large hero headline must retain homepage-caliber hierarchy. */
+.x1-studio .x1-surface-eyebrow{font-family:Inter,Arial,sans-serif;font-size:9px;font-weight:850;letter-spacing:.19em;line-height:1.5}
+.x1-studio .x1-surface-h1{font-family:Inter,Arial,sans-serif;font-size:clamp(30px,3.05vw,48px);font-weight:860;line-height:1.06;letter-spacing:-.055em;white-space:pre-line;max-width:100%;overflow-wrap:normal}
+.x1-studio .x1-surface-desc{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:450;line-height:1.8;max-width:430px;color:#abc4d7}
+.x1-studio .x1-surface-cta{font-family:Inter,Arial,sans-serif;font-size:10px;font-weight:850;letter-spacing:.095em;line-height:1.5;min-height:47px}
+.x1-studio .x1-mini-outline{font-family:Inter,Arial,sans-serif;font-size:8px;font-weight:850}
+.x1-studio .x1-surface-copy{min-width:0}
+@media(max-width:1130px){.x1-studio .x1-surface-h1{font-size:clamp(29px,3.5vw,43px)}}
+.x1-studio .x1-frame-mobile .x1-surface-h1{font-size:clamp(30px,8vw,40px)}
+@media(max-width:600px){.x1-studio .x1-surface-h1{font-size:clamp(30px,7vw,39px)}}
