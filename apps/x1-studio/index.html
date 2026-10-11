@@ -120,6 +120,11 @@ async function send(text){
   const result=await api("POST","/api/studio/message",{message:text});
   state=result.state;lastMission=result.result.mission||null;paint();
   bubble("assistant","X1 STUDIO · "+result.result.status,result.result.message);
+  if(result.recommendations?.length){
+   const box=document.createElement("div");box.className="bubble assistant";const label=document.createElement("span");label.className="chatname";label.textContent="START WITH A TEMPLATE";box.append(label);
+   result.recommendations.forEach(t=>{const link=document.createElement("a");link.href="/templates?id="+encodeURIComponent(t.id);link.textContent=t.title+" ↗";link.style.cssText="display:block;padding:8px 0;color:#79501b;font-weight:800;";box.append(link);});
+   $("messages").append(box);box.scrollIntoView({block:"end"});
+  }
  }catch(e){setFault(e.message);bubble("assistant","ERROR",e.message);}finally{$("chat-send").disabled=false;}
 }
 $("chat-form").addEventListener("submit",e=>{e.preventDefault();const text=$("chat-text").value;$("chat-text").value="";send(text);});
