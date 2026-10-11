@@ -27,7 +27,7 @@ test("unexpected element and invalid field are rejected",()=>{
  assert.throws(()=>applyLocalVisualEdit(p,{sectionId:"hero",field:"html",value:"<script>x</script>"}),{code:"SECTION_FIELD_NOT_ALLOWED"});
  assert.throws(()=>applyLocalVisualEdit(p,{sectionId:"hero",field:"headline",value:""}),{code:"EDIT_TEXT_INVALID"});
 });
-test("arbitrary application requests are durable plan data, NOT executed",()=>{
+test("arbitrary application requests are non-dispatched plan data, NOT executed",()=>{
  const r=interpretStudioMessage(proposeBatch(),"Build a customer CRM with login and leads",{sourceSha:"f".repeat(40)});
  assert.equal(r.mode,"AUTONOMOUS_MISSION_DRAFT");
  assert.equal(r.status,"DRAFT_NOT_DISPATCHED");
@@ -43,4 +43,14 @@ test("mission idempotency and input validation",()=>{
  const b=createStudioMission("Build a customer portal",{sourceSha:"a".repeat(40)});
  assert.equal(a.id,b.id);
  assert.throws(()=>createStudioMission("Hi"),{code:"MISSION_TEXT_REQUIRED"});
+});
+
+test("unchanged copy never invalidates an existing approval",()=>{
+ const p=proposeBatch();
+ const approved=approveMarkets(p,{actor:"synthetic-local-operator",planHash:p.planHash,intent:"APPROVE_SYNTHETIC_MARKETS"});
+ const edit=applyLocalVisualEdit(approved,{sectionId:"hero",field:"headline",value:"Your garage. Reimagined."});
+ assert.equal(edit.changed,false);
+ assert.equal(edit.approvalState,"UNCHANGED");
+ assert.equal(edit.plan,approved);
+ assert.equal(edit.plan.status,"markets_approved");
 });
