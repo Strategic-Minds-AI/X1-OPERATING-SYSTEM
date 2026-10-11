@@ -37,6 +37,7 @@ export default function X1AgentConsole(){
  const [messages,setMessages]=useState([DEFAULT_MESSAGE]);
  const [draft,setDraft]=useState('');
  const [events,setEvents]=useState([]);
+ const [sessions,setSessions]=useState([]);
  const [queue,setQueue]=useState(null);
  const [syncState,setSyncState]=useState('UNBOUND');
  const [busy,setBusy]=useState(false);
@@ -84,6 +85,14 @@ export default function X1AgentConsole(){
    }catch(err){setNotice('Verification blocked: '+err.message);}
    finally{setBusy(false);}
  }
+ async function loadSessions(authToken=token,selectedTenant=tenantId){
+   if(!authToken)return;
+   const headers={authorization:'Bearer '+authToken,...(selectedTenant?{'X-X1-Tenant-ID':selectedTenant}:{})};
+   const r=await fetch('/api/x1/agent-sessions',{headers,cache:'no-store'});
+   if(!r.ok)await asError(r);
+   const data=await r.json();
+   setSessions(Array.isArray(data.sessions)?data.sessions:[]);
+ }
  async function refresh(authToken=token,selectedTenant=tenantId,chosenSession=sessionId){
    if(!authToken||!configured)return;
    setSyncState('SYNCING');
@@ -97,6 +106,7 @@ export default function X1AgentConsole(){
      if(data.turns?.length)setMessages([DEFAULT_MESSAGE,...data.turns.map(t=>({
        role:t.role,content:t.content,status:t.status,model:t.model,created_at:t.created_at
      }))]);else setMessages([DEFAULT_MESSAGE]);
+     await loadSessions(authToken,selectedTenant);
      setSyncState('SYNC_READ_VERIFIED');setNotice('Synced from X1 Staging with your verified tenant identity.');
    }catch(err){setSyncState('BLOCKED');setNotice('Sync blocked: '+err.message);}
  }
@@ -115,6 +125,7 @@ export default function X1AgentConsole(){
      setMessages(prev=>[...prev.slice(0,-1),{role:'user',content:text,status:'ACCEPTED'},
        {role:'assistant',content:data.response,status:data.mode,model:data.model,receipt:data.receipt}]);
      setEvents(data.events||[]);setQueue(data.queue);setSyncState('SYNC_WRITTEN');
+     await loadSessions();
      setNotice(data.mode==='GPT_PREVIEW_DRAFT'
        ? 'GPT response and tenant transcript persisted. No execution was started.'
        : 'X1 status response and conversation persisted. GPT provider is not enabled.');
@@ -127,9 +138,14 @@ export default function X1AgentConsole(){
  }
  function logout(){
    setToken('');setMessages([DEFAULT_MESSAGE]);setEvents([]);setQueue(null);
-   setPhase('email');setOtp('');setSyncState('READY_FOR_AUTH');setNotice('Session ended.');
+   setSessions([]);setPhase('email');setOtp('');setSyncState('READY_FOR_AUTH');setNotice('Session ended.');
  }
  function newChat(){const next=crypto.randomUUID();setSessionId(next);setMessages([DEFAULT_MESSAGE]);setDraft('');setNotice('New tenant-scoped conversation created locally. Existing transcripts remain in X1 Staging.');}
+ function openConversation(id){
+   if(busy || !token)return;
+   setSessionId(id);setMessages([DEFAULT_MESSAGE]);setDraft('');
+   void refresh(token,tenantId,id);
+ }
  return <div className="x1-studio x1-agent-app">
   <a className="x1-skip" href="#x1-agent-main">Skip to X1 assistant</a>
   <aside className="x1-rail" aria-label="X1 navigation">
@@ -169,6 +185,7 @@ export default function X1AgentConsole(){
     <aside className="x1-agent-evidence">
      <div className="x1-agent-section-head"><div><Activity size={18}/><strong>LIVE X1 EVIDENCE</strong></div><button type="button" aria-label="Sync X1 now" onClick={()=>refresh()} disabled={!token||busy}><RefreshCw size={17}/></button></div>
      {token&&<div className="x1-agent-tenant"><label htmlFor="x1-agent-tenant">SELECT AN AUTHORIZED TENANT</label><input id="x1-agent-tenant" placeholder="Tenant UUID (optional for single tenant)" value={tenantId} onChange={e=>setTenantId(e.target.value)}/><button onClick={()=>refresh(token,tenantId)} type="button">VERIFY SCOPE</button></div>}
+     {token&&<div className="x1-agent-evidence-block x1-agent-sessions"><h3><MessageCircle size={16}/> RECENT CONVERSATIONS</h3>{sessions.length?sessions.map(s=><button type="button" key={s.session_id} className={'x1-agent-session'+(s.session_id===sessionId?' selected':'')} disabled={busy} onClick={()=>openConversation(s.session_id)} title="Open this tenant-scoped conversation"><strong>{s.preview||'X1 conversation'}</strong><small>{s.updated_at?new Date(s.updated_at).toLocaleString():''}</small></button>):<p>No conversations saved for this operator yet. Your messages will appear here after synchronization.</p>}</div>}
      <div className="x1-agent-evidence-block"><h3><Cloud size={16}/> WORKER QUEUE</h3>{queue?<QueueMeter sample={queue}/>:<p>Authenticate to inspect verified tenant-scoped queue data. There are no synthetic live metrics.</p>}</div>
      <div className="x1-agent-evidence-block"><h3><Clock size={16}/> DURABLE OUTPUT EVENTS</h3>{events.length?events.map((e,i)=><div className="x1-agent-event" key={e.event_id||i}><strong>{e.event_type}</strong><p>{e.summary||'Output event recorded'}</p><small>{e.trust_state} · {e.status}</small></div>):<p>Recent events appear here after authenticated synchronization. No event history is fabricated.</p>}</div>
      <div className="x1-agent-evidence-block x1-agent-protection"><LockKeyhole size={19}/><div><b>OPERATOR APPROVAL GATE</b><p>Production releases, destructive changes, credentials, customer communications and paid provisioning remain protected. GPT can prepare proposals but cannot bypass your approvals.</p></div></div>
