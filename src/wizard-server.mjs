@@ -6,6 +6,8 @@ import {proposeBatch,approveMarkets,authorizePreview,buildSyntheticPreviewBatch,
 import {renderInstantEstimatePreview} from "./instant-estimate-preview.mjs";
 import {STUDIO_CAPABILITIES,interpretStudioMessage,applyLocalVisualEdit} from "./studio-kernel.mjs";
 import {CATALOG,getTemplate,listTemplates,catalogueReport,draftFromTemplate,renderTemplateDocument,matchTemplate} from "./template-registry.mjs";
+import {materializeCanary,CANARY_TEMPLATE_ID} from "./self-build-canary.mjs";
+import {validateGeneratedApp} from "./self-build-validator.mjs";
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const entry=join(root,"apps/batch-wizard/index.html");
@@ -15,7 +17,7 @@ const host="127.0.0.1";
 const port=Number(process.env.WIZARD_PORT||4391);
 if(!Number.isInteger(port)||port<1024||port>65535) throw new Error("INVALID_PORT");
 const maxBytes=24000;
-let plan=proposeBatch(),batch=null,receipt=null,studioMission=null;
+let plan=proposeBatch(),batch=null,receipt=null,studioMission=null,localCanary=null;
 const html=await readFile(entry,"utf8");
 const studioHtml=await readFile(studioEntry,"utf8");
 const templatesHtml=await readFile(templatesEntry,"utf8");
@@ -50,7 +52,15 @@ export function createWizardServer(){
       const markdown=await readFile(join(root,"templates","library",t.family,t.id+".md"),"utf8");
       return reply(res,200,markdown,"text/markdown; charset=utf-8");
     }
-    if(req.method==="GET"&&pathname==="/api/studio/state"){return reply(res,200,studioState());}
+    if(req.method==="GET"&&pathname==="/api/studio/state"){return reply(res,200,{...studioState(),localCanary:localCanary?{manifest:localCanary.manifest,staticPreflight:localCanary.staticPreflight}:null});}
+    if(req.method==="GET"&&pathname==="/api/canary/state"){return reply(res,200,{canary:localCanary?{manifest:localCanary.manifest,staticPreflight:localCanary.staticPreflight}:null,runner:"LOOPBACK_TEMPLATE_COMPILER_NOT_X1_QUEUE",productionAllowed:false});}
+    if(req.method==="GET"&&pathname.startsWith("/api/canary/preview/")){
+      const parts=pathname.split("/").filter(Boolean);
+      const id=parts[3],file=parts[4];
+      if(!localCanary||id!==localCanary.manifest.id||parts.length!==5||!["index.html","styles.css","app.js"].includes(file))return reply(res,404,{error:"CANARY_PREVIEW_NOT_FOUND"});
+      const mime=file.endsWith(".html")?"text/html; charset=utf-8":file.endsWith(".css")?"text/css; charset=utf-8":"text/javascript; charset=utf-8";
+      return reply(res,200,await readFile(join(localCanary.dir,file),"utf8"),mime);
+    }
     if(req.method==="GET"&&pathname==="/api/studio/preview"){return reply(res,200,studioPreview(),"text/html; charset=utf-8");}
     if(req.method==="GET"&&pathname==="/api/studio/source"){return reply(res,200,studioPreview(),"text/plain; charset=utf-8");}
     if(req.method==="GET"&&pathname==="/api/state"){return reply(res,200,view());}
@@ -65,6 +75,19 @@ export function createWizardServer(){
     if(origin!==allowedOrigin)return reply(res,403,{error:"LOCAL_ORIGIN_REQUIRED"});
     if(!req.headers["content-type"]?.startsWith("application/json"))return reply(res,415,{error:"JSON_ONLY"});
     const body=await readBody(req);
+    if(pathname==="/api/canary/build"){
+      if(Object.keys(body).some(k=>!["objective","templateId"].includes(k)))return reply(res,422,{error:"CANARY_FIELDS_RESTRICTED"});
+      if(body.templateId!==CANARY_TEMPLATE_ID)return reply(res,422,{error:"CANARY_TEMPLATE_NOT_SUPPORTED"});
+      try{
+        const built=await materializeCanary({templateId:body.templateId,objective:body.objective,sourceSha:"LOCAL_UNPINNED"});
+        const preflight=await validateGeneratedApp(built.dir,{independentRunId:"SAME_PROCESS_LOCAL_PREFLIGHT_ONLY"});
+        if(preflight.sourceAndStaticTests!=="PASS")return reply(res,422,{error:"CANARY_STATIC_CHECK_FAILED",checks:preflight.checks.filter(x=>!x.pass)});
+        localCanary={dir:built.dir,manifest:built.manifest,staticPreflight:preflight};
+        return reply(res,200,{status:"REAL_SOURCE_COMPILED_LOCAL_PREFLIGHT_PASS",previewUrl:"/api/canary/preview/"+built.manifest.id+"/index.html",
+          manifest:built.manifest,staticPreflight:{checks:preflight.checks.length,passed:preflight.sourceAndStaticTests},
+          independentQa:"NOT_RUN_BY_LOCAL_HTTP_SERVER",scope:"LOCAL_SYNTHETIC_ONLY",productionAllowed:false});
+      }catch(err){return reply(res,422,{error:String(err.message||err).slice(0,160)});}
+    }
     if(pathname==="/api/templates/draft"){
       try{
         const t=getTemplate(body.id);

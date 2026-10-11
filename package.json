@@ -9,10 +9,12 @@
   },
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check src/mission.mjs && node --check src/council.mjs && node --check src/providers.mjs && node --check src/batch-wizard.mjs && node --check src/instant-estimate-preview.mjs && node --check src/studio-kernel.mjs && node --check src/template-registry.mjs && node --check src/wizard-server.mjs && npm test",
+    "check": "node --check src/mission.mjs && node --check src/council.mjs && node --check src/providers.mjs && node --check src/batch-wizard.mjs && node --check src/instant-estimate-preview.mjs && node --check src/studio-kernel.mjs && node --check src/template-registry.mjs && node --check src/self-build-canary.mjs && node --check src/self-build-validator.mjs && node --check src/wizard-server.mjs && npm test",
     "wizard": "node src/wizard-server.mjs",
     "qa:synthetic": "node --test tests/batch-wizard.test.mjs",
     "studio": "node src/wizard-server.mjs",
-    "templates:verify": "node --test tests/template-registry.test.mjs"
+    "templates:verify": "node --test tests/template-registry.test.mjs",
+    "canary:build": "node src/self-build-canary.mjs",
+    "canary:test": "node --test tests/self-build-canary.test.mjs"
   }
 }

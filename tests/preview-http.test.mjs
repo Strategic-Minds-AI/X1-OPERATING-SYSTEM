@@ -7,6 +7,23 @@ test("ten localhost HTML routes require both approvals",async()=>{
  const base="http://127.0.0.1:4391";
  const send=(path,payload)=>fetch(base+path,{method:"POST",headers:{"Origin":base,"Content-Type":"application/json"},body:JSON.stringify(payload)});
  try{
+  const blocked=await send("/api/canary/build",{templateId:"app-admin-portal",objective:"Build a production administration portal"});
+  assert.equal(blocked.status,422);
+  const canaryResponse=await send("/api/canary/build",{templateId:"app-client-crm",objective:"Build an impressive local CRM with working lead search, export and statuses"});
+  assert.equal(canaryResponse.status,200);
+  const canary=await canaryResponse.json();
+  assert.equal(canary.status,"REAL_SOURCE_COMPILED_LOCAL_PREFLIGHT_PASS");
+  assert.equal(canary.independentQa,"NOT_RUN_BY_LOCAL_HTTP_SERVER");
+  assert.equal(canary.productionAllowed,false);
+  assert.ok(canary.manifest.files["app.js"]);
+  const canaryPage=await fetch(base+canary.previewUrl);
+  assert.equal(canaryPage.status,200);
+  assert.match(canaryPage.headers.get("x-robots-tag"),/noindex/);
+  assert.match(await canaryPage.text(),/Client Command Center/);
+  const script=await fetch(base+canary.previewUrl.replace("index.html","app.js"));
+  assert.equal(script.status,200);
+  assert.match(await script.text(),/renderLeads/);
+  assert.equal((await fetch(base+canary.previewUrl.replace("index.html","../manifest.json"))).status,404);
   const library=await fetch(base+"/templates");
   assert.equal(library.status,200);
   assert.match(await library.text(),/Start with the right blueprint/);
