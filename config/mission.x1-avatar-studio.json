@@ -1,0 +1,174 @@
+{
+  "schema": "x1.autobuild.mission.v1",
+  "missionId": "X1-AVATAR-STUDIO-20261011",
+  "title": "X1-owned multi-avatar creation platform",
+  "status": "SCAFFOLD_NOT_QUEUED",
+  "canonicalRepo": "Strategic-Minds-AI/X1-OPERATING-SYSTEM",
+  "developmentBranch": "feature/x1-avatar-studio-foundation-20261011",
+  "swarmRepo": "Strategic-Minds-AI/x1-ai-hub-swarm-runtime",
+  "supabaseStagingProject": "uvdkzsbjackpjvpoxtyk",
+  "railwayPreviewProject": "f442cf0a-7275-4c2b-bf73-2dda4254e002",
+  "vercelPreviewProject": "prj_KtO8DbrNZilaO8DulDzWBSBSxYRB",
+  "activation": {
+    "queueBridge": false,
+    "modelInference": false,
+    "gpu": false,
+    "production": false,
+    "protectedJobsRequireApproval": true,
+    "maxRepairAttempts": 3
+  },
+  "tasks": [
+    {
+      "id": "X1-BOOT-001",
+      "title": "Compile and validate X1 Avatar Studio frontend",
+      "action": "READ_ONLY",
+      "dependsOn": [],
+      "state": "VERIFIED",
+      "acceptance": [
+        "typecheck",
+        "unit_tests",
+        "next_build"
+      ],
+      "evidence": "https://github.com/Strategic-Minds-AI/X1-OPERATING-SYSTEM/actions/runs/38128841751",
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-002",
+      "title": "Recover and independently hash consented Eden identity source",
+      "action": "READ_ONLY",
+      "dependsOn": [
+        "X1-BOOT-001"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "identity_asset_hash",
+        "consent_provenance"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-003",
+      "title": "Audit staging Supabase tenant security and queued work RPCs",
+      "action": "READ_ONLY",
+      "dependsOn": [
+        "X1-BOOT-001"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "tenant_auth_documented",
+        "RLS_negative_plan"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-004",
+      "title": "Build tenant-secure avatar session adapter on branch",
+      "action": "NON_PRODUCTION_MUTATION",
+      "dependsOn": [
+        "X1-BOOT-003"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "unit_tests",
+        "cross_tenant_denial",
+        "independent_review"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-005",
+      "title": "Implement AI Gateway real-time voice adapter and mock tests",
+      "action": "NON_PRODUCTION_MUTATION",
+      "dependsOn": [
+        "X1-BOOT-003"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "gateway_only_routing",
+        "mock_transport_tests",
+        "interrupt_tests"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-006",
+      "title": "Audit commercially usable video animation models",
+      "action": "READ_ONLY",
+      "dependsOn": [
+        "X1-BOOT-002"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "license_and_checkpoint_matrix",
+        "gpu_cost_quote"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-007",
+      "title": "Run consented GPU renderer benchmark after scoped approval",
+      "action": "PROTECTED_MUTATION",
+      "dependsOn": [
+        "X1-BOOT-006"
+      ],
+      "state": "APPROVAL_REQUIRED",
+      "acceptance": [
+        "face_fidelity_review",
+        "latency_receipt",
+        "cost_receipt"
+      ],
+      "costLimitUsd": null
+    },
+    {
+      "id": "X1-BOOT-008",
+      "title": "Connect scoped coding harness to existing X1 supervisor",
+      "action": "NON_PRODUCTION_MUTATION",
+      "dependsOn": [
+        "X1-BOOT-003"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "read_only_canary",
+        "signed_lease",
+        "branch_write_test",
+        "independent_review"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-009",
+      "title": "Build real-time avatar A/V and barge-in module",
+      "action": "NON_PRODUCTION_MUTATION",
+      "dependsOn": [
+        "X1-BOOT-005",
+        "X1-BOOT-007"
+      ],
+      "state": "PENDING",
+      "acceptance": [
+        "thirty_turn_session",
+        "webRTC_latency",
+        "barge_in_test",
+        "identity_check"
+      ],
+      "costLimitUsd": 0
+    },
+    {
+      "id": "X1-BOOT-010",
+      "title": "Production release after independent QA and scoped operator approval",
+      "action": "PRODUCTION_RELEASE",
+      "dependsOn": [
+        "X1-BOOT-004",
+        "X1-BOOT-008",
+        "X1-BOOT-009"
+      ],
+      "state": "APPROVAL_REQUIRED",
+      "acceptance": [
+        "security_review",
+        "release_receipt",
+        "rollback_test",
+        "operator_approval"
+      ],
+      "costLimitUsd": null
+    }
+  ]
+}
