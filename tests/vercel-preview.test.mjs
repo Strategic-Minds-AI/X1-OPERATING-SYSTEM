@@ -1,0 +1,31 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync,existsSync} from "node:fs";
+import {spawnSync} from "node:child_process";
+import {fileURLToPath} from "node:url";
+import {dirname,resolve,join} from "node:path";
+const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
+test("Vercel branch builds an actual root homepage and generated Client Command app",()=>{
+ const proc=spawnSync(process.execPath,["scripts/build-vercel-preview.mjs"],{cwd:root,encoding:"utf8",timeout:15000,env:{...process.env,VERCEL_GIT_COMMIT_SHA:"a".repeat(40)}});
+ assert.equal(proc.status,0,proc.stderr);
+ const dist=join(root,"dist");
+ for(const file of ["index.html","client-command/index.html","client-command/styles.css","client-command/app.js","client-command/manifest.json"])assert.ok(existsSync(join(dist,file)),file);
+ const landing=readFileSync(join(dist,"index.html"),"utf8");
+ const app=readFileSync(join(dist,"client-command/index.html"),"utf8");
+ const manifest=JSON.parse(readFileSync(join(dist,"client-command/manifest.json"),"utf8"));
+ assert.match(landing,/href="\/client-command\/"/);
+ assert.match(landing,/noindex,nofollow/);
+ assert.match(app,/Client Command Center/);
+ assert.doesNotMatch(app,/%%TITLE%%|%%OBJECTIVE%%/);
+ assert.equal(manifest.sourceSha,"a".repeat(40));
+ assert.equal(manifest.releaseEligible,false);
+ assert.equal(manifest.browserInteractions,"NOT_AUTOMATED_IN_THIS_BUILD");
+});
+test("Vercel config serves dist and does not grant production permissions",()=>{
+ const cfg=JSON.parse(readFileSync(join(root,"vercel.json"),"utf8"));
+ assert.equal(cfg.outputDirectory,"dist");
+ assert.match(cfg.buildCommand,/build-vercel-preview\.mjs/);
+ assert.ok(cfg.headers.some(h=>h.headers.some(k=>k.key==="X-Robots-Tag"&&/noindex/.test(k.value))));
+ const gitignore=readFileSync(join(root,".gitignore"),"utf8");
+ assert.match(gitignore,/(^|\n)dist\/?(\n|$)/);
+});
