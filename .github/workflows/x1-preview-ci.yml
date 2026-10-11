@@ -33,10 +33,13 @@ jobs:
           node-version: '22'
       - name: Syntax and deterministic tests (including 10 synthetic HTML sites)
         run: npm run check
-      - name: Forbid shadow supervisor and production deployment configuration
+      - name: Forbid shadow supervisor and validate any preview-only Vercel configuration
         shell: bash
         run: |
+          set -euo pipefail
           test ! -f src/worker.mjs
           test ! -f src/heartbeat.mjs
-          test ! -f vercel.json
           test ! -f railway.json
+          if test -f vercel.json; then
+            node --input-type=module -e 'import {readFileSync} from "node:fs"; const p=JSON.parse(readFileSync("vercel.json","utf8")); if(p.outputDirectory!=="dist"||p.buildCommand!=="node scripts/build-vercel-preview.mjs"||!p.headers?.some(h=>h.headers?.some(v=>v.key==="X-Robots-Tag"&&v.value.includes("noindex"))))process.exit(1)'
+          fi
