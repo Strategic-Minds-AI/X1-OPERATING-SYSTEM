@@ -5,7 +5,7 @@ import {dirname,resolve,join} from "node:path";
 import {proposeBatch,approveMarkets,authorizePreview,buildSyntheticPreviewBatch,verifyGeneratedBatch,BatchError,BASE_PACK} from "./batch-wizard.mjs";
 import {renderInstantEstimatePreview} from "./instant-estimate-preview.mjs";
 import {STUDIO_CAPABILITIES,interpretStudioMessage,applyLocalVisualEdit} from "./studio-kernel.mjs";
-import {CATALOG,getTemplate,listTemplates,catalogueReport,draftFromTemplate,renderTemplateDocument} from "./template-registry.mjs";
+import {CATALOG,getTemplate,listTemplates,catalogueReport,draftFromTemplate,renderTemplateDocument,matchTemplate} from "./template-registry.mjs";
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const entry=join(root,"apps/batch-wizard/index.html");
@@ -77,7 +77,8 @@ export function createWizardServer(){
       const result=interpretStudioMessage(plan,body.message,{sourceSha:"X1_DEV_SOURCE_PIN_REQUIRED_FOR_WORKER"});
       if(result.edit){plan=result.edit.plan;batch=null;receipt=null;}
       if(result.mission)studioMission=result.mission;
-      return reply(res,200,{result,state:studioState()});
+      const recommendations=result.mode==="AUTONOMOUS_MISSION_DRAFT"?matchTemplate(body.message,{limit:3}).map(t=>({id:t.id,title:t.title,family:t.family,readiness:t.readiness})):[];
+      return reply(res,200,{result,state:studioState(),recommendations});
     }
     if(pathname==="/api/studio/edit"){
       const edit=applyLocalVisualEdit(plan,{sectionId:body.sectionId,field:body.field,value:body.value});
