@@ -9,6 +9,21 @@ test("ten localhost HTML routes require both approvals",async()=>{
  try{
   const root=await fetch(base+"/");
   assert.equal(root.status,200);
+  const studio=await fetch(base+"/studio");
+  assert.equal(studio.status,200);
+  assert.match(await studio.text(),/Build with a conversation/);
+  const preview=await fetch(base+"/api/studio/preview");
+  assert.equal(preview.status,200);
+  assert.match(await preview.text(),/noindex,nofollow/);
+  const visual=await send("/api/studio/message",{message:"Set hero headline to The X1 Studio makes edits"});
+  assert.equal(visual.status,200);
+  const applied=await visual.json();
+  assert.equal(applied.result.status,"APPLIED_TO_LOCAL_DRAFT");
+  assert.equal(applied.state.plan.sections[0].content.headline,"The X1 Studio makes edits");
+  const unbound=await (await send("/api/studio/message",{message:"Build a complete customer CRM and dashboard"})).json();
+  assert.equal(unbound.result.status,"DRAFT_NOT_DISPATCHED");
+  assert.equal(unbound.result.mission.jobId,null);
+  assert.equal(unbound.state.capabilities.x1LeaseExecution,"BLOCKED_AUTH_AND_SINGLE_SUPERVISOR");
   const before=await send("/api/generate",{});
   assert.equal(before.status,422);
   const state=await (await fetch(base+"/api/state")).json();
