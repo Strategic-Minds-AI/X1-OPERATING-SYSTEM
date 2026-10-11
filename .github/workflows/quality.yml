@@ -26,6 +26,9 @@ jobs:
         run: npm run test
       - name: Next.js build
         run: npm run build
+      - name: Calculate next eligible work (no queue dispatch)
+        if: success()
+        run: npm run plan:dry-run
       - name: Emit immutable validation evidence
         if: always()
         env:
@@ -37,6 +40,6 @@ jobs:
         if: always()
         with:
           name: x1-validation-${{ github.sha }}
-          path: artifacts/ci/validation-receipt.json
+          path: artifacts/ci/
           if-no-files-found: warn
           retention-days: 30
