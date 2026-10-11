@@ -45,6 +45,17 @@ test("ten localhost HTML routes require both approvals",async()=>{
   assert.equal(bad.status,422);
   const root=await fetch(base+"/");
   assert.equal(root.status,200);
+  const listPage=await fetch(base+"/checklist");
+  assert.equal(listPage.status,200);
+  assert.match(await listPage.text(),/Every milestone/);
+  const listing=await (await fetch(base+"/api/checklist")).json();
+  assert.equal(listing.tasks.length,79);
+  assert.equal(listing.instructions.backendDurableWorkerActive,false);
+  const idle=await (await fetch(base+"/api/idle/policy")).json();
+  assert.equal(idle.thresholdMs,600000);
+  assert.deepEqual(idle.localOperations,["SYNTHETIC_CRM_CANARY_COMPILE","SYNTHETIC_STATIC_PREFLIGHT"]);
+  assert.equal(idle.productionAuthorized,false);
+  assert.equal(idle.serverSideDurableWorkerActive,false);
   const studio=await fetch(base+"/studio");
   assert.equal(studio.status,200);
   assert.match(await studio.text(),/Build with a conversation/);
