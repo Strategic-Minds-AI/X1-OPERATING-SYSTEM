@@ -50,7 +50,7 @@ if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const expected=process.env.GITHUB_SHA||null;
  validateGeneratedApp(dir,{expectedSourceSha:expected,independentRunId:process.env.GITHUB_RUN_ID||"LOCAL_INDEPENDENT_CHECK"}).then(async r=>{
   await writeFile(join(resolve(dir),"independent-qa-receipt.json"),JSON.stringify(r,null,2)+"\n");
-  process.stdout.write(JSON.stringify({result:r.status,checks:r.checks.length,passes:r.checks.filter(c=>c.pass).length,id:r.id})+"\n");
+  process.stdout.write(JSON.stringify({result:r.status,checks:r.checks.length,passes:r.checks.filter(c=>c.pass).length,failed:r.checks.filter(c=>!c.pass),id:r.id})+"\n");
   if(r.sourceAndStaticTests!=="PASS")process.exitCode=1;
  }).catch(e=>{process.stderr.write(String(e.message||e)+"\n");process.exitCode=1;});
 }
