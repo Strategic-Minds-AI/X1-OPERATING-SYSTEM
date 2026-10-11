@@ -92,6 +92,7 @@ try{
  await page.waitForSelector('.x1-agent-composer');
  await page.waitForFunction(()=>document.body.textContent.includes('Synthetic QA receipt'));
  check((await page.$eval('.x1-agent-meter b',x=>x.textContent))==='0','verified queue counts displayed');
+ await page.waitForSelector('.x1-agent-session',{timeout:6500});
  check((await page.$('.x1-agent-session')).length===1,'one recovered chat conversation link');
  check((await page.$eval('.x1-agent-session strong',x=>x.textContent)).includes('Review staging receipts'),'persisted chat snippet shown');
  await page.click('.x1-agent-suggestions button:first-child');
