@@ -61,6 +61,7 @@ async function operatorContext(req,binding,fetchImpl){
   if(operator.status!=="STAGING_READ_VERIFIED"||!UUID.test(operator.user_id??"")){
     throw new PublicApiError(503,"X1_OPERATOR_IDENTITY_UNVERIFIED");
   }
+  if(!["OWNER","ADMIN"].includes(operator.role))throw new PublicApiError(403,"X1_CHAT_ADMIN_ROLE_REQUIRED");
   return operator;
 }
 async function readTurns(binding,fetchImpl,operator,sessionId){
@@ -146,13 +147,17 @@ async function gatewayAnswer(message,turns,operator,events,{env,fetchImpl}){
   ].join("\n");
   const history=turns.filter(t=>["user","assistant"].includes(t.role))
     .slice(-10).map(t=>({role:t.role,content:String(t.content).slice(0,MAX_MESSAGE)}));
+  if(!history.length || history[history.length-1].role!=="user" ||
+     history[history.length-1].content!==message){
+    history.push({role:"user",content:message});
+  }
   let response;
   try {
     response=await fetchImpl(GATEWAY,{method:"POST",headers:{
       authorization:"Bearer "+apiKey,"content-type":"application/json"
     },body:JSON.stringify({model,max_tokens:520,temperature:0.2,
-      stream:false,messages:[{role:"system",content:system},...history,
-        {role:"user",content:message}]}),signal:AbortSignal.timeout(20000)});
+      stream:false,messages:[{role:"system",content:system},...history]}),
+      signal:AbortSignal.timeout(20000)});
   }catch{throw new PublicApiError(503,"GPT_UPSTREAM_UNAVAILABLE");}
   if(!response.ok)throw new PublicApiError(503,"GPT_UPSTREAM_REJECTED");
   let body;
