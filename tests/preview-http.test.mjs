@@ -7,6 +7,25 @@ test("ten localhost HTML routes require both approvals",async()=>{
  const base="http://127.0.0.1:4391";
  const send=(path,payload)=>fetch(base+path,{method:"POST",headers:{"Origin":base,"Content-Type":"application/json"},body:JSON.stringify(payload)});
  try{
+  const library=await fetch(base+"/templates");
+  assert.equal(library.status,200);
+  assert.match(await library.text(),/Start with the right blueprint/);
+  const catalog=await (await fetch(base+"/api/templates")).json();
+  assert.equal(catalog.summary.total,97);
+  assert.equal(catalog.templates.length,97);
+  const filtered=await (await fetch(base+"/api/templates?family=app")).json();
+  assert.equal(filtered.templates.length,12);
+  const doc=await fetch(base+"/api/templates/docs/app-client-crm");
+  assert.equal(doc.status,200);
+  assert.match(await doc.text(),/Client CRM and lead inbox/);
+  const x=await send("/api/templates/draft",{id:"app-client-crm",values:{objective:"Help clients manage their leads"}});
+  assert.equal(x.status,200);
+  const planned=await x.json();
+  assert.equal(planned.draft.status,"DRAFT_NOT_DISPATCHED");
+  assert.equal(planned.draft.authorizedCostCents,0);
+  assert.equal(planned.release,false);
+  const bad=await send("/api/templates/draft",{id:"app-client-crm",values:{unsafe_control:"publish now"}});
+  assert.equal(bad.status,422);
   const root=await fetch(base+"/");
   assert.equal(root.status,200);
   const studio=await fetch(base+"/studio");
