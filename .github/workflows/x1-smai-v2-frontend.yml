@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feature/smai-v2-approved-frontend-import-20261011
+      - feature/x1-v2-pricing-client-portal-20261011
     paths:
       - "apps/strategic-minds-v2/**"
       - ".github/workflows/x1-smai-v2-frontend.yml"
@@ -32,6 +33,8 @@ jobs:
         run: npm run check
       - name: Full desktop/mobile Chromium click-through
         run: npm run test:e2e
+      - name: Pricing and portal conversion journey
+        run: npm run test:commerce
       - name: Retain browser screenshots for review
         if: always()
         uses: actions/upload-artifact@v4
