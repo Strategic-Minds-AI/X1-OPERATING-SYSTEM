@@ -13,7 +13,7 @@ const DEFAULT_MESSAGE={
 const QUICK=[
  'Give me the latest X1 queue and worker health.',
  'Summarize recent verified agent outputs and required approvals.',
- 'Draft a staging-safe website build work packet for independent QA.'
+ 'Build preview: Make a premium epoxy garage floor instant estimate website for Pompano Beach FL'
 ];
 const asError=async(r)=>{
   let body={};try{body=await r.json();}catch{}
@@ -45,6 +45,7 @@ export default function X1AgentConsole(){
  const bottom=useRef(null);
  const configured=config?.status==='STAGING_CONFIGURED_NOT_AUTHENTICATED';
  const gpt=config?.gpt==='CONFIGURED_NOT_VALIDATED';
+ const dispatchReady=config?.dispatch==='PREVIEW_BUILD_READY';
  const hdr=(key)=>({authorization:'Bearer '+token,...(tenantId?{'X-X1-Tenant-ID':tenantId}:{}) ,[key]:'application/json'});
  async function reloadConfig(){
    setLoadingConfig(true);
@@ -126,14 +127,16 @@ export default function X1AgentConsole(){
        {role:'assistant',content:data.response,status:data.mode,model:data.model,receipt:data.receipt}]);
      setEvents(data.events||[]);setQueue(data.queue);setSyncState('SYNC_WRITTEN');
      await loadSessions();
-     setNotice(data.mode==='GPT_PREVIEW_DRAFT'
+     setNotice(data.dispatch==='QUEUED_NOT_DEPLOYED'
+       ? 'Your X1 preview work was queued and verified. It is NOT deployed yet. Watch the proof dashboard for an independently validated URL.'
+       : data.mode==='GPT_PREVIEW_DRAFT'
        ? 'GPT response and tenant transcript persisted. No execution was started.'
        : 'X1 status response and conversation persisted. GPT provider is not enabled.');
    }catch(err){
      setMessages(prev=>[...prev,{role:'assistant',
        content:'Request not confirmed. '+err.message+'. Use Sync now before retrying to avoid duplicate model charges.',
        status:'BLOCKED'}]);
-     setNotice('No job dispatched. Confirm conversation state before retrying.');
+     setNotice('No unverified deployment was claimed. Sync the conversation before retrying.');
    }finally{setBusy(false);}
  }
  function logout(){
@@ -178,7 +181,7 @@ export default function X1AgentConsole(){
        </article>)}
        <div ref={bottom}/>
       </div><div className="x1-agent-suggestions">{QUICK.map(s=><button type="button" key={s} onClick={()=>setDraft(s)}>{s}<ChevronRight size={14}/></button>)}</div>
-      <form onSubmit={send} className="x1-agent-composer"><label htmlFor="x1-agent-prompt">Message your X1 agent</label><textarea id="x1-agent-prompt" rows={3} maxLength={2400} value={draft} onChange={e=>setDraft(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(e);}}} placeholder="Ask for status, request a plan, or draft a work packet..."/><div><span><ShieldCheck size={14}/> DRAFT / READ-ONLY · NO AUTO-EXECUTION</span><button type="submit" disabled={busy||!draft.trim()}><Send size={16}/> {busy?'SYNCING':'SEND'}</button></div></form>
+      <form onSubmit={send} className="x1-agent-composer"><label htmlFor="x1-agent-prompt">Message your X1 agent</label><textarea id="x1-agent-prompt" rows={3} maxLength={2400} value={draft} onChange={e=>setDraft(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send(e);}}} placeholder="Ask for status or type: Build preview: a premium epoxy flooring website..."/><div><span><ShieldCheck size={14}/> {dispatchReady?'PREVIEW BUILDS ENABLED · NO PRODUCTION RELEASE':'DRAFT / READ-ONLY · NO AUTO-EXECUTION'}</span><button type="submit" disabled={busy||!draft.trim()}><Send size={16}/> {busy?'SYNCING':'SEND'}</button></div></form>
      </>}
      {notice&&<p className="x1-agent-notice" role="status">{notice}</p>}
     </section>
