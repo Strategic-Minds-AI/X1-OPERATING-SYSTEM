@@ -2,6 +2,7 @@
 // A ChatGPT-like API conversation is NOT the user's private chatgpt.com session.
 // No model tool calls, job dispatch, protected mutation, secret exposure, or new cron.
 import { PublicApiError, readBearer, readStagingOperatorStatus, resolveStagingBinding } from "./x1-staging.mjs";
+import {previewPrompt,previewReady,compilePremiumPreview,dispatchPreviewFromChat} from "./x1-preview-dispatch.mjs";
 
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const CHAT_TABLE="x1_admin_chat_turns";
@@ -16,7 +17,7 @@ export function chatConfig(env=process.env) {
     authOrigin:binding.origin,publicAnonKey:binding.anonKey,
     gpt:env.X1_GPT_CHAT_ENABLED==="true" &&
       !!(env.AI_GATEWAY_API_KEY||env.VERCEL_OIDC_TOKEN) ? "CONFIGURED_NOT_VALIDATED":"UNBOUND",
-    dispatch:"DISABLED",modelMode:"server_only",target:"X1_STAGING_ONLY"};
+    dispatch:previewReady(env)?"PREVIEW_BUILD_READY":"DISABLED",modelMode:"server_only",target:"X1_STAGING_ONLY"};
 }
 function requiredUuid(value,code){
   if(typeof value!=="string"||!UUID.test(value))throw new PublicApiError(400,code);
@@ -131,7 +132,7 @@ export async function readAgentConversation(req,{env=process.env,fetchImpl=fetch
   ]);
   return {status:"SYNC_READ_VERIFIED",session_id:sessionId,tenant_id:op.tenant_id,
     role:op.role,turns:turns.map(safeTurn),events,queue:op.sample,
-    gpt:chatConfig(env).gpt,dispatch:"DISABLED"};
+    gpt:chatConfig(env).gpt,dispatch:chatConfig(env).dispatch};
 }
 async function insertTurn(binding,fetchImpl,op,{sessionId,requestId,role,content,model=null,status}){
   return rest(binding,fetchImpl,urlFor(binding,CHAT_TABLE,{
@@ -198,6 +199,12 @@ export async function postAgentTurn(req,{env=process.env,fetchImpl=fetch}={}){
   const body=readBody(req),input=validateChatInput(body);
   const binding=verifyChatRuntime(env);
   const op=await operatorContext(req,binding,fetchImpl);
+  // An explicit preview command is checked before a durable claim or paid model call.
+  const previewRequested=Boolean(previewPrompt(input.message));
+  if(previewRequested){
+    if(!previewReady(env))throw new PublicApiError(503,"X1_PREVIEW_WORKER_NOT_ACTIVATED");
+    compilePremiumPreview(input.message);
+  }
   // Do not make a paid API request before the durable de-duplication claim.
   const accepted=await insertTurn(binding,fetchImpl,op,{...input,role:"user",content:input.message,status:"ACCEPTED"});
   if(accepted.length!==1)throw new PublicApiError(409,"CHAT_TURN_ALREADY_ACCEPTED_SYNC_FIRST");
@@ -205,13 +212,23 @@ export async function postAgentTurn(req,{env=process.env,fetchImpl=fetch}={}){
     readTurns(binding,fetchImpl,op,input.sessionId),
     readOutput(binding,fetchImpl,op)
   ]);
-  const result=await gatewayAnswer(input.message,turns,op,events,{env,fetchImpl});
+  const dispatched=previewRequested?await dispatchPreviewFromChat({
+    binding,operator:op,message:input.message,sessionId:input.sessionId,
+    requestId:input.requestId,env,fetchImpl}):null;
+  // Persist chat reply as existing X1_SYNC_ONLY status (no schema change); the
+  // separately typed dispatch field is the actual queue receipt.
+  const result=dispatched?{
+    answer:"X1 preview build QUEUED, not deployed yet. Work ID: "+dispatched.workId+
+      ". Source: "+dispatched.sourceSha+". Status: "+dispatched.queueStatus+
+      ". Watch your X1 proof dashboard for independent deployment and QA receipts.",
+    mode:"X1_SYNC_ONLY",model:null,dispatch:"QUEUED_NOT_DEPLOYED",work:dispatched
+  }:await gatewayAnswer(input.message,turns,op,events,{env,fetchImpl});
   const saved=await insertTurn(binding,fetchImpl,op,{...input,role:"assistant",
     content:result.answer,model:result.model,status:result.mode});
   if(saved.length!==1)throw new PublicApiError(503,"CHAT_REPLY_PERSISTENCE_UNVERIFIED");
   return {status:"SYNC_WRITTEN",session_id:input.sessionId,
     request_id:input.requestId,tenant_id:op.tenant_id,
     response:result.answer,model:result.model,mode:result.mode,
-    dispatch:"DISABLED",queue:op.sample,
+    dispatch:result.dispatch??"DISABLED",work:result.work??null,queue:op.sample,
     events,receipt:{user_turn:accepted[0].turn_id,assistant_turn:saved[0].turn_id}};
 }
