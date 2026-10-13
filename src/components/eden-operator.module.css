@@ -1,0 +1,29 @@
+.root{max-width:1300px}
+.badge{align-self:start;border:1px solid #615275;background:#241e32;color:#d9c5f6;border-radius:999px;padding:9px 12px;font:800 10px Manrope,Arial,sans-serif;letter-spacing:.09em;white-space:nowrap}
+.hero{display:flex;align-items:center;gap:29px;padding:30px;border:1px solid #463d65;border-radius:19px;background:radial-gradient(ellipse at 85% 20%,#59407867,transparent 65%),linear-gradient(125deg,#1f192d,#10121d);margin-bottom:23px;box-shadow:0 22px 68px #03040a55}
+.monogram{width:136px;height:166px;flex:0 0 136px;border:1px solid #9981c6;border-radius:23px;background:radial-gradient(ellipse at 50% 35%,#a181dc79,transparent 68%),linear-gradient(145deg,#493267,#181524);display:grid;place-items:center;color:#eddcff;font:900 45px Manrope,Arial,sans-serif;letter-spacing:-.08em;box-shadow:inset 0 0 55px #7255a34a}
+.heroText h2{font:800 clamp(23px,3vw,36px)/1.16 Manrope,Arial,sans-serif;margin:10px 0;letter-spacing:-.048em}
+.heroText p{max-width:690px;color:#c2bdd2;font-size:13px;line-height:1.8}
+.kicker{font:800 10px Manrope,Arial,sans-serif;letter-spacing:.15em;color:#b99ef0}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.pills span{border:1px solid #5a4a72;border-radius:999px;color:#d2bee9;background:#251d39;padding:6px 9px;font-size:10px;font-weight:700}
+.metricGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:0 0 20px}
+.metric{border:1px solid #333348;border-radius:12px;background:#141622;padding:19px;min-width:0}
+.metric span{display:block;color:#949ab2;font:700 11px Manrope,Arial,sans-serif;margin-bottom:12px}
+.metric strong{display:block;overflow-wrap:anywhere;color:#d7c5fd;font:800 12px Manrope,Arial,sans-serif;letter-spacing:.02em}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:19px}
+.panel{border:1px solid #313247;background:linear-gradient(145deg,#151723,#0f111a);border-radius:16px;padding:25px;min-width:0}
+.panel h3{font:800 19px Manrope,Arial,sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+.panel p{color:#a8a7bd;line-height:1.7;font-size:12px;margin:0 0 20px}
+.form{display:flex;flex-direction:column;gap:16px}
+.form label{display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;color:#e2deed}
+.form select,.form textarea{width:100%;background:#0e101a;color:#f3efff;border:1px solid #45405c;border-radius:8px;padding:11px 12px;outline-offset:2px}
+.form textarea{resize:vertical;min-height:105px;line-height:1.65}
+.form select:focus-visible,.form textarea:focus-visible{outline:2px solid #b5a0ff}
+.notice,.alert{margin:17px 0!important;padding:11px 13px;border-radius:9px;border:1px solid #695780;background:#2b203d;color:#ebddff!important}
+.code{display:block;max-height:395px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #35314a;border-radius:10px;background:#090b12;padding:14px;font:11px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#d9c8ff;margin:12px 0 15px}
+.empty{padding:44px 18px;text-align:center;color:#9595aa;background:#0d101a;border:1px dashed #454058;border-radius:10px;font-size:12px;line-height:1.8}
+.blocked{font:800 10px/1.8 Manrope,Arial,sans-serif;letter-spacing:.05em;color:#dfa5a5;margin-top:19px}
+@media(max-width:1150px){.metricGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.monogram{height:110px;width:110px;flex-basis:110px}.badge{white-space:normal}}
+@media(max-width:470px){.metricGrid{grid-template-columns:1fr}.hero,.panel{padding:20px}.pills{gap:6px}}
