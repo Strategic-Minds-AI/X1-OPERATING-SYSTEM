@@ -1,0 +1,147 @@
+{
+  "version": "1.0.0",
+  "mission_id": "X1-COMMS-TWILIO-GPT-CONVERGENCE-20261013",
+  "action_class": "BRANCH_WRITE",
+  "owner": "Strategic Minds AI X1 Operating System",
+  "canonical_repo": "Strategic-Minds-AI/X1-OPERATING-SYSTEMS",
+  "canonical_branch": "feature/x1-comms-twilio-gpt-20261013",
+  "parent_branch": "feature/x1-eden-executive-integration-20261013",
+  "donor": {
+    "github": "XTREME-SYSTEMS/xtreme-communications-os",
+    "source_sha": "35449a7cd0469c65d87c2579dc112df5bd9a4c88",
+    "base44_app_id": "6a9b71a5d35335afb9198950",
+    "read_only": true,
+    "files_indexed": 444,
+    "visibility": "public",
+    "telnyx_record_status": "connected (record only, not independently provider-verified)",
+    "mapped_twilio_number_suffix": "1174 (not present in Base44 PhoneNumber inventory at inspection)"
+  },
+  "decisions": {
+    "preserve_donor": true,
+    "install_base44_sdk": false,
+    "duplicate_runtime": false,
+    "use_existing_x1_queue": true,
+    "provider_mutations_permitted": false,
+    "copy_secrets": false,
+    "gpt_authority": "scoped operator-bound staging route",
+    "action_policy": "draft-only until verified tenant, consent, channel approval and independent QA"
+  },
+  "extraction_matrix": [
+    {
+      "area": "Twilio identity and owned-number inspection",
+      "classification": "EXTRACT_REFACTOR",
+      "donor": "base44/functions/gptTwilio/reader.mjs",
+      "x1": "src/lib/comms/twilio-reader.mjs",
+      "status": "BRANCH_CODE"
+    },
+    {
+      "area": "Twilio SMS/MMS send and number orders",
+      "classification": "REFACTOR",
+      "donor": "base44/functions/gatewayTwilio/entry.ts",
+      "x1": "not yet bound; explicit approval required",
+      "status": "BLOCKED"
+    },
+    {
+      "area": "Telnyx voice and messaging",
+      "classification": "PRESERVE",
+      "donor": "base44/functions/gatewayVoiceControl/entry.ts;gatewayMessages/entry.ts",
+      "x1": "future provider-neutral X1 worker adapter",
+      "status": "DONOR_ONLY"
+    },
+    {
+      "area": "Twilio voice and inbound webhook",
+      "classification": "REFACTOR",
+      "donor": "base44/functions/gatewayCalls/entry.ts;telnyxWebhook/entry.ts",
+      "x1": "signed callback/voice bridge pending",
+      "status": "BLOCKED"
+    },
+    {
+      "area": "SMS inbox and CRM",
+      "classification": "REFACTOR",
+      "donor": "src/pages/SmsInbox.jsx;XtremeCrm.jsx",
+      "x1": "tenant-guarded X1 storage planned",
+      "status": "NOT_CONNECTED"
+    },
+    {
+      "area": "Campaigns and contacts",
+      "classification": "REFACTOR",
+      "donor": "src/pages/CampaignConsole.jsx;CommunicationStudio.jsx",
+      "x1": "src/lib/comms/contracts.mjs + X1 Communications Studio",
+      "status": "DRAFT_ONLY"
+    },
+    {
+      "area": "Number inventory/routing",
+      "classification": "REFACTOR",
+      "donor": "src/pages/NumberManagement.jsx;NumberWorkflow.jsx",
+      "x1": "Twilio read-only inspection and route-draft",
+      "status": "DRAFT_ONLY"
+    },
+    {
+      "area": "Multi-channel UI",
+      "classification": "EXTRACT_REFACTOR",
+      "donor": "src/pages/CommunicationStudio.jsx;ProviderAbstraction.jsx",
+      "x1": "src/components/x1-comms-dashboard.tsx",
+      "status": "BRANCH_CODE"
+    },
+    {
+      "area": "Eden Skye voice handoff",
+      "classification": "MERGE",
+      "donor": "existing Eden Base44 and XTREME Comms",
+      "x1": "Existing X1 Eden page + draft_eden_handoff",
+      "status": "DRAFT_ONLY"
+    },
+    {
+      "area": "GPT access",
+      "classification": "EXTRACT_REFACTOR",
+      "donor": "base44/mcp/config.json;docs/gpt-twilio-connection.md",
+      "x1": "/api/comms/gpt + /api/comms/openapi",
+      "status": "CONTRACT_READY"
+    },
+    {
+      "area": "Customer secrets/API keys/tenant auth",
+      "classification": "QUARANTINE",
+      "donor": "base44/entities/ApiKey.jsonc;shared/tenantAuth.ts",
+      "x1": "X1 vault and verified Supabase tenant claims required",
+      "status": "NOT_MIGRATED"
+    },
+    {
+      "area": "Usage billing and recordings",
+      "classification": "PRESERVE",
+      "donor": "CommsEvent/ProviderLog/BillingAccount entities",
+      "x1": "X1 existing ledger after separate approval",
+      "status": "NOT_CONNECTED"
+    }
+  ],
+  "frontend": "X1 Communications workspace added to existing X1 Studio sidebar",
+  "endpoints": [
+    "GET /api/comms/readiness",
+    "GET /api/comms/openapi",
+    "POST /api/comms/gpt"
+  ],
+  "secret_names_only": [
+    "X1_COMMS_MODE",
+    "X1_COMMS_PREVIEW_TOKEN",
+    "X1_COMMS_ALLOWED_TENANT_ID",
+    "X1_COMMS_TWILIO_READ_ENABLED",
+    "X1_TWILIO_APPROVED_ACCOUNT_SID",
+    "TWILIO_ACCOUNT_SID",
+    "TWILIO_API_KEY_SID",
+    "TWILIO_API_KEY_SECRET",
+    "TWILIO_AUTH_TOKEN",
+    "TELNYX_API_KEY"
+  ],
+  "protected_actions": [
+    "send_sms",
+    "send_mms",
+    "make_call",
+    "send_whatsapp",
+    "send_email",
+    "purchase_phone",
+    "change_routing",
+    "record_call",
+    "production_deploy",
+    "secrets_bind",
+    "database_migration"
+  ],
+  "release_gate": "PRODUCTION_BLOCKED_UNTIL_AUTHENTICATED_PROVIDER_QA"
+}
