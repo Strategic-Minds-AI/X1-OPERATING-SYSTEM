@@ -193,7 +193,7 @@ export default function X1Communications({openEden}:{openEden?:()=>void}){
    <h3>GPT command interface</h3>
    <p>X1 exposes an OpenAPI tool contract for GPTs and agents. Existing XTREME Communications GPT access remains operational in its original connector. Activation of this new X1 endpoint requires a secret-scoped server credential and a validated preview URL.</p>
    <div className={styles.dataList}>
-    <div><span>OpenAPI schema</span><strong>/x1-comms-openapi.json</strong></div>
+    <div><span>OpenAPI schema</span><strong>/api/comms/openapi</strong></div>
     <div><span>Authenticated command route</span><strong>POST /api/comms/gpt</strong></div>
     <div><span>Public readiness route</span><strong>GET /api/comms/readiness</strong></div>
     <div><span>GPT read actions</span><strong>inspect_connection · inspect_number</strong></div>
@@ -201,7 +201,7 @@ export default function X1Communications({openEden}:{openEden?:()=>void}){
     <div><span>Auth contract</span><strong>Server-side bearer, pinned tenant, no browser key</strong></div>
    </div>
    <button className="outline-btn" type="button"
-    onClick={()=>copy(new URL("/x1-comms-openapi.json",window.location.href).href)}>
+    onClick={()=>copy(new URL("/api/comms/openapi",window.location.href).href)}>
     Copy current preview OpenAPI URL
    </button>
    <p className={styles.danger}>GPT SYNC CONTRACT READY. LIVE GPT CONNECTOR BINDING NOT YET VERIFIED.</p>
