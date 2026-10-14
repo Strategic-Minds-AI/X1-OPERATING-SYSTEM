@@ -1,0 +1,48 @@
+.root{max-width:1340px}
+.badge{align-self:start;white-space:nowrap;color:#e2caff;background:#281d3e;border:1px solid #614d87;border-radius:999px;padding:9px 13px;font:800 10px Manrope,Arial,sans-serif;letter-spacing:.1em}
+.hero{display:flex;align-items:center;gap:35px;padding:30px 35px;border:1px solid #4f4174;border-radius:20px;min-height:250px;background:radial-gradient(ellipse 85% 100% at 15% 50%,#4e387a78,transparent),linear-gradient(115deg,#1b162b,#10111c);margin-bottom:21px;position:relative;overflow:hidden}
+.rings{flex:0 0 184px;height:184px;border:1px solid #a48dc650;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#68488b55,#2e24455a 55%,transparent 69%);box-shadow:0 0 45px #ad81ff1b,inset 0 0 40px #a67eed24;position:relative}
+.rings:before,.rings:after{content:"";position:absolute;inset:13px;border:1px solid #b5a1e64f;border-radius:50%}
+.rings:after{inset:28px;border-color:#d6bcff78}
+.center{width:77px;height:77px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#e7d2ff,#9675d4);color:#161123;font:900 26px Manrope,Arial,sans-serif;letter-spacing:-.05em}
+.heroBody{position:relative;z-index:1}.kicker{font:800 10px Manrope,Arial,sans-serif;color:#c3a8fa;letter-spacing:.16em}
+.heroBody h2{font:800 clamp(25px,3vw,37px)/1.2 Manrope,Arial,sans-serif;letter-spacing:-.05em;margin:12px 0}
+.heroBody p{max-width:680px;font-size:12px;line-height:1.9;color:#bbb4cd;margin:0 0 17px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.summaryItem{border:1px solid #323046;background:#131421;border-radius:12px;padding:17px;min-width:0;min-height:91px}
+.summaryItem span{font:700 11px Manrope,Arial,sans-serif;color:#9da0b5;display:block;margin-bottom:11px}
+.summaryItem strong{font:800 11px Manrope,Arial,sans-serif;letter-spacing:.03em;overflow-wrap:anywhere;color:#e3d1ff}
+.tabs{display:flex;gap:7px;border-bottom:1px solid #363349;margin:8px 0 26px;overflow-x:auto;white-space:nowrap;padding-bottom:1px}
+.tab,.tabActive{font:800 11px Manrope,Arial,sans-serif;border:0;border-bottom:2px solid transparent;padding:12px 18px 14px;color:#9993ac;background:transparent}
+.tab:hover{color:#e0d2ff}.tabActive{color:#e9d6ff;border-bottom-color:#b89dff}
+.sectionHeading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}
+.sectionHeading h3,.panel h3{font:800 18px Manrope,Arial,sans-serif;margin:0 0 8px;letter-spacing:-.025em}
+.sectionHeading p,.panel p{font-size:12px;color:#a6a3bc;line-height:1.7;margin:0 0 8px}
+.sectionHeading select{max-width:190px;flex:0 0 auto;background:#191827;color:#e1d9f1;border:1px solid #49445b;border-radius:9px;padding:10px}
+.moduleGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.moduleCard{background:linear-gradient(125deg,#171723,#11121c);border:1px solid #383448;border-radius:14px;padding:17px;min-height:138px;transition:transform .18s,border-color .18s}
+.moduleCard:hover{transform:translateY(-2px);border-color:#6d558f}
+.moduleTop{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.moduleNumber{font:800 12px Manrope,Arial,sans-serif;color:#7c748f}
+.moduleState{font:800 9px Manrope,Arial,sans-serif;letter-spacing:.04em;color:#d0b9f5;background:#2b203c;border:1px solid #514266;border-radius:999px;padding:5px 7px;overflow-wrap:anywhere;text-align:right}
+.moduleCard h4{font:800 14px Manrope,Arial,sans-serif;margin:22px 0 7px}.moduleCard p{font-size:11px;color:#9994ae;margin:0}
+.twoCols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+.panel{border:1px solid #353249;border-radius:15px;background:linear-gradient(140deg,#161620,#11121a);padding:24px;min-width:0}
+.panel p{margin-bottom:19px}
+.form{display:flex;flex-direction:column;gap:15px}
+.form label{display:flex;flex-direction:column;gap:8px;color:#e1dceb;font-size:12px;font-weight:700}
+.form input,.form select,.form textarea{border:1px solid #4a435d;background:#0e1019;color:#f3eefe;padding:11px 12px;border-radius:8px;min-width:0;max-width:100%;width:100%;outline-offset:2px}
+.form textarea{resize:vertical;line-height:1.6;min-height:115px}.form select:disabled{opacity:.6}
+.formPair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.code{white-space:pre-wrap;overflow-wrap:anywhere;max-height:445px;overflow:auto;border:1px solid #39334f;border-radius:11px;padding:17px;background:#090b12;color:#e3ccff;font:11px/1.7 ui-monospace,Consolas,monospace;margin:15px 0}
+.empty{border:1px dashed #504562;border-radius:12px;min-height:230px;padding:30px;display:grid;place-items:center;color:#a9a1c0;font-size:12px;line-height:1.8;text-align:center}
+.dataList{display:flex;flex-direction:column;margin:17px 0 25px;border-top:1px solid #3e384f}
+.dataList>div{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:15px 5px;border-bottom:1px solid #343243}
+.dataList span{color:#a49eb4;font-size:12px;flex:0 0 38%}
+.dataList strong{font:800 11px/1.5 Manrope,Arial,sans-serif;color:#e8d9ff;text-align:right;overflow-wrap:anywhere}
+.danger{margin:20px 0 0!important;font:800 10px/1.7 Manrope,Arial,sans-serif!important;color:#e4a4a7!important;letter-spacing:.045em}
+.muted{margin-top:16px!important}.notice,.alert{background:#2d233d;border:1px solid #7e628b;border-radius:10px;padding:12px;color:#e8d6ff!important;margin-top:15px!important}
+@media(max-width:1150px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.moduleGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.hero{flex-direction:column;align-items:flex-start}.rings{width:122px;height:122px;flex-basis:122px}.center{width:57px;height:57px}.twoCols{grid-template-columns:1fr}}
+@media(max-width:500px){.summary,.moduleGrid{grid-template-columns:1fr}.sectionHeading{flex-direction:column;align-items:flex-start}.sectionHeading select{max-width:none;width:100%}.formPair{grid-template-columns:1fr}.dataList>div{flex-direction:column;gap:7px;align-items:flex-start}.dataList span{flex-basis:auto}.dataList strong{text-align:left}.hero,.panel{padding:20px}.badge{white-space:normal}}
