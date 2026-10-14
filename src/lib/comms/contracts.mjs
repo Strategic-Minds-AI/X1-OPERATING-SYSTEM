@@ -101,7 +101,7 @@ export function createCommsReadiness(flags={}){
   schema:"x1.comms.readiness.v1",service:"x1-native-communications",
   stage:"PREVIEW_CAPABILITY_PORT",source_system:"XTREME Communications OS",
   system_of_record:"X1 Operating System",source_number_suffix:"1174",
-  gpt_schema:"/x1-comms-openapi.json",
+  gpt_schema:"/api/comms/openapi",
   provider_status:{twilio:label(flags.twilioConfigured),telnyx:label(flags.telnyxConfigured),
    x1_queue:label(flags.queueConfigured),ai_gateway:label(flags.aiGatewayConfigured)},
   gpt_bridge:label(flags.gptTokenConfigured),
